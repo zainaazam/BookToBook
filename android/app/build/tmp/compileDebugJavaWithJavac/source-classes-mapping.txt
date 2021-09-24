@@ -1,0 +1,17 @@
+com/booktobook/generated/BasePackageList.java
+ com.booktobook.generated.BasePackageList
+com/booktobook/BuildConfig.java
+ com.booktobook.BuildConfig
+com/booktobook/MainActivity.java
+ com.booktobook.MainActivity
+ com.booktobook.MainActivity$1
+com/booktobook/MainApplication.java
+ com.booktobook.MainApplication
+ com.booktobook.MainApplication$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
+com/booktobook/ReactNativeFlipper.java
+ com.booktobook.ReactNativeFlipper
+ com.booktobook.ReactNativeFlipper$1
+ com.booktobook.ReactNativeFlipper$2
+ com.booktobook.ReactNativeFlipper$2$1
