@@ -1,8 +1,10 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
+import {ThemeProvider} from 'styled-components';
 // import ErrorBoundary from 'react-native-error-boundary';
 import RootStackNavigation from './Navigation/RootNavigation';
 import {View} from 'react-native';
+import {default_theme} from './Theme';
 
 const App = () => {
   return (
@@ -12,11 +14,11 @@ const App = () => {
         crashlytics().recordError(error);
       }}> */}
       {/* <Provider> */}
-      {/* <ThemeProvider theme={default_theme}> */}
-      {/* <PersistGate persistor={persistor}> */}
-      <RootStackNavigation />
-      {/* </PersistGate> */}
-      {/* </ThemeProvider> */}
+      <ThemeProvider theme={default_theme}>
+        {/* <PersistGate persistor={persistor}> */}
+        <RootStackNavigation />
+        {/* </PersistGate> */}
+      </ThemeProvider>
       {/* </Provider> */}
       {/* </ErrorBoundary> */}
     </View>

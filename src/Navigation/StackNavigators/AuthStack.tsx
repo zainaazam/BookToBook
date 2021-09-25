@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Main from '../../Containers/Main';
 // import LogIn from '../../Containers/Auth/LogIn';
 // import SignUp from '../../Containers/Auth/SignUp';
 // import ResetPassword from '../../Containers/Auth/ResetPassword';
@@ -10,9 +9,10 @@ import Main from '../../Containers/Main';
 // import Verification from '../../Containers/Auth/Verification';
 // import VerificationOptions from '../../Containers/Auth/ForgetPassword/VerificationOptions';
 import {View} from 'react-native';
+import Welcome from '../../Containers/Auth/Welcome';
 
 export type AuthStackParamList = {
-  Main: undefined;
+  Welcome: undefined;
   //   LogIn: undefined;
   //   SignUp: undefined;
   //   ResetPassword: undefined;
@@ -41,7 +41,7 @@ const AuthStack = () => {
           headerShown: false,
           cardStyle: {backgroundColor: 'white'},
         }}>
-        <Screen name="Main" component={Main} />
+        <Screen name="Welcome" component={Welcome} />
         {/* <Screen name="LogIn" component={LogIn} /> */}
         {/* <Screen name="SignUp" component={SignUp} /> */}
         {/* <Screen name="ResetPassword" component={ResetPassword} /> */}
