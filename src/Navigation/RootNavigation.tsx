@@ -21,7 +21,6 @@ const RootStackNavigation = () => {
       <Navigator
         screenOptions={{
           headerShown: false,
-          cardStyle: {backgroundColor: 'white'},
         }}
         initialRouteName="AuthStack">
         <Screen name="AuthStack" component={AuthStack} />
