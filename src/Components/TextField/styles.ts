@@ -25,7 +25,7 @@ export const TextFieldStyle = styled.TextInput<{
 }>`
   border-width: 0.5px;
   padding: 10px;
-  border-radius: 50px;
+  border-radius: 10px;
   border-color: ${props =>
     props?.error
       ? props?.theme.colors.alertRed

@@ -36,7 +36,6 @@ export const ClearSpace = styled(Title)`
   width: 300px;
   align-self: flex-start;
   font-weight: 700;
-  /* background-color: red; */
 `;
 
 export const Visitor = styled.TouchableOpacity`
