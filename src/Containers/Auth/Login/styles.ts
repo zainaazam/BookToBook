@@ -4,8 +4,12 @@ import {LargeText, MediumText} from '../../../Components/CustomText';
 export const MainContainer = styled.View`
   background-color: ${({theme}) => theme.colors.backgroundGray};
   flex: 1;
+`;
+
+export const Wrapper = styled.View`
   align-items: center;
 `;
+
 export const WomanImage = styled.Image`
   width: 300px;
   height: 220px;
