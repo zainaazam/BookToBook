@@ -1,6 +1,8 @@
+import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState} from 'react';
 import Button from '../../../Components/Button';
 import TextField from '../../../Components/TextField';
+import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack';
 import {MainContainer, Visitor, VisitorText} from '../Welcome/styles';
 import {
   AlreadyHaveAccount,
@@ -11,8 +13,28 @@ import {
   AlreadyHaveAccountText,
 } from './styles';
 
-const SignUp = () => {
+export type WelcomeScreenNavigationProp = StackNavigationProp<
+  AuthStackParamList,
+  'SignUp'
+>;
+
+interface SignUpProps {
+  navigation: WelcomeScreenNavigationProp;
+}
+
+const SignUp = ({navigation}: SignUpProps) => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const {navigate} = navigation;
+
+  const navigateToLogin = () => {
+    navigate('Login');
+  };
+
+  // const navigateToSignUp = () => {
+  //   navigate('SignUp');
+  // };
+
   return (
     <MainContainer>
       <SignUpText>Sign up,</SignUpText>
@@ -38,8 +60,8 @@ const SignUp = () => {
         <AlreadyHaveAccountText>
           Already Have an Account?
         </AlreadyHaveAccountText>
-        <SignIn>
-          <SignInText>Sign in</SignInText>
+        <SignIn onPress={navigateToLogin}>
+          <SignInText>Login</SignInText>
         </SignIn>
       </AlreadyHaveAccount>
       <Button title={'Sign Up'} marginTop={20} />

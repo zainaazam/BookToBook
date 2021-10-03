@@ -19,11 +19,33 @@ import {
 import {Visitor, VisitorText} from '../Welcome/styles';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {KeyboardAvoidingView} from 'react-native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack';
 
 const WomanWithBook = require('../../../../Assets/Images/sitting-lady.png');
 
-const Login = () => {
+export type WelcomeScreenNavigationProp = StackNavigationProp<
+  AuthStackParamList,
+  'Login'
+>;
+
+interface LoginProps {
+  navigation: WelcomeScreenNavigationProp;
+}
+
+const Login = ({navigation}: LoginProps) => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const {navigate} = navigation;
+
+  const navigateToVerification = () => {
+    navigate('Verification');
+  };
+
+  const navigateToSignUp = () => {
+    navigate('SignUp');
+  };
+
   return (
     <MainContainer>
       <KeyboardAvoidingView behavior="position">
@@ -33,7 +55,7 @@ const Login = () => {
           <HopToNewBooksText>Hop to a New Book Now</HopToNewBooksText>
           <DoNotHaveAccount>
             <HaveAccount>Don't Have an Account?</HaveAccount>
-            <SignUp>
+            <SignUp onPress={navigateToSignUp}>
               <SignUpText>Sign Up</SignUpText>
             </SignUp>
           </DoNotHaveAccount>
@@ -47,7 +69,7 @@ const Login = () => {
           />
           <ForgetPassword>
             <ForgetPasswordText>Forget Password ?</ForgetPasswordText>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={navigateToVerification}>
               <ResetPassword>Reset</ResetPassword>
             </TouchableOpacity>
           </ForgetPassword>
