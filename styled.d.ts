@@ -5,6 +5,7 @@ declare module 'styled-components/native' {
     colors: {
       backgroundGray: string;
       lightGray: string;
+      darkGray: string;
       blue: string;
       lightBlue: string;
       white: string;
@@ -12,6 +13,7 @@ declare module 'styled-components/native' {
       inputGray: string;
       placeholder: string;
       orange: string;
+      transparent: string;
     };
   }
 }

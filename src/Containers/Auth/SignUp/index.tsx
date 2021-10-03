@@ -1,7 +1,9 @@
+import {CompositeNavigationProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState} from 'react';
 import Button from '../../../Components/Button';
 import TextField from '../../../Components/TextField';
+import {RootStackParamList} from '../../../Navigation/RootNavigation';
 import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack';
 import {MainContainer, Visitor, VisitorText} from '../Welcome/styles';
 import {
@@ -13,9 +15,9 @@ import {
   AlreadyHaveAccountText,
 } from './styles';
 
-export type WelcomeScreenNavigationProp = StackNavigationProp<
-  AuthStackParamList,
-  'SignUp'
+export type WelcomeScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootStackParamList, 'AppStack'>,
+  StackNavigationProp<AuthStackParamList, 'SignUp'>
 >;
 
 interface SignUpProps {
@@ -31,9 +33,9 @@ const SignUp = ({navigation}: SignUpProps) => {
     navigate('Login');
   };
 
-  // const navigateToSignUp = () => {
-  //   navigate('SignUp');
-  // };
+  const navigateToHome = () => {
+    navigation.navigate('AppStack');
+  };
 
   return (
     <MainContainer>
@@ -64,8 +66,8 @@ const SignUp = ({navigation}: SignUpProps) => {
           <SignInText>Login</SignInText>
         </SignIn>
       </AlreadyHaveAccount>
-      <Button title={'Sign Up'} marginTop={20} />
-      <Visitor>
+      <Button title={'Sign Up'} marginTop={20} onPress={navigateToHome} />
+      <Visitor onPress={navigateToHome}>
         <VisitorText>View as Visitor</VisitorText>
       </Visitor>
     </MainContainer>

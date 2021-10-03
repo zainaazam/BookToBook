@@ -21,12 +21,14 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {KeyboardAvoidingView} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack';
+import {CompositeNavigationProp} from '@react-navigation/native';
+import {RootStackParamList} from '../../../Navigation/RootNavigation';
 
 const WomanWithBook = require('../../../../Assets/Images/sitting-lady.png');
 
-export type WelcomeScreenNavigationProp = StackNavigationProp<
-  AuthStackParamList,
-  'Login'
+export type WelcomeScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootStackParamList, 'AppStack'>,
+  StackNavigationProp<AuthStackParamList, 'Login'>
 >;
 
 interface LoginProps {
@@ -44,6 +46,10 @@ const Login = ({navigation}: LoginProps) => {
 
   const navigateToSignUp = () => {
     navigate('SignUp');
+  };
+
+  const navigateToHome = () => {
+    navigation.navigate('AppStack');
   };
 
   return (
@@ -73,8 +79,8 @@ const Login = ({navigation}: LoginProps) => {
               <ResetPassword>Reset</ResetPassword>
             </TouchableOpacity>
           </ForgetPassword>
-          <Button title={'Login'} marginTop={20} />
-          <Visitor>
+          <Button title={'Login'} marginTop={20} onPress={navigateToHome} />
+          <Visitor onPress={navigateToHome}>
             <VisitorText>View as Visitor</VisitorText>
           </Visitor>
         </Wrapper>

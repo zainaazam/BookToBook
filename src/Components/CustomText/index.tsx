@@ -21,6 +21,10 @@ export const LargeText = styled(CustomText)`
   font-size: 22px;
 `;
 
+export const AboveMediumText = styled(CustomText)`
+  font-size: 17px;
+`;
+
 export const MediumText = styled(CustomText)`
   font-size: 14px;
 `;

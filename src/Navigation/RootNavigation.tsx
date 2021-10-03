@@ -1,15 +1,25 @@
 import React from 'react';
 import {
   NavigationContainer,
+  NavigationContainerRef,
   NavigatorScreenParams,
 } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 // import {useTheme} from 'styled-components/native';
-// import AppStack, {AppStackParamList} from './StackNavigators/AppStack';
 import AuthStack, {AuthStackParamList} from './StackNavigators/AuthStack';
+import AppStack, {AppStackParamList} from './StackNavigators/AppStack';
 
 export type RootStackParamList = {
   AuthStack: NavigatorScreenParams<AuthStackParamList> | undefined;
+  AppStack: NavigatorScreenParams<AppStackParamList> | undefined;
+};
+
+// export const navigationRef = React.createRef<NavigationContainerRef>();
+const navigationRef =
+  React.createRef<NavigationContainerRef<RootStackParamList>>();
+
+export const goBack = () => {
+  navigationRef.current?.goBack();
 };
 
 const RootStackNavigation = () => {
@@ -17,14 +27,14 @@ const RootStackNavigation = () => {
   //   const {colors} = useTheme();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <Navigator
         screenOptions={{
           headerShown: false,
         }}
         initialRouteName="AuthStack">
         <Screen name="AuthStack" component={AuthStack} />
-        {/* <Screen name="ProviderStack" component={ProviderStack} /> */}
+        <Screen name="AppStack" component={AppStack} />
         {/* <Screen
           name="AppStack"
           component={
