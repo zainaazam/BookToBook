@@ -18,7 +18,7 @@ export const SubTitle = styled(CustomText)`
 `;
 
 export const LargeText = styled(CustomText)`
-  font-size: 18px;
+  font-size: 22px;
 `;
 
 export const MediumText = styled(CustomText)`

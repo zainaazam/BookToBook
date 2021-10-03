@@ -10,5 +10,6 @@ export const default_theme: DefaultTheme = {
     alertRed: '#ff0f0f',
     inputGray: '#424242',
     placeholder: '#CDCDCD',
+    orange: '#F47100',
   },
 };

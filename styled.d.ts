@@ -11,6 +11,7 @@ declare module 'styled-components/native' {
       alertRed: string;
       inputGray: string;
       placeholder: string;
+      orange: string;
     };
   }
 }
