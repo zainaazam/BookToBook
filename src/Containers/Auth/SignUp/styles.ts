@@ -19,12 +19,11 @@ export const AlreadyHaveAccount = styled.View`
 `;
 export const AlreadyHaveAccountText = styled(MediumText)`
   color: ${({theme}) => theme.colors.lightGray};
+  margin-right: 5px;
 `;
 
 export const SignIn = styled.TouchableOpacity``;
 
 export const SignInText = styled(MediumText)`
   color: ${({theme}) => theme.colors.orange};
-  font-size: 12px;
-  margin-left: 10px;
 `;

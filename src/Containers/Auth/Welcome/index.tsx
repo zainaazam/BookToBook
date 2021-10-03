@@ -1,8 +1,8 @@
-// import {useTheme} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import Button from '../../../Components/Button';
 import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack';
+import {CompositeNavigationProp} from '@react-navigation/native';
 import {
   MainContainer,
   ManImage,
@@ -14,12 +14,13 @@ import {
   Visitor,
   VisitorText,
 } from './styles';
+import {RootStackParamList} from '../../../Navigation/RootNavigation';
 const ManWithBooks = require('../../../../Assets/Images/sitting-reading.png');
 const LogoText = require('../../../../Assets/Images/logo1.png');
 
-export type WelcomeScreenNavigationProp = StackNavigationProp<
-  AuthStackParamList,
-  'Welcome'
+export type WelcomeScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootStackParamList, 'AppStack'>,
+  StackNavigationProp<AuthStackParamList, 'Welcome'>
 >;
 
 interface Props {
@@ -27,7 +28,6 @@ interface Props {
 }
 
 const Welcome: React.FC<Props> = ({navigation}) => {
-  // const {colors} = useTheme();
   const {navigate} = navigation;
 
   const navigateToLogin = () => {
@@ -36,6 +36,10 @@ const Welcome: React.FC<Props> = ({navigation}) => {
 
   const navigateToSignUp = () => {
     navigate('SignUp');
+  };
+
+  const navigateToHome = () => {
+    navigation.navigate('AppStack');
   };
 
   return (
@@ -54,7 +58,7 @@ const Welcome: React.FC<Props> = ({navigation}) => {
         blueTitle
         onPress={navigateToSignUp}
       />
-      <Visitor>
+      <Visitor onPress={navigateToHome}>
         <VisitorText>View as Visitor</VisitorText>
       </Visitor>
     </MainContainer>

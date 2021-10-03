@@ -12,11 +12,13 @@ import {View} from 'react-native';
 import Welcome from '../../Containers/Auth/Welcome';
 import Login from '../../Containers/Auth/Login';
 import SignUp from '../../Containers/Auth/SignUp';
+import Verification from '../../Containers/Auth/Verification';
 
 export type AuthStackParamList = {
   Welcome: undefined;
   Login: undefined;
   SignUp: undefined;
+  Verification: undefined;
   //   ResetPassword: undefined;
   //   ForgetPassword: undefined;
   //   Verification: {
@@ -48,7 +50,7 @@ const AuthStack = () => {
         <Screen name="SignUp" component={SignUp} />
         {/* <Screen name="ResetPassword" component={ResetPassword} /> */}
         {/* <Screen name="ForgetPassword" component={ForgetPassword} /> */}
-        {/* <Screen name="Verification" component={Verification} /> */}
+        <Screen name="Verification" component={Verification} />
         {/* <Screen name="VerificationOptions" component={VerificationOptions} /> */}
       </Navigator>
     </View>

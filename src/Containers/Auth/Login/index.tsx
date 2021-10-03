@@ -19,11 +19,39 @@ import {
 import {Visitor, VisitorText} from '../Welcome/styles';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {KeyboardAvoidingView} from 'react-native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack';
+import {CompositeNavigationProp} from '@react-navigation/native';
+import {RootStackParamList} from '../../../Navigation/RootNavigation';
 
 const WomanWithBook = require('../../../../Assets/Images/sitting-lady.png');
 
-const Login = () => {
+export type WelcomeScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootStackParamList, 'AppStack'>,
+  StackNavigationProp<AuthStackParamList, 'Login'>
+>;
+
+interface LoginProps {
+  navigation: WelcomeScreenNavigationProp;
+}
+
+const Login = ({navigation}: LoginProps) => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const {navigate} = navigation;
+
+  const navigateToVerification = () => {
+    navigate('Verification');
+  };
+
+  const navigateToSignUp = () => {
+    navigate('SignUp');
+  };
+
+  const navigateToHome = () => {
+    navigation.navigate('AppStack');
+  };
+
   return (
     <MainContainer>
       <KeyboardAvoidingView behavior="position">
@@ -33,27 +61,26 @@ const Login = () => {
           <HopToNewBooksText>Hop to a New Book Now</HopToNewBooksText>
           <DoNotHaveAccount>
             <HaveAccount>Don't Have an Account?</HaveAccount>
-            <SignUp>
+            <SignUp onPress={navigateToSignUp}>
               <SignUpText>Sign Up</SignUpText>
             </SignUp>
           </DoNotHaveAccount>
-          <TextField marginTop={20} placeHolder="UserName" width={320} />
+          <TextField marginTop={20} placeHolder="UserName" />
           <TextField
             marginTop={20}
             placeHolder="Password"
             onPress={() => setShowPassword(!showPassword)}
             eyeIcon
             password={!showPassword}
-            width={320}
           />
           <ForgetPassword>
             <ForgetPasswordText>Forget Password ?</ForgetPasswordText>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={navigateToVerification}>
               <ResetPassword>Reset</ResetPassword>
             </TouchableOpacity>
           </ForgetPassword>
-          <Button title={'Login'} marginTop={20} />
-          <Visitor>
+          <Button title={'Login'} marginTop={20} onPress={navigateToHome} />
+          <Visitor onPress={navigateToHome}>
             <VisitorText>View as Visitor</VisitorText>
           </Visitor>
         </Wrapper>

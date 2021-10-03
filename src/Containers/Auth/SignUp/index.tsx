@@ -1,6 +1,10 @@
+import {CompositeNavigationProp} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState} from 'react';
 import Button from '../../../Components/Button';
 import TextField from '../../../Components/TextField';
+import {RootStackParamList} from '../../../Navigation/RootNavigation';
+import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack';
 import {MainContainer, Visitor, VisitorText} from '../Welcome/styles';
 import {
   AlreadyHaveAccount,
@@ -11,22 +15,41 @@ import {
   AlreadyHaveAccountText,
 } from './styles';
 
-const SignUp = () => {
+export type WelcomeScreenNavigationProp = CompositeNavigationProp<
+  StackNavigationProp<RootStackParamList, 'AppStack'>,
+  StackNavigationProp<AuthStackParamList, 'SignUp'>
+>;
+
+interface SignUpProps {
+  navigation: WelcomeScreenNavigationProp;
+}
+
+const SignUp = ({navigation}: SignUpProps) => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const {navigate} = navigation;
+
+  const navigateToLogin = () => {
+    navigate('Login');
+  };
+
+  const navigateToHome = () => {
+    navigation.navigate('AppStack');
+  };
+
   return (
     <MainContainer>
       <SignUpText>Sign up,</SignUpText>
       <DiscoverWorldText>Discover a New World With Us</DiscoverWorldText>
-      <TextField marginTop={20} placeHolder="UserName" width={320} />
-      <TextField marginTop={20} placeHolder="Email" width={320} />
-      <TextField marginTop={20} placeHolder="Phone Number" width={320} number />
+      <TextField marginTop={20} placeHolder="UserName" />
+      <TextField marginTop={20} placeHolder="Email" />
+      <TextField marginTop={20} placeHolder="Phone Number" number />
       <TextField
         marginTop={20}
         placeHolder="Password"
         onPress={() => setShowPassword(!showPassword)}
         eyeIcon
         password={!showPassword}
-        width={320}
       />
       <TextField
         marginTop={20}
@@ -34,18 +57,17 @@ const SignUp = () => {
         onPress={() => setShowPassword(!showPassword)}
         eyeIcon
         password={!showPassword}
-        width={320}
       />
       <AlreadyHaveAccount>
         <AlreadyHaveAccountText>
           Already Have an Account?
         </AlreadyHaveAccountText>
-        <SignIn>
-          <SignInText>Sign in</SignInText>
+        <SignIn onPress={navigateToLogin}>
+          <SignInText>Login</SignInText>
         </SignIn>
       </AlreadyHaveAccount>
-      <Button title={'Sign Up'} marginTop={20} />
-      <Visitor>
+      <Button title={'Sign Up'} marginTop={20} onPress={navigateToHome} />
+      <Visitor onPress={navigateToHome}>
         <VisitorText>View as Visitor</VisitorText>
       </Visitor>
     </MainContainer>
