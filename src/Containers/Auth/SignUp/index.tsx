@@ -17,16 +17,15 @@ const SignUp = () => {
     <MainContainer>
       <SignUpText>Sign up,</SignUpText>
       <DiscoverWorldText>Discover a New World With Us</DiscoverWorldText>
-      <TextField marginTop={20} placeHolder="UserName" width={320} />
-      <TextField marginTop={20} placeHolder="Email" width={320} />
-      <TextField marginTop={20} placeHolder="Phone Number" width={320} number />
+      <TextField marginTop={20} placeHolder="UserName" />
+      <TextField marginTop={20} placeHolder="Email" />
+      <TextField marginTop={20} placeHolder="Phone Number" number />
       <TextField
         marginTop={20}
         placeHolder="Password"
         onPress={() => setShowPassword(!showPassword)}
         eyeIcon
         password={!showPassword}
-        width={320}
       />
       <TextField
         marginTop={20}
@@ -34,7 +33,6 @@ const SignUp = () => {
         onPress={() => setShowPassword(!showPassword)}
         eyeIcon
         password={!showPassword}
-        width={320}
       />
       <AlreadyHaveAccount>
         <AlreadyHaveAccountText>

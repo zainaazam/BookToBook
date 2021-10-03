@@ -11,7 +11,7 @@ export const TextFieldWrapper = styled.View<{
 export const TextFieldView = styled.View<{
   width?: number;
 }>`
-  width: ${props => (props?.width ? props?.width : 300)}px;
+  width: ${props => (props?.width ? props?.width : 320)}px;
   flex-direction: row;
   justify-content: center;
   align-items: center;

@@ -37,14 +37,13 @@ const Login = () => {
               <SignUpText>Sign Up</SignUpText>
             </SignUp>
           </DoNotHaveAccount>
-          <TextField marginTop={20} placeHolder="UserName" width={320} />
+          <TextField marginTop={20} placeHolder="UserName" />
           <TextField
             marginTop={20}
             placeHolder="Password"
             onPress={() => setShowPassword(!showPassword)}
             eyeIcon
             password={!showPassword}
-            width={320}
           />
           <ForgetPassword>
             <ForgetPasswordText>Forget Password ?</ForgetPasswordText>
