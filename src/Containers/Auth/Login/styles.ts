@@ -1,10 +1,5 @@
 import styled from 'styled-components/native';
-import {
-  LargeText,
-  MediumText,
-  SmallText,
-  Title,
-} from '../../../Components/CustomText';
+import {LargeText, MediumText} from '../../../Components/CustomText';
 
 export const MainContainer = styled.View`
   background-color: ${({theme}) => theme.colors.backgroundGray};
@@ -17,7 +12,7 @@ export const WomanImage = styled.Image`
   margin-top: 35px;
 `;
 export const HeyText = styled(LargeText)`
-  margin: 20px 20px 0px;
+  margin: 30px 20px 0px;
   align-self: flex-start;
   font-weight: 700;
 `;
@@ -29,7 +24,7 @@ export const HopToNewBooksText = styled(LargeText)`
 
 export const DoNotHaveAccount = styled.View`
   flex-direction: row;
-  margin: 0px 20px;
+  margin: 0px 20px 15px;
   align-self: flex-start;
 `;
 export const HaveAccount = styled(MediumText)`

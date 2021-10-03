@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {
   styles,
@@ -49,6 +49,7 @@ const TextField = ({
   notConfirmedIcon,
 }: TextFieldProps) => {
   const {colors} = useTheme();
+  const [focus, setFocus] = useState(false);
   return (
     <TextFieldWrapper marginTop={marginTop}>
       <TextFieldView width={width}>
@@ -64,6 +65,9 @@ const TextField = ({
           placeholderTextColor={colors.placeholder}
           keyboardType={number ? 'number-pad' : 'default'}
           caretHidden={true}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          focus={focus}
         />
 
         <TouchableOpacity

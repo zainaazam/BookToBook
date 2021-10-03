@@ -22,6 +22,7 @@ export const TextFieldView = styled.View<{
 export const TextFieldStyle = styled.TextInput<{
   error?: boolean;
   value?: string;
+  focus?: boolean;
 }>`
   border-width: 0.5px;
   padding: 10px;
@@ -30,6 +31,8 @@ export const TextFieldStyle = styled.TextInput<{
     props?.error
       ? props?.theme.colors.alertRed
       : props?.value
+      ? props?.theme.colors.blue
+      : props?.focus
       ? props?.theme.colors.blue
       : props?.theme.colors.white};
   width: 100px;
