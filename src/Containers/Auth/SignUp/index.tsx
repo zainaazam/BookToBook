@@ -15,13 +15,13 @@ import {
   AlreadyHaveAccountText,
 } from './styles';
 
-export type WelcomeScreenNavigationProp = CompositeNavigationProp<
+export type SingUpScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootStackParamList, 'AppStack'>,
   StackNavigationProp<AuthStackParamList, 'SignUp'>
 >;
 
 interface SignUpProps {
-  navigation: WelcomeScreenNavigationProp;
+  navigation: SingUpScreenNavigationProp;
 }
 
 const SignUp = ({navigation}: SignUpProps) => {

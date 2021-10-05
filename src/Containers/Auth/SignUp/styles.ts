@@ -6,6 +6,7 @@ export const SignUpText = styled(LargeText)`
   align-self: flex-start;
   font-weight: 700;
 `;
+
 export const DiscoverWorldText = styled(LargeText)`
   margin: 0px 20px;
   align-self: flex-start;
