@@ -16,28 +16,33 @@ export const HeaderWrapper = styled.View`
       padding: 20px 5px 13px;
     `,
   })};
-
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 `;
 
 export const TitleWrapper = styled.View``;
+
 export const IconWrapper = styled.TouchableOpacity`
   width: ${width / 12}px;
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-left: 10px;
 `;
 
 export const HeaderTitle = styled(AboveMediumText)``;
 
-export const EmptyView = styled.View``;
+export const EmptyView = styled.View`
+  padding: 15px;
+`;
 
-export const LeftFragment = styled.View``;
+export const LeftFragment = styled.View`
+  margin-left: 15px;
+`;
 
-export const RightFragment = styled.View``;
+export const RightFragment = styled.View`
+  margin-right: 15px;
+`;
 
 export const CircleWrapper = styled.View`
   width: 10px;
@@ -50,9 +55,7 @@ export const CircleWrapper = styled.View`
   z-index: 5;
 `;
 
-export const Back = styled.TouchableOpacity`
-  margin-right: 15px;
-`;
+export const Back = styled.TouchableOpacity``;
 
 export const BackText = styled(AboveMediumText)`
   color: ${({theme}) => theme.colors.orange};
@@ -64,5 +67,4 @@ export const ProfilePicture = styled.Image`
   width: 30px;
   height: 30px;
   border-radius: 15px;
-  margin-right: 15px;
 `;
