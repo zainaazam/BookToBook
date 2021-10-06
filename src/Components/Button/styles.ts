@@ -15,7 +15,7 @@ export const ButtonStyle = styled.TouchableOpacity<{
   align-items: center;
   ${props => props.centered && 'align-self: center'}
   width: ${props =>
-    props.smallButton ? 100 : props.mediumButton ? 170 : 320}px;
+    props.smallButton ? 100 : props.mediumButton ? 230 : 320}px;
   margin-top: ${props => (props.marginTop ? props.marginTop : 0)}px;
 `;
 
