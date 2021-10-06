@@ -1,14 +1,30 @@
+import {DrawerNavigationProp} from '@react-navigation/drawer';
+import {CompositeNavigationProp} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {FlatList} from 'react-native';
 import BookCard from '../../../Components/BookCard';
 import CustomHeader from '../../../Components/CustomHeader';
+import {DrawerStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
+import {HomeStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/HomeStack';
 import {MainContainer} from './styles';
 
 const BookImage1 = require('../../../../Assets/Images/first-book.png');
 const BookImage2 = require('../../../../Assets/Images/second-book.png');
 const BookImage3 = require('../../../../Assets/Images/third-book.png');
 
-const Home = () => {
+type HomeScreenNavigationProp = CompositeNavigationProp<
+  DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
+  StackNavigationProp<HomeStackParamList, 'Home'>
+>;
+
+interface HomeProps {
+  navigation: HomeScreenNavigationProp;
+}
+
+const Home = ({navigation}: HomeProps) => {
+  const {toggleDrawer} = navigation;
+
   const renderItem = ({item}) => {
     return (
       <BookCard
@@ -53,7 +69,7 @@ const Home = () => {
 
   return (
     <MainContainer>
-      <CustomHeader title={'Dashboard'} menu />
+      <CustomHeader title={'Dashboard'} menu toggleDrawer={toggleDrawer} />
       <FlatList
         showsVerticalScrollIndicator={false}
         data={data}

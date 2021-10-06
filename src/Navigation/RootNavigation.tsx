@@ -7,11 +7,13 @@ import {
 import {createStackNavigator} from '@react-navigation/stack';
 // import {useTheme} from 'styled-components/native';
 import AuthStack, {AuthStackParamList} from './StackNavigators/AuthStack';
-import AppStack, {AppStackParamList} from './StackNavigators/AppStack';
+import AppStack, {
+  DrawerStackParamList,
+} from './StackNavigators/DrawerStack/DrawerStack';
 
 export type RootStackParamList = {
   AuthStack: NavigatorScreenParams<AuthStackParamList> | undefined;
-  AppStack: NavigatorScreenParams<AppStackParamList> | undefined;
+  AppStack: NavigatorScreenParams<DrawerStackParamList> | undefined;
 };
 
 // export const navigationRef = React.createRef<NavigationContainerRef>();

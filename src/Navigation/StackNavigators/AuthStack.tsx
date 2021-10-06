@@ -1,13 +1,13 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-// import ResetPassword from '../../Containers/Auth/ResetPassword';
 import {View} from 'react-native';
 import Welcome from '../../Containers/Auth/Welcome';
 import Login from '../../Containers/Auth/Login';
 import SignUp from '../../Containers/Auth/SignUp';
 import Verification from '../../Containers/Auth/Verification';
 import OTP from '../../Containers/Auth/OTP';
+import ResetPassword from '../../Containers/Auth/ResetPassword';
 
 export type AuthStackParamList = {
   Welcome: undefined;
@@ -15,7 +15,7 @@ export type AuthStackParamList = {
   SignUp: undefined;
   Verification: undefined;
   OTP: undefined;
-  //   ResetPassword: undefined;
+  ResetPassword: undefined;
   //   Verification: {
   //     phoneNumber?: string;
   //     email?: string;
@@ -43,7 +43,7 @@ const AuthStack = () => {
         <Screen name="Welcome" component={Welcome} />
         <Screen name="Login" component={Login} />
         <Screen name="SignUp" component={SignUp} />
-        {/* <Screen name="ResetPassword" component={ResetPassword} /> */}
+        <Screen name="ResetPassword" component={ResetPassword} />
         <Screen name="Verification" component={Verification} />
         <Screen name="OTP" component={OTP} />
       </Navigator>

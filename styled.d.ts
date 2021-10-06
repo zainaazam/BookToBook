@@ -9,10 +9,12 @@ declare module 'styled-components/native' {
       blue: string;
       lightBlue: string;
       white: string;
+      black: string;
       alertRed: string;
       inputGray: string;
       placeholder: string;
       orange: string;
+      green: string;
       transparent: string;
     };
   }

@@ -2,16 +2,14 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {View} from 'react-native';
-import Home from '../../Containers/AppStack/Home';
-import About from '../../Containers/AppStack/About';
+import Home from '../../../../Containers/DrawerStack/Home';
 
-export type AppStackParamList = {
+export type HomeStackParamList = {
   Home: undefined;
-  About: undefined;
 };
 
 const AppStack = () => {
-  const {Navigator, Screen} = createStackNavigator<AppStackParamList>();
+  const {Navigator, Screen} = createStackNavigator<HomeStackParamList>();
   return (
     <View style={styles.screen}>
       <Navigator
@@ -20,7 +18,6 @@ const AppStack = () => {
         }}
         initialRouteName="Home">
         <Screen name="Home" component={Home} />
-        <Screen name="About" component={About} />
       </Navigator>
     </View>
   );
