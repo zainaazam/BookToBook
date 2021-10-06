@@ -18,18 +18,19 @@ import MenuIcon from 'react-native-vector-icons/MaterialIcons';
 const profilePicture = require('../../../Assets/Images/profile.png');
 
 interface ButtonProps {
+  toggleDrawer?: () => void;
   backButton?: boolean;
   title?: string;
   menu?: boolean;
 }
 
-const CustomHeader = ({backButton, title, menu}: ButtonProps) => {
+const CustomHeader = ({toggleDrawer, backButton, title, menu}: ButtonProps) => {
   //   const {colors} = useTheme();
   return (
     <HeaderWrapper>
       <LeftFragment>
         {menu ? (
-          <IconWrapper>
+          <IconWrapper onPress={toggleDrawer}>
             <MenuIcon name="menu" size={30} />
           </IconWrapper>
         ) : (

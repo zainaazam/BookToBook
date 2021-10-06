@@ -2,14 +2,14 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {View} from 'react-native';
-import Home from '../../Containers/AppStack/Home';
+import Home from '../../../../Containers/DrawerStack/Home';
 
-export type AppStackParamList = {
+export type HomeStackParamList = {
   Home: undefined;
 };
 
 const AppStack = () => {
-  const {Navigator, Screen} = createStackNavigator<AppStackParamList>();
+  const {Navigator, Screen} = createStackNavigator<HomeStackParamList>();
   return (
     <View style={styles.icon}>
       <Navigator

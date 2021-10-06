@@ -8,6 +8,7 @@ export const default_theme: DefaultTheme = {
     blue: '#1580D7',
     lightBlue: '#9FBFD9',
     white: '#FFFFFF',
+    black: '#000000',
     alertRed: '#ff0f0f',
     inputGray: '#424242',
     placeholder: '#CDCDCD',
