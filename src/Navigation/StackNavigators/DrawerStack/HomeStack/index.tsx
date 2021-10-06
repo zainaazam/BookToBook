@@ -11,7 +11,7 @@ export type HomeStackParamList = {
 const AppStack = () => {
   const {Navigator, Screen} = createStackNavigator<HomeStackParamList>();
   return (
-    <View style={styles.icon}>
+    <View style={styles.screen}>
       <Navigator
         screenOptions={{
           headerShown: false,
@@ -26,7 +26,7 @@ const AppStack = () => {
 export default AppStack;
 
 export const styles = StyleSheet.create({
-  icon: {
+  screen: {
     flex: 1,
   },
 });
