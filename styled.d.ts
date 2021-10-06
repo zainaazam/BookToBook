@@ -13,6 +13,7 @@ declare module 'styled-components/native' {
       inputGray: string;
       placeholder: string;
       orange: string;
+      green: string;
       transparent: string;
     };
   }

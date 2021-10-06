@@ -5,10 +5,26 @@ import CustomHeader from '../../../Components/CustomHeader';
 import {Alert} from 'react-native';
 import {useTheme} from 'styled-components/native';
 import Button from '../../../Components/Button';
+import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack';
+import {StackNavigationProp} from '@react-navigation/stack';
 
-const OTP = () => {
+export type OTPScreenNavigationProp = StackNavigationProp<
+  AuthStackParamList,
+  'OTP'
+>;
+
+interface OTPProps {
+  navigation: OTPScreenNavigationProp;
+}
+
+const OTP = ({navigation}: OTPProps) => {
   const codeInput = useRef<CodeInput>(null);
   const {colors} = useTheme();
+  const {navigate} = navigation;
+
+  const navigateToResetPassword = () => {
+    navigate('ResetPassword');
+  };
 
   return (
     <MainContainer>
@@ -32,7 +48,7 @@ const OTP = () => {
           codeInputStyle={styles.input}
           containerStyle={styles.container}
         />
-        <Button title={'Send'} />
+        <Button title={'Send'} onPress={navigateToResetPassword} />
       </Wrapper>
     </MainContainer>
   );

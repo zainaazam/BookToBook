@@ -12,6 +12,7 @@ export const default_theme: DefaultTheme = {
     inputGray: '#424242',
     placeholder: '#CDCDCD',
     orange: '#F47100',
+    green: '#56AE2C',
     transparent: 'transparent',
   },
 };
