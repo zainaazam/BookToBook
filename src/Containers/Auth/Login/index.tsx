@@ -27,7 +27,7 @@ import {RootStackParamList} from '../../../Navigation/RootNavigation';
 const WomanWithBook = require('../../../../Assets/Images/sitting-lady.png');
 
 export type LoginScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<RootStackParamList, 'AppStack'>,
+  StackNavigationProp<RootStackParamList, 'DrawerStack'>,
   StackNavigationProp<AuthStackParamList, 'Login'>
 >;
 
@@ -49,7 +49,7 @@ const Login = ({navigation}: LoginProps) => {
   };
 
   const navigateToHome = () => {
-    navigation.navigate('AppStack');
+    navigation.navigate('DrawerStack');
   };
 
   return (

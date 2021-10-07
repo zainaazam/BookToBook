@@ -85,7 +85,12 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
         />
         <DrawerItem
           label={() => <CustomItem title="About" />}
-          onPress={() => handleUrl('')}
+          onPress={() =>
+            reset({
+              index: 1,
+              routes: [{name: 'HomeStack'}, {name: 'AboutStack'}],
+            })
+          }
         />
         <DrawerItem
           label={() => <CustomItem title="Help & Feedback" />}
