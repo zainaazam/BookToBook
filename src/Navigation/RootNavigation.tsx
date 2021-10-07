@@ -23,6 +23,10 @@ export const goBack = () => {
   navigationRef.current?.goBack();
 };
 
+export const navigateToProfile = () => {
+  navigationRef.current?.navigate('DrawerStack', {screen: 'ProfileStack'});
+};
+
 const RootStackNavigation = () => {
   const {Navigator, Screen} = createStackNavigator<RootStackParamList>();
   //   const {colors} = useTheme();
@@ -49,7 +53,7 @@ const RootStackNavigation = () => {
           name="ProviderNotifications"
           component={ProviderNotifications}
         /> */}
-        {/* <Screen name="Search" component={Search} /> */}
+        {/* <Screen name="ProfileStack" component={ProfileStack} /> */}
       </Navigator>
     </NavigationContainer>
   );
