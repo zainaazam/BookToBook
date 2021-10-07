@@ -12,7 +12,7 @@ import {
   ProfilePicture,
   Profile,
 } from './styles';
-import {goBack} from '../../Navigation/RootNavigation';
+import {goBack, navigateToProfile} from '../../Navigation/RootNavigation';
 import MenuIcon from 'react-native-vector-icons/MaterialIcons';
 
 const profilePicture = require('../../../Assets/Images/profile.png');
@@ -44,7 +44,7 @@ const CustomHeader = ({toggleDrawer, backButton, title, menu}: ButtonProps) => {
             <BackText>Back</BackText>
           </Back>
         ) : (
-          <Profile>
+          <Profile onPress={navigateToProfile}>
             <ProfilePicture source={profilePicture} />
           </Profile>
         )}

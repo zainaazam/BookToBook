@@ -4,14 +4,22 @@ import {NavigatorScreenParams} from '@react-navigation/native';
 import CustomDrawer from '../../../Components/CustomDrawer';
 import HomeStack, {HomeStackParamList} from './HomeStack';
 import AboutStack, {AboutStackParamList} from './AboutStack';
+import NotificationsStack, {
+  NotificationsStackParamList,
+} from './NotificationsStack';
+import ChangePasswordStack, {
+  ChangePasswordStackParamList,
+} from './ChangePasswordStack';
+import AddBookStack, {AddBookStackParamList} from './AddBookStack';
+import ProfileStack, {ProfileStackParamList} from './ProfileStack';
 
 export type DrawerStackParamList = {
   HomeStack: NavigatorScreenParams<HomeStackParamList>;
   AboutStack: NavigatorScreenParams<AboutStackParamList>;
-  // ManageFamilyStack: undefined;
-  // Password: undefined;
-  // Curriculum: undefined;
-  // SwitchAccountStack: SwitchAccountStackParamList;
+  NotificationsStack: NavigatorScreenParams<NotificationsStackParamList>;
+  ProfileStack: NavigatorScreenParams<ProfileStackParamList>;
+  ChangePasswordStack: NavigatorScreenParams<ChangePasswordStackParamList>;
+  AddBookStack: NavigatorScreenParams<AddBookStackParamList>;
 };
 
 const {Navigator, Screen} = createDrawerNavigator<DrawerStackParamList>();
@@ -33,9 +41,10 @@ const DrawerStack = () => {
       initialRouteName="HomeStack">
       <Screen name="HomeStack" component={HomeStack} />
       <Screen name="AboutStack" component={AboutStack} />
-      {/* <Screen name="ManageFamilyStack" component={ManageFamilyStack} />
-      <Screen name="Curriculum" component={CurriculumStack} />
-      <Screen name="SwitchAccountStack" component={SwitchAccountStack} /> */}
+      <Screen name="NotificationsStack" component={NotificationsStack} />
+      <Screen name="ProfileStack" component={ProfileStack} />
+      <Screen name="ChangePasswordStack" component={ChangePasswordStack} />
+      <Screen name="AddBookStack" component={AddBookStack} />
     </Navigator>
   );
 };

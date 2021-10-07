@@ -57,31 +57,39 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
         />
         <DrawerItem
           label={() => <CustomItem title="Profile" />}
-          onPress={() => handleUrl('')}
-          //   onPress={() =>
-          //     reset({
-          //       index: 1,
-          //       routes: [{name: 'Home'}, {name: 'ManageFamilyStack'}],
-          //     })
-          //   }
+          onPress={() =>
+            reset({
+              index: 1,
+              routes: [{name: 'HomeStack'}, {name: 'ProfileStack'}],
+            })
+          }
         />
         <DrawerItem
           label={() => <CustomItem title="Notification" />}
-          onPress={() => handleUrl('')}
+          onPress={() =>
+            reset({
+              index: 1,
+              routes: [{name: 'HomeStack'}, {name: 'NotificationsStack'}],
+            })
+          }
         />
         <DrawerItem
           label={() => <CustomItem title="Change Password" />}
-          onPress={() => handleUrl('')}
-          //   onPress={() =>
-          //     reset({
-          //       index: 1,
-          //       routes: [{name: 'Home'}, {name: 'Curriculum'}],
-          //     })
-          //   }
+          onPress={() =>
+            reset({
+              index: 1,
+              routes: [{name: 'HomeStack'}, {name: 'ChangePasswordStack'}],
+            })
+          }
         />
         <DrawerItem
           label={() => <CustomItem title="Add a Book" />}
-          onPress={() => handleUrl('')}
+          onPress={() =>
+            reset({
+              index: 1,
+              routes: [{name: 'HomeStack'}, {name: 'AddBookStack'}],
+            })
+          }
         />
         <DrawerItem
           label={() => <CustomItem title="About" />}
