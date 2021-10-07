@@ -7,13 +7,12 @@ import {
 import {createStackNavigator} from '@react-navigation/stack';
 // import {useTheme} from 'styled-components/native';
 import AuthStack, {AuthStackParamList} from './StackNavigators/AuthStack';
-import AppStack, {
-  DrawerStackParamList,
-} from './StackNavigators/DrawerStack/DrawerStack';
+import {DrawerStackParamList} from './StackNavigators/DrawerStack/DrawerStack';
+import DrawerStack from './StackNavigators/DrawerStack/DrawerStack';
 
 export type RootStackParamList = {
   AuthStack: NavigatorScreenParams<AuthStackParamList> | undefined;
-  AppStack: NavigatorScreenParams<DrawerStackParamList> | undefined;
+  DrawerStack: NavigatorScreenParams<DrawerStackParamList> | undefined;
 };
 
 // export const navigationRef = React.createRef<NavigationContainerRef>();
@@ -36,7 +35,7 @@ const RootStackNavigation = () => {
         }}
         initialRouteName="AuthStack">
         <Screen name="AuthStack" component={AuthStack} />
-        <Screen name="AppStack" component={AppStack} />
+        <Screen name="DrawerStack" component={DrawerStack} />
         {/* <Screen
           name="AppStack"
           component={

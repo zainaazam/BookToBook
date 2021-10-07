@@ -19,7 +19,7 @@ const ManWithBooks = require('../../../../Assets/Images/sitting-reading.png');
 const LogoText = require('../../../../Assets/Images/logo1.png');
 
 export type WelcomeScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<RootStackParamList, 'AppStack'>,
+  StackNavigationProp<RootStackParamList, 'DrawerStack'>,
   StackNavigationProp<AuthStackParamList, 'Welcome'>
 >;
 
@@ -39,7 +39,7 @@ const Welcome: React.FC<Props> = ({navigation}) => {
   };
 
   const navigateToHome = () => {
-    navigation.navigate('AppStack');
+    navigation.navigate('DrawerStack');
   };
 
   return (

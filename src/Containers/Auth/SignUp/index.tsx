@@ -16,7 +16,7 @@ import {
 } from './styles';
 
 export type SingUpScreenNavigationProp = CompositeNavigationProp<
-  StackNavigationProp<RootStackParamList, 'AppStack'>,
+  StackNavigationProp<RootStackParamList, 'DrawerStack'>,
   StackNavigationProp<AuthStackParamList, 'SignUp'>
 >;
 
@@ -34,7 +34,7 @@ const SignUp = ({navigation}: SignUpProps) => {
   };
 
   const navigateToHome = () => {
-    navigation.navigate('AppStack');
+    navigation.navigate('DrawerStack');
   };
 
   return (
