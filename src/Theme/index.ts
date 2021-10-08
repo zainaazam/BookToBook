@@ -7,6 +7,7 @@ export const default_theme: DefaultTheme = {
     darkGray: '#757575',
     blue: '#1580D7',
     lightBlue: '#9FBFD9',
+    lightBlue2: 'rgba(191, 212, 232, 0.5)',
     white: '#FFFFFF',
     black: '#000000',
     alertRed: '#ff0f0f',
