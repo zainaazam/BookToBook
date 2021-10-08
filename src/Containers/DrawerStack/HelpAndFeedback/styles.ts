@@ -7,6 +7,6 @@ export const MainContainer = styled.View`
   align-items: center;
 `;
 export const ComingSoonText = styled(LargeText)`
-  background-color: ${({theme}) => theme.colors.electricViolet};
+  background-color: ${({theme}) => theme.colors.lightOrange};
   align-items: center;
 `;

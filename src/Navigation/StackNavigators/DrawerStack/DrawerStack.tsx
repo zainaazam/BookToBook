@@ -12,6 +12,9 @@ import ChangePasswordStack, {
 } from './ChangePasswordStack';
 import AddBookStack, {AddBookStackParamList} from './AddBookStack';
 import ProfileStack, {ProfileStackParamList} from './ProfileStack';
+import HelpAndFeedbackStack, {
+  HelpAndFeedbackStackParamList,
+} from './HelpAndFeedbackStack';
 
 export type DrawerStackParamList = {
   HomeStack: NavigatorScreenParams<HomeStackParamList>;
@@ -20,6 +23,7 @@ export type DrawerStackParamList = {
   ProfileStack: NavigatorScreenParams<ProfileStackParamList>;
   ChangePasswordStack: NavigatorScreenParams<ChangePasswordStackParamList>;
   AddBookStack: NavigatorScreenParams<AddBookStackParamList>;
+  HelpAndFeedbackStack: NavigatorScreenParams<HelpAndFeedbackStackParamList>;
 };
 
 const {Navigator, Screen} = createDrawerNavigator<DrawerStackParamList>();
@@ -40,11 +44,12 @@ const DrawerStack = () => {
       drawerContent={CustomDrawer}
       initialRouteName="HomeStack">
       <Screen name="HomeStack" component={HomeStack} />
-      <Screen name="AboutStack" component={AboutStack} />
-      <Screen name="NotificationsStack" component={NotificationsStack} />
       <Screen name="ProfileStack" component={ProfileStack} />
+      <Screen name="NotificationsStack" component={NotificationsStack} />
       <Screen name="ChangePasswordStack" component={ChangePasswordStack} />
       <Screen name="AddBookStack" component={AddBookStack} />
+      <Screen name="AboutStack" component={AboutStack} />
+      <Screen name="HelpAndFeedbackStack" component={HelpAndFeedbackStack} />
     </Navigator>
   );
 };
