@@ -8,6 +8,7 @@ declare module 'styled-components/native' {
       darkGray: string;
       blue: string;
       lightBlue: string;
+      lightBlue2: string;
       white: string;
       black: string;
       alertRed: string;
