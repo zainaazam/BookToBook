@@ -1,5 +1,5 @@
 import React from 'react';
-import {ComingSoonText, MainContainer, MarginSpace} from './styles';
+import {ComingSoonText, IconContainer, MainContainer} from './styles';
 import CustomHeader from '../../../Components/CustomHeader';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 //import {useTheme} from 'styled-components/native';
@@ -25,8 +25,9 @@ const HelpAndFeedback = ({navigation}: HelpAndFeedbackProps) => {
   return (
     <MainContainer>
       <CustomHeader backButton menu toggleDrawer={toggleDrawer} />
-      <MarginSpace />
-      <Icon name="timer" size={240} color="rgba(251,118,62,0.6)" />
+      <IconContainer>
+        <Icon name="timer" size={240} color="rgba(251,118,62,0.6)" />
+      </IconContainer>
       <ComingSoonText>COMING SOON!</ComingSoonText>
     </MainContainer>
   );
