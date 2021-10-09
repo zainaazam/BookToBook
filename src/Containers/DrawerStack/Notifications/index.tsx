@@ -4,12 +4,28 @@ import {MainContainer} from './styles';
 import {SafeAreaView} from 'react-native';
 import CustomHeader from '../../../Components/CustomHeader';
 import NotificationCard from '../../../Components/NotificationCard';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {NotificationsStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/NotificationsStack';
 
 const BookImage1 = require('../../../../Assets/Images/first-book.png');
 const BookImage2 = require('../../../../Assets/Images/second-book.png');
 const BookImage3 = require('../../../../Assets/Images/third-book.png');
 
-const Notifications = () => {
+export type NotificationsScreenNavigationProp = StackNavigationProp<
+  NotificationsStackParamList,
+  'Notifications'
+>;
+
+interface NotificationsProps {
+  navigation: NotificationsScreenNavigationProp;
+}
+
+const Notifications = ({navigation}: NotificationsProps) => {
+  const {navigate} = navigation;
+
+  const navigateToChooseToExchange = () => {
+    navigate('ChooseToExchange');
+  };
   const renderItem = ({item}) => {
     return (
       <NotificationCard
@@ -18,6 +34,7 @@ const Notifications = () => {
         isRead={item.isRead}
         nameOfBook={item.nameOfBook}
         type={item.type}
+        onRequestPress={navigateToChooseToExchange}
       />
     );
   };
