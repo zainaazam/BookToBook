@@ -7,6 +7,9 @@ export const MainContainer = styled.View`
   align-items: center;
 `;
 export const ComingSoonText = styled(LargeText)`
-  background-color: ${({theme}) => theme.colors.lightOrange};
+  color: 'rgba(251,118,62,0.6)';
   align-items: center;
+`;
+export const MarginSpace = styled.View`
+  margin-bottom: 80px;
 `;
