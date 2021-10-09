@@ -10,6 +10,7 @@ interface ButtonProps {
   //   loading?: boolean;
   smallButton?: boolean;
   lightBlue?: boolean;
+  orange?: boolean;
   mediumButton?: boolean;
   centered?: boolean;
   blueTitle?: boolean;
@@ -22,6 +23,7 @@ const Button = ({
   //   loading,
   smallButton,
   lightBlue,
+  orange,
   mediumButton,
   centered,
   blueTitle,
@@ -30,6 +32,7 @@ const Button = ({
   return (
     <ButtonStyle
       lightBlue={lightBlue}
+      orange={orange}
       smallButton={smallButton}
       activeOpacity={0.5}
       marginTop={marginTop}

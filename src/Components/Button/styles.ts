@@ -6,11 +6,16 @@ export const ButtonStyle = styled.TouchableOpacity<{
   smallButton?: boolean;
   mediumButton?: boolean;
   lightBlue?: boolean;
+  orange?: boolean;
   centered?: boolean;
 }>`
   border-radius: 25px;
-  background-color: ${({theme, lightBlue}) =>
-    lightBlue ? theme.colors.lightBlue : theme.colors.blue};
+  background-color: ${({theme, lightBlue, orange}) =>
+    lightBlue
+      ? theme.colors.lightBlue
+      : orange
+      ? theme.colors.orange
+      : theme.colors.blue};
   padding: 15px;
   align-items: center;
   ${props => props.centered && 'align-self: center'}

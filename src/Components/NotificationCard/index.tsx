@@ -18,6 +18,7 @@ interface NotificationProps {
   isRead: boolean;
   type: string;
   nameOfBook: string;
+  onRequestPress?: () => void;
 }
 
 const Notification = ({
@@ -26,11 +27,12 @@ const Notification = ({
   isRead,
   type,
   nameOfBook,
+  onRequestPress,
 }: NotificationProps) => {
   return (
     <Container isRead={isRead}>
       {type === 'requesting' && (
-        <Wrapper>
+        <Wrapper onPress={onRequestPress}>
           <RowView>
             <UserImage source={image} />
             <NotificationText>
