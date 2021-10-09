@@ -1,5 +1,5 @@
 import React from 'react';
-import {ComingSoonText, IconTextContainer, MainContainer, MarginSpace} from './styles';
+import {ComingSoonText, MainContainer, MarginSpace} from './styles';
 import CustomHeader from '../../../Components/CustomHeader';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 //import {useTheme} from 'styled-components/native';
