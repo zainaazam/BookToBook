@@ -19,6 +19,7 @@ interface NotificationProps {
   type: string;
   nameOfBook: string;
   onRequestPress?: () => void;
+  onApprovedPress?: () => void;
 }
 
 const Notification = ({
@@ -28,6 +29,7 @@ const Notification = ({
   type,
   nameOfBook,
   onRequestPress,
+  onApprovedPress,
 }: NotificationProps) => {
   return (
     <Container isRead={isRead}>
@@ -61,7 +63,7 @@ const Notification = ({
         </RowView>
       )}
       {type === 'approved' && (
-        <Wrapper>
+        <Wrapper onPress={onApprovedPress}>
           <RowView>
             <UserImage source={image} />
             <NotificationText>

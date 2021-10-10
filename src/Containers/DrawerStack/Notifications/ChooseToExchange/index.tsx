@@ -9,6 +9,7 @@ import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackParamList} from '../../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {NotificationsStackParamList} from '../../../../Navigation/StackNavigators/DrawerStack/NotificationsStack';
+import {goBack, navigateToProfile} from '../../../../Navigation/RootNavigation';
 
 const BookImage1 = require('../../../../../Assets/Images/first-book.png');
 const BookImage2 = require('../../../../../Assets/Images/second-book.png');
@@ -83,8 +84,13 @@ const ChooseToExchange = ({navigation}: ChooseToExchangeProps) => {
         renderItem={renderItem}
         keyExtractor={item => item?.id}
       />
-      <Button title={'Approve'} marginTop={20} />
-      <Button title={'Reject'} orange marginTop={10} />
+      <Button
+        title={'Approve'}
+        marginTop={20}
+        onPress={navigateToProfile}
+        buttonDisabled={selectedBook === ''}
+      />
+      <Button title={'Reject'} orange marginTop={10} onPress={goBack} />
     </MainContainer>
   );
 };

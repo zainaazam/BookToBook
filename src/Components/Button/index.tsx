@@ -14,6 +14,7 @@ interface ButtonProps {
   mediumButton?: boolean;
   centered?: boolean;
   blueTitle?: boolean;
+  buttonDisabled?: boolean;
 }
 
 const Button = ({
@@ -27,6 +28,7 @@ const Button = ({
   mediumButton,
   centered,
   blueTitle,
+  buttonDisabled,
 }: ButtonProps) => {
   //   const {colors} = useTheme();
   return (
@@ -39,8 +41,8 @@ const Button = ({
       onPress={onPress}
       mediumButton={mediumButton}
       centered={centered}
-      //   disabled={loading}
-    >
+      // disabled={loading}
+      disabled={buttonDisabled}>
       {/* {loading ? (
         <ActivityIndicator size="small" color={colors.white} />
       ) : ( */}
