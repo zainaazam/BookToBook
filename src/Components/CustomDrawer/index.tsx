@@ -12,7 +12,7 @@ import {
   Chevron,
   ChevronWrapper,
 } from './styles';
-import {Alert, Linking, SafeAreaView} from 'react-native';
+import {SafeAreaView} from 'react-native';
 import Button from '../Button';
 
 interface CustomItemProps {
@@ -28,15 +28,15 @@ const CustomItem = ({title}: CustomItemProps) => (
 );
 
 const CustomDrawer = (props: DrawerContentComponentProps) => {
-  const handleUrl = async (url: string) => {
-    const supported = await Linking.canOpenURL('https://www.google.com');
+  // const handleUrl = async (url: string) => {
+  //   const supported = await Linking.canOpenURL('https://www.google.com');
 
-    if (supported) {
-      await Linking.openURL(url);
-    } else {
-      Alert.alert(`Don't know how to open this URL: ${url}`);
-    }
-  };
+  //   if (supported) {
+  //     await Linking.openURL(url);
+  //   } else {
+  //     Alert.alert(`Don't know how to open this URL: ${url}`);
+  //   }
+  // };
   const {
     navigation: {reset},
   } = props;
@@ -102,7 +102,12 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
         />
         <DrawerItem
           label={() => <CustomItem title="Help & Feedback" />}
-          onPress={() => handleUrl('')}
+          onPress={() =>
+            reset({
+              index: 1,
+              routes: [{name: 'HomeStack'}, {name: 'HelpAndFeedbackStack'}],
+            })
+          }
         />
       </DrawerContentScrollView>
       <Footer>
