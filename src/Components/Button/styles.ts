@@ -8,13 +8,16 @@ export const ButtonStyle = styled.TouchableOpacity<{
   lightBlue?: boolean;
   orange?: boolean;
   centered?: boolean;
+  disabled?: boolean;
 }>`
   border-radius: 25px;
-  background-color: ${({theme, lightBlue, orange}) =>
+  background-color: ${({theme, lightBlue, orange, disabled}) =>
     lightBlue
       ? theme.colors.lightBlue
       : orange
       ? theme.colors.orange
+      : disabled
+      ? theme.colors.lightBlue
       : theme.colors.blue};
   padding: 15px;
   align-items: center;

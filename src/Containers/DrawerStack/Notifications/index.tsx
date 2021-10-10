@@ -6,14 +6,18 @@ import CustomHeader from '../../../Components/CustomHeader';
 import NotificationCard from '../../../Components/NotificationCard';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {NotificationsStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/NotificationsStack';
+import {CompositeNavigationProp} from '@react-navigation/native';
+import {DrawerStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
+import {DrawerNavigationProp} from '@react-navigation/drawer';
+import {navigateToProfile} from '../../../Navigation/RootNavigation';
 
 const BookImage1 = require('../../../../Assets/Images/first-book.png');
 const BookImage2 = require('../../../../Assets/Images/second-book.png');
 const BookImage3 = require('../../../../Assets/Images/third-book.png');
 
-export type NotificationsScreenNavigationProp = StackNavigationProp<
-  NotificationsStackParamList,
-  'Notifications'
+type NotificationsScreenNavigationProp = CompositeNavigationProp<
+  DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
+  StackNavigationProp<NotificationsStackParamList, 'Notifications'>
 >;
 
 interface NotificationsProps {
@@ -22,10 +26,12 @@ interface NotificationsProps {
 
 const Notifications = ({navigation}: NotificationsProps) => {
   const {navigate} = navigation;
+  const {toggleDrawer} = navigation;
 
   const navigateToChooseToExchange = () => {
     navigate('ChooseToExchange');
   };
+
   const renderItem = ({item}) => {
     return (
       <NotificationCard
@@ -35,6 +41,7 @@ const Notifications = ({navigation}: NotificationsProps) => {
         nameOfBook={item.nameOfBook}
         type={item.type}
         onRequestPress={navigateToChooseToExchange}
+        onApprovedPress={navigateToProfile}
       />
     );
   };
@@ -72,7 +79,7 @@ const Notifications = ({navigation}: NotificationsProps) => {
   return (
     <MainContainer>
       <SafeAreaView />
-      <CustomHeader title={'Notifications'} menu />
+      <CustomHeader title={'Notifications'} menu toggleDrawer={toggleDrawer} />
       <ScrollView>
         <FlatList
           data={data}
