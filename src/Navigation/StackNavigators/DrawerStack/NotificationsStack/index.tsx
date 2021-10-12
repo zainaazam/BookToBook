@@ -2,8 +2,8 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {View} from 'react-native';
-import Notifications from '../../../../Containers/DrawerStack/Notifications';
-import ChooseToExchange from '../../../../Containers/DrawerStack/Notifications/ChooseToExchange';
+import Notifications from '../../../../Containers/Drawer/Notifications';
+import ChooseToExchange from '../../../../Containers/Drawer/Notifications/ChooseToExchange';
 
 export type NotificationsStackParamList = {
   Notifications: undefined;

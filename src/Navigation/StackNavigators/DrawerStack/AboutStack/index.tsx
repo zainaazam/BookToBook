@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {View} from 'react-native';
-import About from '../../../../Containers/DrawerStack/About';
+import About from '../../../../Containers/Drawer/About';
 
 export type AboutStackParamList = {
   About: undefined;

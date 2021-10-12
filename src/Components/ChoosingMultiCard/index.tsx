@@ -5,11 +5,10 @@ import {
   DetailsContainer,
   BookName,
   Author,
-  Publisher,
-  PublisherName,
   Description,
   ReadMore,
   ReadMoreText,
+  Select,
 } from './styles';
 import {styles} from '../../Containers/Auth/Welcome/styles';
 import {ImageSourcePropType} from 'react-native';
@@ -17,40 +16,47 @@ import {ImageSourcePropType} from 'react-native';
 interface BookCardProps {
   bookName?: string;
   author?: string;
-  publisher?: string;
   description?: string;
   image?: ImageSourcePropType;
-  onPress?: () => void;
-  onPublisherPress?: () => void;
+  id?: string;
+  selectedBooks?: string[];
+  setSelectedBooks?: (value: string[]) => void;
 }
 
-const BookCard = ({
+const ChoosingMultiCard = ({
   bookName,
   author,
-  publisher,
   description,
   image,
-  onPress,
-  onPublisherPress,
+  id,
+  selectedBooks,
+  setSelectedBooks,
 }: BookCardProps) => {
+  const toggleSelected = () => {
+    if (selectedBooks?.includes(id)) {
+      setSelectedBooks &&
+        setSelectedBooks(selectedBooks?.filter(item => item !== id));
+    } else {
+      setSelectedBooks && setSelectedBooks(selectedBooks.concat(id));
+    }
+  };
+
   return (
-    <CardWrapper onPress={onPress}>
+    <CardWrapper onPress={toggleSelected}>
       <BookImage source={image} style={styles.image} />
       <DetailsContainer>
         <BookName>{bookName}</BookName>
         <Author>{author}</Author>
-        <Publisher onPress={onPublisherPress}>
-          <PublisherName>@{publisher}</PublisherName>
-        </Publisher>
         <Description>
-          {description && description.substring(0, 62)}...
+          {description && description.substring(0, 22)}...
         </Description>
-        <ReadMore onPress={onPress}>
+        <ReadMore>
           <ReadMoreText>Read more</ReadMoreText>
         </ReadMore>
       </DetailsContainer>
+      <Select selected={selectedBooks?.includes(id)} />
     </CardWrapper>
   );
 };
 
-export default BookCard;
+export default ChoosingMultiCard;
