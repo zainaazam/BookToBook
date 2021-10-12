@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {View} from 'react-native';
-import ChangePassword from '../../../../Containers/DrawerStack/ChangePassword';
+import ChangePassword from '../../../../Containers/Drawer/ChangePassword';
 
 export type ChangePasswordStackParamList = {
   ChangePassword: undefined;

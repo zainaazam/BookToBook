@@ -2,10 +2,12 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {View} from 'react-native';
-import Home from '../../../../Containers/DrawerStack/Home';
+import Home from '../../../../Containers/Drawer/Home';
+import Exchange from '../../../../Containers/Drawer/Home/Exchange';
 
 export type HomeStackParamList = {
   Home: undefined;
+  Exchange: undefined;
 };
 
 const HomeStack = () => {
@@ -18,6 +20,7 @@ const HomeStack = () => {
         }}
         initialRouteName="Home">
         <Screen name="Home" component={Home} />
+        <Screen name="Exchange" component={Exchange} />
       </Navigator>
     </View>
   );

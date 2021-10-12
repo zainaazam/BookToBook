@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {View} from 'react-native';
-import AddBook from '../../../../Containers/DrawerStack/AddBook';
+import AddBook from '../../../../Containers/Drawer/AddBook';
 
 export type AddBookStackParamList = {
   AddBook: undefined;

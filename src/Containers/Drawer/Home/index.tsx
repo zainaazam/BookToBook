@@ -5,6 +5,7 @@ import React from 'react';
 import {FlatList} from 'react-native';
 import BookCard from '../../../Components/BookCard';
 import CustomHeader from '../../../Components/CustomHeader';
+import {navigateToProfile} from '../../../Navigation/RootNavigation';
 import {DrawerStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {HomeStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/HomeStack';
 import {MainContainer} from './styles';
@@ -33,6 +34,7 @@ const Home = ({navigation}: HomeProps) => {
         publisher={item.publisher}
         description={item.description}
         image={item.image}
+        onPublisherPress={navigateToProfile}
       />
     );
   };

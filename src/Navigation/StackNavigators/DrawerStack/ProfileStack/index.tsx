@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {View} from 'react-native';
-import Profile from '../../../../Containers/DrawerStack/Profile';
+import Profile from '../../../../Containers/Drawer/Profile';
 
 export type ProfileStackParamList = {
   Profile: undefined;

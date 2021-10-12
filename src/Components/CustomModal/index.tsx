@@ -15,9 +15,15 @@ interface CustomModalProps {
   showModal: boolean;
   hideModal?: () => void;
   message: string;
+  onOkPress?: () => void;
 }
 
-const CustomModal = ({showModal, message, hideModal}: CustomModalProps) => {
+const CustomModal = ({
+  showModal,
+  message,
+  hideModal,
+  onOkPress,
+}: CustomModalProps) => {
   const {colors} = useTheme();
 
   return (
@@ -29,7 +35,11 @@ const CustomModal = ({showModal, message, hideModal}: CustomModalProps) => {
           </DoneIconContainer>
           <ModalMessage>{message}</ModalMessage>
         </Wrapper>
-        <OkButton onPress={hideModal}>
+        <OkButton
+          onPress={() => {
+            hideModal();
+            onOkPress();
+          }}>
           <OkText>OK</OkText>
         </OkButton>
       </Container>
