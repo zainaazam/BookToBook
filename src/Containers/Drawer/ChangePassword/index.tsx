@@ -13,7 +13,7 @@ const ChangePassword = () => {
 
   return (
     <MainContainer>
-      <CustomHeader menu title={'ChangePassword'} backButton />
+      <CustomHeader menu title={'Change Password'} backButton />
       <TextField marginTop={50} placeHolder={'Old Password'} />
       <TextField marginTop={25} placeHolder={'New Password'} />
       <TextField marginTop={25} placeHolder={'Confirm Password'} />
