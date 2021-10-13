@@ -28,7 +28,7 @@ import {DrawerStackParamList} from '../../../../Navigation/StackNavigators/Drawe
 import {StackNavigationProp} from '@react-navigation/stack';
 import {HomeStackParamList} from '../../../../Navigation/StackNavigators/DrawerStack/HomeStack';
 
-const VisitorBookImage = require('../../../../../Assets/Images/second-book.png');
+const Image = require('../../../../../Assets/Images/second-book.png');
 
 type BookDetailsScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
@@ -52,7 +52,7 @@ const BookDetails = ({navigation}: BookDetailsProps) => {
     <MainContainer>
       <CustomHeader menu title={'Book Details'} toggleDrawer={toggleDrawer} />
       <DetailsContainer>
-        <BookImage source={VisitorBookImage} style={styles.image} />
+        <BookImage source={Image} style={styles.image} />
         <BookDetailsContainer>
           <BookName>Sign to it</BookName>
           <Author>Amy Hempel</Author>
