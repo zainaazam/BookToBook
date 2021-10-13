@@ -54,7 +54,7 @@ const BookDetails = ({navigation}: BookDetailsProps) => {
       <DetailsContainer>
         <BookImage source={VisitorBookImage} style={styles.image} />
         <BookDetailsContainer>
-          <BookName>Sign to it</BookName>
+          <BookName>Sing to it</BookName>
           <Author>Amy Hempel</Author>
           <PublishDate>March 26, 2019 </PublishDate>
           <BookGenre>Literary Fiction</BookGenre>
