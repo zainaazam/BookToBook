@@ -8,16 +8,14 @@ export const MainContainer = styled.View`
   padding-bottom: 20px;
 `;
 
-export const UploadImageBox = styled.TouchableOpacity``;
-
-export const IconContainer = styled.View`
-  width: 145px;
-  height: 195px;
-  margin-top: 30px;
+export const UploadImage = styled.TouchableOpacity`
+  width: 150px;
+  height: 200px;
+  margin-top: 20px;
   border-radius: 10px;
   border-style: dashed;
   border-width: 2px;
-  border-color: 'rgba(251, 118, 62, 0.75)';
+  border-color: 'rgba(251, 118, 62, 0.5)';
   align-items: center;
   justify-content: center;
 `;
@@ -27,11 +25,11 @@ export const AddBookText = styled(MediumText)`
   line-height: 21px;
   font-size: 18px;
   margin-top: 15px;
-  color: 'rgba(251, 118, 62, 0.75)';
+  color: 'rgba(251, 118, 62, 0.5)';
   text-align: center;
 `;
 
-export const DescriptionBox = styled.View`
+export const Description = styled.TextInput`
   background-color: ${({theme}) => theme.colors.white};
   height: 220px;
   width: 320px;
