@@ -25,6 +25,11 @@ interface HomeProps {
 
 const Home = ({navigation}: HomeProps) => {
   const {toggleDrawer} = navigation;
+  const {navigate} = navigation;
+
+  const navigateToBookDetails = () => {
+    navigate('BookDetails');
+  };
 
   const renderItem = ({item}) => {
     return (
@@ -35,6 +40,7 @@ const Home = ({navigation}: HomeProps) => {
         description={item.description}
         image={item.image}
         onPublisherPress={navigateToProfile}
+        onPress={navigateToBookDetails}
       />
     );
   };
