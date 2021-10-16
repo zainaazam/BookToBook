@@ -15,7 +15,7 @@ interface CustomModalProps {
   showModal: boolean;
   hideModal?: () => void;
   message: string;
-  onOkPress?: () => void;
+  onOkPress: () => void;
 }
 
 const CustomModal = ({

@@ -24,6 +24,7 @@ interface AddBookProps {
 
 const AddBook = ({navigation}: AddBookProps) => {
   const {toggleDrawer} = navigation;
+  const {navigate} = navigation;
 
   const {colors} = useTheme();
 
@@ -62,6 +63,7 @@ const AddBook = ({navigation}: AddBookProps) => {
         <CustomModal
           showModal={showModal}
           hideModal={toggleModal}
+          onOkPress={() => navigate('HomeStack')}
           message={'Your Book Has Been Successfully Added!'}
         />
       </MainContainer>
