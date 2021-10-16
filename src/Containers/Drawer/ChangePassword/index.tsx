@@ -1,11 +1,27 @@
+import {DrawerNavigationProp} from '@react-navigation/drawer';
+import {CompositeNavigationProp} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState} from 'react';
 import Button from '../../../Components/Button';
 import CustomHeader from '../../../Components/CustomHeader';
 import CustomModal from '../../../Components/CustomModal';
 import TextField from '../../../Components/TextField';
+import {ChangePasswordStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/ChangePasswordStack';
+import {DrawerStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {MainContainer} from './styles';
 
-const ChangePassword = () => {
+type ChangePasswordScreenNavigationProp = CompositeNavigationProp<
+  DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
+  StackNavigationProp<ChangePasswordStackParamList, 'ChangePassword'>
+>;
+
+interface ChangePasswordProps {
+  navigation: ChangePasswordScreenNavigationProp;
+}
+
+const ChangePassword = ({navigation}: ChangePasswordProps) => {
+  const {toggleDrawer} = navigation;
+
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -13,7 +29,12 @@ const ChangePassword = () => {
 
   return (
     <MainContainer>
-      <CustomHeader menu title={'Change Password'} backButton />
+      <CustomHeader
+        menu
+        title={'Change Password'}
+        backButton
+        toggleDrawer={toggleDrawer}
+      />
       <TextField marginTop={50} placeHolder={'Old Password'} />
       <TextField marginTop={25} placeHolder={'New Password'} />
       <TextField marginTop={25} placeHolder={'Confirm Password'} />
