@@ -20,8 +20,7 @@ interface TextFieldProps {
   marginTop?: number;
   password?: boolean;
   value?: string;
-  error?: boolean;
-  errorMessage?: string;
+  error?: string;
   editable?: boolean;
   arrowIcon?: boolean;
   width?: number;
@@ -29,6 +28,7 @@ interface TextFieldProps {
   number?: boolean;
   confirmedIcon?: boolean;
   notConfirmedIcon?: boolean;
+  onBlur?: () => void;
 }
 
 const TextField = ({
@@ -40,18 +40,19 @@ const TextField = ({
   password,
   value,
   error,
-  errorMessage,
   editable,
   width,
   onTouchStart,
   number,
   confirmedIcon,
   notConfirmedIcon,
+  onBlur,
 }: TextFieldProps) => {
   const {colors} = useTheme();
   const [focus, setFocus] = useState(false);
   return (
     <TextFieldWrapper marginTop={marginTop}>
+      {error ? <ErrorText>{error}</ErrorText> : null}
       <TextFieldView width={width}>
         <TextFieldStyle
           onTouchStart={onTouchStart}
@@ -66,7 +67,10 @@ const TextField = ({
           keyboardType={number ? 'number-pad' : 'default'}
           caretHidden={true}
           onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
+          onBlur={() => {
+            setFocus(false);
+            onBlur();
+          }}
           focus={focus}
         />
 
@@ -87,7 +91,6 @@ const TextField = ({
           )}
         </TouchableOpacity>
       </TextFieldView>
-      {error ? <ErrorText>{errorMessage}</ErrorText> : null}
     </TextFieldWrapper>
   );
 };
