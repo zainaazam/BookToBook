@@ -20,7 +20,7 @@ export const TextFieldView = styled.View<{
 `;
 
 export const TextFieldStyle = styled.TextInput<{
-  error?: boolean;
+  error?: string;
   value?: string;
   focus?: boolean;
 }>`
@@ -30,9 +30,9 @@ export const TextFieldStyle = styled.TextInput<{
   border-color: ${props =>
     props?.error
       ? props?.theme.colors.alertRed
-      : props?.value
-      ? props?.theme.colors.blue
-      : props?.focus
+      : // : props?.value
+      // ? props?.theme.colors.blue
+      props?.focus
       ? props?.theme.colors.blue
       : props?.theme.colors.white};
   width: 100px;
@@ -51,7 +51,8 @@ export const styles = StyleSheet.create({
 
 export const ErrorText = styled(SmallText)`
   color: ${({theme}) => theme.colors.alertRed};
-  width: 300px;
-  margin-top: 2px;
-  margin-left: 15px;
+  width: auto;
+  margin-bottom: 2px;
+  margin-right: 10px;
+  align-self: flex-end;
 `;

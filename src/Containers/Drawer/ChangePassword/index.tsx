@@ -6,6 +6,7 @@ import Button from '../../../Components/Button';
 import CustomHeader from '../../../Components/CustomHeader';
 import CustomModal from '../../../Components/CustomModal';
 import TextField from '../../../Components/TextField';
+import {goBack} from '../../../Navigation/RootNavigation';
 import {ChangePasswordStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/ChangePasswordStack';
 import {DrawerStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {MainContainer} from './styles';
@@ -42,6 +43,7 @@ const ChangePassword = ({navigation}: ChangePasswordProps) => {
       <CustomModal
         showModal={showModal}
         hideModal={toggleModal}
+        onOkPress={goBack}
         message={'Your Password Has Been Successfully Changed!'}
       />
     </MainContainer>

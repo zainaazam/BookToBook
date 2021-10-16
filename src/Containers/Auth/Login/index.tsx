@@ -23,6 +23,8 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {RootStackParamList} from '../../../Navigation/RootNavigation';
+import * as Yup from 'yup';
+import {useFormik} from 'formik';
 
 const WomanWithBook = require('../../../../Assets/Images/sitting-lady.png');
 
@@ -52,6 +54,24 @@ const Login = ({navigation}: LoginProps) => {
     navigation.navigate('DrawerStack');
   };
 
+  const ValidationSchema = Yup.object().shape({
+    username: Yup.string().required('Please enter your username!'),
+    password: Yup.string().required('Please enter your password!'),
+  });
+
+  const {errors, values, touched, handleBlur, handleChange, handleSubmit} =
+    useFormik({
+      initialValues: {
+        username: '',
+        password: '',
+      },
+      // onSubmit: async submittedValues => {
+      onSubmit: () => {
+        navigateToHome();
+      },
+      validationSchema: ValidationSchema,
+    });
+
   return (
     <MainContainer>
       <KeyboardAvoidingView behavior="position">
@@ -65,21 +85,32 @@ const Login = ({navigation}: LoginProps) => {
               <SignUpText>Sign Up</SignUpText>
             </SignUp>
           </DoNotHaveAccount>
-          <TextField marginTop={20} placeHolder="UserName" />
           <TextField
-            marginTop={20}
+            value={values.username}
+            error={touched.username && errors.username}
+            onChange={handleChange('username') as (text: string) => void}
+            onBlur={() => handleBlur('username')}
+            marginTop={15}
+            placeHolder="Username"
+          />
+          <TextField
+            value={values.password}
+            error={touched.password && errors.password}
+            onChange={handleChange('password') as (text: string) => void}
+            onBlur={() => handleBlur('password')}
+            marginTop={15}
             placeHolder="Password"
             onPress={() => setShowPassword(!showPassword)}
             eyeIcon
             password={!showPassword}
           />
           <ForgetPassword>
-            <ForgetPasswordText>Forget Password ?</ForgetPasswordText>
+            <ForgetPasswordText>Forget Password?</ForgetPasswordText>
             <TouchableOpacity onPress={navigateToVerification}>
               <ResetPassword>Reset</ResetPassword>
             </TouchableOpacity>
           </ForgetPassword>
-          <Button title={'Login'} marginTop={20} onPress={navigateToHome} />
+          <Button title={'Login'} marginTop={20} onPress={handleSubmit} />
           <Visitor onPress={navigateToHome}>
             <VisitorText>View as Visitor</VisitorText>
           </Visitor>
