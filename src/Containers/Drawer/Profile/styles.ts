@@ -7,7 +7,7 @@ export const MainContainer = styled.View`
   align-items: center;
 `;
 
-export const ImageContactContainer = styled.View`
+export const UserInfoContainer = styled.View`
   align-items: center;
 `;
 

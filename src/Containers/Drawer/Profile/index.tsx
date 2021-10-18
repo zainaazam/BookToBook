@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   BookListText,
-  ImageContactContainer,
+  UserInfoContainer,
   MainContainer,
   ProfileImage,
   UserEmail,
@@ -83,12 +83,12 @@ const Profile = ({navigation}: ProfileProps) => {
         backButton
         toggleDrawer={toggleDrawer}
       />
-      <ImageContactContainer>
+      <UserInfoContainer>
         <ProfileImage source={ProfileImg} />
         <UserNameText>Sarah Beida</UserNameText>
         <UserEmail>sarah.b@gmail.com</UserEmail>
         <UserPhone>+962 79 831 9003</UserPhone>
-      </ImageContactContainer>
+      </UserInfoContainer>
       <Button title={'Edit Profile'} marginTop={20} />
       <BookListText>Book list:</BookListText>
       <FlatList
