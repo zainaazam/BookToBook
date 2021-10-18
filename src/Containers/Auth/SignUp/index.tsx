@@ -5,7 +5,8 @@ import Button from '../../../Components/Button';
 import TextField from '../../../Components/TextField';
 import {RootStackParamList} from '../../../Navigation/RootNavigation';
 import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack';
-import {MainContainer, Visitor, VisitorText} from '../Welcome/styles';
+import {Visitor, VisitorText} from '../Welcome/styles';
+import {MainContainer, Wrapper} from '../Login/styles';
 import {
   AlreadyHaveAccount,
   DiscoverWorldText,
@@ -14,6 +15,9 @@ import {
   SignInText,
   AlreadyHaveAccountText,
 } from './styles';
+import * as Yup from 'yup';
+import {useFormik} from 'formik';
+import {KeyboardAvoidingView} from 'react-native';
 
 export type SingUpScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootStackParamList, 'DrawerStack'>,
@@ -37,39 +41,108 @@ const SignUp = ({navigation}: SignUpProps) => {
     navigation.navigate('DrawerStack');
   };
 
+  const ValidationSchema = Yup.object().shape({
+    username: Yup.string()
+      .trim()
+      .min(3, 'Invalid name!')
+      .required('Username is Required!'),
+    email: Yup.string().email('Invalid email!').required('Email is required!'),
+    phone: Yup.string().trim().required('Phone is required!'),
+    password: Yup.string()
+      .trim()
+      .min(8, 'Password is too short!')
+      .required('Password is required!'),
+    confirmPassword: Yup.string().equals(
+      [Yup.ref('password'), null],
+      'Password does not match!',
+    ),
+  });
+
+  const {errors, values, touched, handleBlur, handleChange, handleSubmit} =
+    useFormik({
+      initialValues: {
+        username: '',
+        email: '',
+        phone: '',
+        password: '',
+        confirmPassword: '',
+      },
+      // onSubmit: async submittedValues => {
+      onSubmit: () => {
+        navigateToHome();
+      },
+      validationSchema: ValidationSchema,
+    });
+
   return (
     <MainContainer>
-      <SignUpText>Sign up,</SignUpText>
-      <DiscoverWorldText>Discover a New World With Us</DiscoverWorldText>
-      <TextField marginTop={20} placeHolder="UserName" />
-      <TextField marginTop={20} placeHolder="Email" />
-      <TextField marginTop={20} placeHolder="Phone Number" number />
-      <TextField
-        marginTop={20}
-        placeHolder="Password"
-        onPress={() => setShowPassword(!showPassword)}
-        eyeIcon
-        password={!showPassword}
-      />
-      <TextField
-        marginTop={20}
-        placeHolder="Confirm Password"
-        onPress={() => setShowPassword(!showPassword)}
-        eyeIcon
-        password={!showPassword}
-      />
-      <AlreadyHaveAccount>
-        <AlreadyHaveAccountText>
-          Already Have an Account?
-        </AlreadyHaveAccountText>
-        <SignIn onPress={navigateToLogin}>
-          <SignInText>Login</SignInText>
-        </SignIn>
-      </AlreadyHaveAccount>
-      <Button title={'Sign Up'} marginTop={20} onPress={navigateToHome} />
-      <Visitor onPress={navigateToHome}>
-        <VisitorText>View as Visitor</VisitorText>
-      </Visitor>
+      <KeyboardAvoidingView behavior="position">
+        <SignUpText>Sign up,</SignUpText>
+        <DiscoverWorldText>Discover a New World With Us</DiscoverWorldText>
+        <Wrapper>
+          <TextField
+            value={values.username}
+            error={touched.username && errors.username}
+            onChange={handleChange('username') as (text: string) => void}
+            onBlur={() => handleBlur('username')}
+            marginTop={20}
+            placeHolder="UserName"
+          />
+          <TextField
+            value={values.email}
+            error={touched.email && errors.email}
+            onChange={handleChange('email') as (text: string) => void}
+            onBlur={() => handleBlur('email')}
+            marginTop={20}
+            placeHolder="Email"
+          />
+          <TextField
+            value={values.phone}
+            error={touched.phone && errors.phone}
+            onChange={handleChange('phone') as (text: string) => void}
+            onBlur={() => handleBlur('phone')}
+            marginTop={20}
+            placeHolder="Phone Number"
+            number
+          />
+          <TextField
+            value={values.password}
+            error={touched.password && errors.password}
+            onChange={handleChange('password') as (text: string) => void}
+            onBlur={() => handleBlur('password')}
+            marginTop={20}
+            placeHolder="Password"
+            onPress={() => setShowPassword(!showPassword)}
+            eyeIcon
+            password={!showPassword}
+          />
+          <TextField
+            value={values.confirmPassword}
+            error={touched.confirmPassword && errors.confirmPassword}
+            onChange={handleChange('confirmPassword') as (text: string) => void}
+            onBlur={() => handleBlur('confirmPassword')}
+            marginTop={20}
+            placeHolder="Confirm Password"
+            onPress={() => setShowPassword(!showPassword)}
+            eyeIcon
+            password={!showPassword}
+          />
+          <AlreadyHaveAccount>
+            <AlreadyHaveAccountText>
+              Already Have an Account?
+            </AlreadyHaveAccountText>
+            <SignIn onPress={navigateToLogin}>
+              <SignInText>Login</SignInText>
+            </SignIn>
+          </AlreadyHaveAccount>
+        </Wrapper>
+      </KeyboardAvoidingView>
+      <Wrapper>
+        <Button title={'Sign Up'} marginTop={20} onPress={handleSubmit} />
+        <Visitor onPress={navigateToHome}>
+          <VisitorText>View as Visitor</VisitorText>
+        </Visitor>
+      </Wrapper>
     </MainContainer>
   );
 };
