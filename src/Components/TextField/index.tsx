@@ -14,11 +14,9 @@ import CloseIcon from 'react-native-vector-icons/AntDesign';
 
 interface TextFieldProps {
   onChange?: (text: string) => void;
-  onPress?: () => void;
   placeHolder?: string;
   eyeIcon?: boolean;
   marginTop?: number;
-  password?: boolean;
   value?: string;
   error?: string;
   editable?: boolean;
@@ -33,11 +31,9 @@ interface TextFieldProps {
 
 const TextField = ({
   onChange,
-  onPress,
   placeHolder,
   eyeIcon,
   marginTop,
-  password,
   value,
   error,
   editable,
@@ -50,6 +46,8 @@ const TextField = ({
 }: TextFieldProps) => {
   const {colors} = useTheme();
   const [focus, setFocus] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <TextFieldWrapper marginTop={marginTop}>
       {error ? <ErrorText>{error}</ErrorText> : null}
@@ -60,7 +58,7 @@ const TextField = ({
           autoCapitalize={'none'}
           placeholder={placeHolder}
           onChangeText={onChange}
-          secureTextEntry={password}
+          secureTextEntry={!showPassword}
           value={value}
           error={error} //TODO
           placeholderTextColor={colors.placeholder}
@@ -78,9 +76,11 @@ const TextField = ({
           style={{
             ...styles.icon,
           }}
-          onPress={onPress}>
-          {eyeIcon && password && <Icon name="eye" size={20} color={'gray'} />}
-          {!password && eyeIcon && (
+          onPress={() => setShowPassword(!showPassword)}>
+          {eyeIcon && showPassword && (
+            <Icon name="eye" size={20} color={'gray'} />
+          )}
+          {!showPassword && eyeIcon && (
             <Icon name="eye-slash" size={20} color={'gray'} />
           )}
           {confirmedIcon && (

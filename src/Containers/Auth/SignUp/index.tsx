@@ -1,6 +1,6 @@
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import React, {useState} from 'react';
+import React from 'react';
 import Button from '../../../Components/Button';
 import TextField from '../../../Components/TextField';
 import {RootStackParamList} from '../../../Navigation/RootNavigation';
@@ -29,8 +29,6 @@ interface SignUpProps {
 }
 
 const SignUp = ({navigation}: SignUpProps) => {
-  const [showPassword, setShowPassword] = useState(false);
-
   const {navigate} = navigation;
 
   const navigateToLogin = () => {
@@ -112,9 +110,7 @@ const SignUp = ({navigation}: SignUpProps) => {
             onBlur={() => handleBlur('password')}
             marginTop={20}
             placeHolder="Password"
-            onPress={() => setShowPassword(!showPassword)}
             eyeIcon
-            password={!showPassword}
           />
           <TextField
             value={values.confirmPassword}
@@ -123,9 +119,7 @@ const SignUp = ({navigation}: SignUpProps) => {
             onBlur={() => handleBlur('confirmPassword')}
             marginTop={20}
             placeHolder="Confirm Password"
-            onPress={() => setShowPassword(!showPassword)}
             eyeIcon
-            password={!showPassword}
           />
           <AlreadyHaveAccount>
             <AlreadyHaveAccountText>
