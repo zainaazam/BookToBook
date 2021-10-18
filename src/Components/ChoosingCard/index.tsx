@@ -18,6 +18,7 @@ interface BookCardProps {
   author?: string;
   description?: string;
   image?: ImageSourcePropType;
+  justListing?: boolean;
   id?: string;
   selectedBook?: string;
   setSelectedBook?: (value: string) => void;
@@ -28,6 +29,7 @@ const ChoosingCard = ({
   author,
   description,
   image,
+  justListing,
   id,
   selectedBook,
   setSelectedBook,
@@ -48,7 +50,7 @@ const ChoosingCard = ({
           <ReadMoreText>Read more</ReadMoreText>
         </ReadMore>
       </DetailsContainer>
-      <Select selected={selectedBook === id} />
+      {justListing ? null : <Select selected={selectedBook === id} />}
     </CardWrapper>
   );
 };
