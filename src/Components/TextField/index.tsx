@@ -60,14 +60,14 @@ const TextField = ({
           onChangeText={onChange}
           secureTextEntry={!showPassword}
           value={value}
-          error={error} //TODO
+          error={error}
           placeholderTextColor={colors.placeholder}
           keyboardType={number ? 'number-pad' : 'default'}
           caretHidden={true}
           onFocus={() => setFocus(true)}
           onBlur={() => {
             setFocus(false);
-            onBlur();
+            onBlur && onBlur();
           }}
           focus={focus}
         />
