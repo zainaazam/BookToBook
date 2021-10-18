@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {MediumText} from '../../../Components/CustomText';
+import {MediumText, SmallText} from '../../../Components/CustomText';
 
 export const MainContainer = styled.View`
   background-color: ${({theme}) => theme.colors.backgroundGray};
@@ -29,12 +29,29 @@ export const AddBookText = styled(MediumText)`
   text-align: center;
 `;
 
-export const Description = styled.TextInput`
+export const Description = styled.TextInput<{
+  error?: string;
+  focus?: boolean;
+}>`
   background-color: ${({theme}) => theme.colors.white};
   height: 220px;
   width: 320px;
+  margin-top: ${props => (props?.error ? '0px' : '30px')};
   align-items: flex-start;
   padding: 15px;
-  margin-top: 30px;
   border-radius: 10px;
+  border-width: 0.5px;
+  border-color: ${props =>
+    props?.error
+      ? props?.theme.colors.alertRed
+      : props?.focus
+      ? props?.theme.colors.blue
+      : props?.theme.colors.white};
+`;
+
+export const ErrorText = styled(SmallText)`
+  color: ${({theme}) => theme.colors.alertRed};
+  width: auto;
+  margin: 25px 30px 2px 0px;
+  align-self: flex-end;
 `;
