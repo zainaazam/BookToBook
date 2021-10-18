@@ -55,8 +55,8 @@ const Login = ({navigation}: LoginProps) => {
   };
 
   const ValidationSchema = Yup.object().shape({
-    username: Yup.string().required('Please enter your username!'),
-    password: Yup.string().required('Please enter your password!'),
+    username: Yup.string().trim().required('Please enter your username!'),
+    password: Yup.string().trim().required('Please enter your password!'),
   });
 
   const {errors, values, touched, handleBlur, handleChange, handleSubmit} =
