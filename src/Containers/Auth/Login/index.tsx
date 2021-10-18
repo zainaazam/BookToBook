@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Button from '../../../Components/Button';
 import TextField from '../../../Components/TextField';
 import {styles} from '../Welcome/styles';
@@ -38,8 +38,6 @@ interface LoginProps {
 }
 
 const Login = ({navigation}: LoginProps) => {
-  const [showPassword, setShowPassword] = useState(false);
-
   const {navigate} = navigation;
 
   const navigateToVerification = () => {
@@ -100,9 +98,7 @@ const Login = ({navigation}: LoginProps) => {
             onBlur={() => handleBlur('password')}
             marginTop={15}
             placeHolder="Password"
-            onPress={() => setShowPassword(!showPassword)}
             eyeIcon
-            password={!showPassword}
           />
           <ForgetPassword>
             <ForgetPasswordText>Forget Password?</ForgetPasswordText>

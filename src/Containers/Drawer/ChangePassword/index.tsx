@@ -10,6 +10,8 @@ import {goBack} from '../../../Navigation/RootNavigation';
 import {ChangePasswordStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/ChangePasswordStack';
 import {DrawerStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {MainContainer} from './styles';
+import * as Yup from 'yup';
+import {useFormik} from 'formik';
 
 type ChangePasswordScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
@@ -28,6 +30,34 @@ const ChangePassword = ({navigation}: ChangePasswordProps) => {
     setShowModal(!showModal);
   };
 
+  const ValidationSchema = Yup.object().shape({
+    oldPassword: Yup.string()
+      .trim()
+      .required('Please enter your old password!'),
+    newPassword: Yup.string()
+      .trim()
+      .min(8, 'Password is too short!')
+      .required('Please enter your new password!'),
+    confirmPassword: Yup.string().equals(
+      [Yup.ref('newPassword'), null],
+      'Password does not match!',
+    ),
+  });
+
+  const {errors, values, touched, handleBlur, handleChange, handleSubmit} =
+    useFormik({
+      initialValues: {
+        oldPassword: '',
+        newPassword: '',
+        confirmPassword: '',
+      },
+      // onSubmit: async submittedValues => {
+      onSubmit: () => {
+        toggleModal();
+      },
+      validationSchema: ValidationSchema,
+    });
+
   return (
     <MainContainer>
       <CustomHeader
@@ -36,10 +66,34 @@ const ChangePassword = ({navigation}: ChangePasswordProps) => {
         backButton
         toggleDrawer={toggleDrawer}
       />
-      <TextField marginTop={50} placeHolder={'Old Password'} />
-      <TextField marginTop={25} placeHolder={'New Password'} />
-      <TextField marginTop={25} placeHolder={'Confirm Password'} />
-      <Button title={'Save'} marginTop={60} onPress={toggleModal} />
+      <TextField
+        value={values.oldPassword}
+        error={touched.oldPassword && errors.oldPassword}
+        onChange={handleChange('oldPassword') as (text: string) => void}
+        onBlur={() => handleBlur('oldPassword')}
+        marginTop={50}
+        placeHolder={'Old Password'}
+        eyeIcon
+      />
+      <TextField
+        value={values.newPassword}
+        error={touched.newPassword && errors.newPassword}
+        onChange={handleChange('newPassword') as (text: string) => void}
+        onBlur={() => handleBlur('newPassword')}
+        marginTop={25}
+        placeHolder={'New Password'}
+        eyeIcon
+      />
+      <TextField
+        value={values.confirmPassword}
+        error={touched.confirmPassword && errors.confirmPassword}
+        onChange={handleChange('confirmPassword') as (text: string) => void}
+        onBlur={() => handleBlur('confirmPassword')}
+        marginTop={25}
+        placeHolder={'Confirm Password'}
+        eyeIcon
+      />
+      <Button title={'Save'} marginTop={60} onPress={handleSubmit} />
       <CustomModal
         showModal={showModal}
         hideModal={toggleModal}
