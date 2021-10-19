@@ -22,6 +22,7 @@ interface BookCardProps {
   id?: string;
   selectedBook?: string;
   setSelectedBook?: (value: string) => void;
+  onNavigate?: () => void;
 }
 
 const ChoosingCard = ({
@@ -33,12 +34,17 @@ const ChoosingCard = ({
   id,
   selectedBook,
   setSelectedBook,
+  onNavigate,
 }: BookCardProps) => {
-  const toggleSelected = () => {
-    setSelectedBook && setSelectedBook(id);
+  const handlePressed = () => {
+    if (justListing) {
+      onNavigate();
+    } else {
+      setSelectedBook && setSelectedBook(id);
+    }
   };
   return (
-    <CardWrapper onPress={toggleSelected}>
+    <CardWrapper onPress={handlePressed}>
       <BookImage source={image} style={styles.image} />
       <DetailsContainer>
         <BookName>{bookName}</BookName>
