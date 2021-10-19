@@ -34,6 +34,7 @@ interface ProfileProps {
 
 const Profile = ({navigation}: ProfileProps) => {
   const {toggleDrawer} = navigation;
+  const {navigate} = navigation;
 
   const renderItem = ({item}) => {
     return (
@@ -44,6 +45,7 @@ const Profile = ({navigation}: ProfileProps) => {
         image={item.image}
         id={item.id}
         justListing
+        onNavigate={() => navigate('HomeStack', {screen: 'BookDetails'})}
       />
     );
   };
