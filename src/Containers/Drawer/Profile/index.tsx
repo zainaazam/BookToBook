@@ -34,6 +34,11 @@ interface ProfileProps {
 
 const Profile = ({navigation}: ProfileProps) => {
   const {toggleDrawer} = navigation;
+  const {navigate} = navigation;
+
+  const navigateToEditProfile = () => {
+    navigate('EditProfile');
+  };
 
   const renderItem = ({item}) => {
     return (
@@ -89,7 +94,11 @@ const Profile = ({navigation}: ProfileProps) => {
         <UserEmail>sarah.b@gmail.com</UserEmail>
         <UserPhone>+962 79 831 9003</UserPhone>
       </UserInfoContainer>
-      <Button title={'Edit Profile'} marginTop={20} />
+      <Button
+        title={'Edit Profile'}
+        marginTop={20}
+        onPress={navigateToEditProfile}
+      />
       <BookListText>Book list:</BookListText>
       <FlatList
         showsVerticalScrollIndicator={false}

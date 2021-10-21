@@ -3,9 +3,11 @@ import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {View} from 'react-native';
 import Profile from '../../../../Containers/Drawer/Profile';
+import EditProfile from '../../../../Containers/Drawer/Profile/EditProfile';
 
 export type ProfileStackParamList = {
   Profile: undefined;
+  EditProfile: undefined;
 };
 
 const ProfileStack = () => {
@@ -18,6 +20,7 @@ const ProfileStack = () => {
         }}
         initialRouteName="Profile">
         <Screen name="Profile" component={Profile} />
+        <Screen name="EditProfile" component={EditProfile} />
       </Navigator>
     </View>
   );
