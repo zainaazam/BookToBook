@@ -25,7 +25,7 @@ const Verification = ({navigation}: VerificationProps) => {
   };
 
   const ValidationSchema = Yup.object().shape({
-    email: Yup.string().trim().required('Please enter your E-mail!'),
+    email: Yup.string().email('Invalid email!').required('Email is required!'),
   });
 
   const {errors, values, touched, handleBlur, handleChange, handleSubmit} =
@@ -53,7 +53,7 @@ const Verification = ({navigation}: VerificationProps) => {
       <Button
         title={'Next'}
         marginTop={60}
-        onPress={(navigateToOTP, handleSubmit)}
+        onPress={handleSubmit}
       />
     </MainContainer>
   );
