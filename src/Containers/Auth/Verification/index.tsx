@@ -5,6 +5,8 @@ import CustomHeader from '../../../Components/CustomHeader';
 import TextField from '../../../Components/TextField';
 import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack';
 import {MainContainer, EnterEmailText} from './styles';
+import * as Yup from 'yup';
+import {useFormik} from 'formik';
 
 export type VerificationScreenNavigationProp = StackNavigationProp<
   AuthStackParamList,
@@ -22,12 +24,37 @@ const Verification = ({navigation}: VerificationProps) => {
     navigate('OTP');
   };
 
+  const ValidationSchema = Yup.object().shape({
+    email: Yup.string().trim().required('Please enter your E-mail!'),
+  });
+
+  const {errors, values, touched, handleBlur, handleChange, handleSubmit} =
+    useFormik({
+      initialValues: {
+        email: '',
+      },
+
+      onSubmit: () => {
+        navigateToOTP();
+      },
+      validationSchema: ValidationSchema,
+    });
+
   return (
     <MainContainer>
       <CustomHeader backButton title={'Verification'} />
       <EnterEmailText>Please Enter your Email:</EnterEmailText>
-      <TextField />
-      <Button title={'Next'} marginTop={60} onPress={navigateToOTP} />
+      <TextField
+        value={values.email}
+        error={touched.email && errors.email}
+        onChange={handleChange('email') as (text: string) => void}
+        onBlur={() => handleBlur('email')}
+      />
+      <Button
+        title={'Next'}
+        marginTop={60}
+        onPress={(navigateToOTP, handleSubmit)}
+      />
     </MainContainer>
   );
 };
