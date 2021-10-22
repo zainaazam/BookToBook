@@ -19,8 +19,6 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {ProfileStackParamList} from '../../../../Navigation/StackNavigators/DrawerStack/ProfileStack';
 import {useTheme} from 'styled-components';
 import ArrowIcon from 'react-native-vector-icons/Feather';
-import {FlatList} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const ProfileImage = require('../../../../../Assets/Images/profile.png');
 
@@ -33,29 +31,10 @@ interface EditProfileProps {
   navigation: EditProfileScreenNavigationProp;
 }
 
-const EditProfile = ({navigation}: EditProfileProps) => {
+export const EditProfile = ({navigation}: EditProfileProps) => {
   const {toggleDrawer} = navigation;
-  const {colors} = useTheme();
   const {navigate} = navigation;
-
-  const renderItem = ({item}) => {
-    return (
-      <TouchableOpacity
-        onPress={() => navigate('ChangeInfo', {type: item.title})}>
-        <Row>
-          <Text>{item.title}</Text>
-          <ArrowIconContainer>
-            <ArrowIcon
-              name="chevron-right"
-              size={25}
-              color={colors.arrowColor}
-            />
-          </ArrowIconContainer>
-        </Row>
-        <Divider />
-      </TouchableOpacity>
-    );
-  };
+  const {colors} = useTheme();
 
   return (
     <MainContainer>
@@ -72,18 +51,8 @@ const EditProfile = ({navigation}: EditProfileProps) => {
         </CameraIconContainer>
       </ChangeImage>
       <ChangeInfoContainer>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          data={[
-            {id: '0', title: 'Name'},
-            {id: '1', title: 'Email'},
-            {id: '2', title: 'Phone Number'},
-          ]}
-          renderItem={renderItem}
-          keyExtractor={item => item?.id}
-        />
-        {/* <Row>
-          <Text>Name</Text>
+        <Row onPress={() => navigate('ChangeUsername')}>
+          <Text>Username</Text>
           <ArrowIconContainer>
             <ArrowIcon
               name="chevron-right"
@@ -93,7 +62,7 @@ const EditProfile = ({navigation}: EditProfileProps) => {
           </ArrowIconContainer>
         </Row>
         <Divider />
-        <Row>
+        <Row onPress={() => navigate('ChangeEmail')}>
           <Text>Email</Text>
           <ArrowIconContainer>
             <ArrowIcon
@@ -104,7 +73,7 @@ const EditProfile = ({navigation}: EditProfileProps) => {
           </ArrowIconContainer>
         </Row>
         <Divider />
-        <Row>
+        <Row onPress={() => navigate('ChangePhone')}>
           <Text>Phone Number</Text>
           <ArrowIconContainer>
             <ArrowIcon
@@ -114,7 +83,7 @@ const EditProfile = ({navigation}: EditProfileProps) => {
             />
           </ArrowIconContainer>
         </Row>
-        <Divider /> */}
+        <Divider />
       </ChangeInfoContainer>
     </MainContainer>
   );
