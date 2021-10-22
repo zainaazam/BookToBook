@@ -40,7 +40,7 @@ export const ChangeInfoContainer = styled.View`
   margin-top: 30px;
 `;
 
-export const Row = styled.TouchableOpacity`
+export const Row = styled.View`
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 15px;

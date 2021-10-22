@@ -19,6 +19,8 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {ProfileStackParamList} from '../../../../Navigation/StackNavigators/DrawerStack/ProfileStack';
 import {useTheme} from 'styled-components';
 import ArrowIcon from 'react-native-vector-icons/Feather';
+import {FlatList} from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const ProfileImage = require('../../../../../Assets/Images/profile.png');
 
@@ -31,9 +33,27 @@ interface EditProfileProps {
   navigation: EditProfileScreenNavigationProp;
 }
 
-export const EditProfile = ({navigation}: EditProfileProps) => {
+const EditProfile = ({navigation}: EditProfileProps) => {
   const {toggleDrawer} = navigation;
   const {colors} = useTheme();
+
+  const renderItem = ({item}) => {
+    return (
+      <TouchableOpacity>
+        <Row>
+          <Text>{item.title}</Text>
+          <ArrowIconContainer>
+            <ArrowIcon
+              name="chevron-right"
+              size={25}
+              color={colors.arrowColor}
+            />
+          </ArrowIconContainer>
+        </Row>
+        <Divider />
+      </TouchableOpacity>
+    );
+  };
 
   return (
     <MainContainer>
@@ -50,7 +70,17 @@ export const EditProfile = ({navigation}: EditProfileProps) => {
         </CameraIconContainer>
       </ChangeImage>
       <ChangeInfoContainer>
-        <Row>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={[
+            {id: '0', title: 'Name'},
+            {id: '1', title: 'Email'},
+            {id: '2', title: 'Phone Number'},
+          ]}
+          renderItem={renderItem}
+          keyExtractor={item => item?.id}
+        />
+        {/* <Row>
           <Text>Name</Text>
           <ArrowIconContainer>
             <ArrowIcon
@@ -82,7 +112,7 @@ export const EditProfile = ({navigation}: EditProfileProps) => {
             />
           </ArrowIconContainer>
         </Row>
-        <Divider />
+        <Divider /> */}
       </ChangeInfoContainer>
     </MainContainer>
   );
