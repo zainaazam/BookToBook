@@ -58,33 +58,36 @@ const ResetPassword = ({navigation}: ResetPasswordProps) => {
     <MainContainer>
       <CustomHeader title={'Reset Password'} backButton />
       <TextField
-        marginTop={50}
-        placeHolder={'Old Password'}
         value={values.oldPassword}
         error={touched.oldPassword && errors.oldPassword}
         onChange={handleChange('oldPassword') as (text: string) => void}
         onBlur={() => handleBlur('oldPassword')}
+        marginTop={50}
+        placeHolder={'Old Password'}
+        eyeIcon
       />
       <TextField
-        marginTop={25}
-        placeHolder={'New Password'}
         value={values.newPassword}
         error={touched.newPassword && errors.newPassword}
         onChange={handleChange('newPassword') as (text: string) => void}
         onBlur={() => handleBlur('newPassword')}
+        marginTop={25}
+        placeHolder={'New Password'}
+        eyeIcon
       />
       <TextField
-        marginTop={25}
-        placeHolder={'Confirm Password'}
         value={values.confirmPassword}
         error={touched.confirmPassword && errors.confirmPassword}
         onChange={handleChange('confirmPassword') as (text: string) => void}
         onBlur={() => handleBlur('confirmPassword')}
+        marginTop={25}
+        placeHolder={'Confirm Password'}
+        eyeIcon
       />
       <Button
         title={'Save'}
         marginTop={60}
-        onPress={(toggleModal, handleSubmit)}
+        onPress={handleSubmit}
       />
       <CustomModal
         showModal={showModal}
