@@ -49,6 +49,7 @@ const Profile = ({navigation}: ProfileProps) => {
         image={item.image}
         id={item.id}
         justListing
+        onNavigate={() => navigate('HomeStack', {screen: 'BookDetails'})}
       />
     );
   };
