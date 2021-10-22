@@ -36,10 +36,12 @@ interface EditProfileProps {
 const EditProfile = ({navigation}: EditProfileProps) => {
   const {toggleDrawer} = navigation;
   const {colors} = useTheme();
+  const {navigate} = navigation;
 
   const renderItem = ({item}) => {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigate('ChangeInfo', {type: item.title})}>
         <Row>
           <Text>{item.title}</Text>
           <ArrowIconContainer>
