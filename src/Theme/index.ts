@@ -13,6 +13,7 @@ export const default_theme: DefaultTheme = {
     alertRed: '#ff0f0f',
     inputGray: '#424242',
     placeholder: '#CDCDCD',
+    arrowColor: '#C4C4C4',
     orange: '#F47100',
     green: '#56AE2C',
     transparent: 'transparent',

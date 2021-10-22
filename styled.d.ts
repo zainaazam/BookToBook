@@ -14,6 +14,7 @@ declare module 'styled-components/native' {
       alertRed: string;
       inputGray: string;
       placeholder: string;
+      arrowColor: string;
       orange: string;
       green: string;
       transparent: string;
