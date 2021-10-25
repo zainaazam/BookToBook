@@ -1,4 +1,4 @@
-#Fri Sep 24 19:54:31 EEST 2021
+#Mon Oct 25 13:33:24 EEST 2021
 path.4=classes_1.dex
 path.3=classes_0.dex
 path.2=classes2.dex
@@ -19,6 +19,7 @@ base.8=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/inte
 base.7=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_12.dex
 base.6=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_11.dex
 base.5=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_10.dex
+renamed.23=classes24.dex
 renamed.22=classes23.dex
 renamed.21=classes22.dex
 renamed.20=classes21.dex
@@ -42,6 +43,7 @@ base.14=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/int
 base.19=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_6.dex
 base.18=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_5.dex
 base.20=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_7.dex
+base.23=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_20.dex
 base.22=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_9.dex
 base.21=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_8.dex
 renamed.3=classes4.dex
@@ -66,5 +68,6 @@ base.12=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/int
 path.20=classes_7.dex
 base.11=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_16.dex
 base.10=/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_15.dex
+path.23=classes_20.dex
 path.21=classes_8.dex
 path.22=classes_9.dex

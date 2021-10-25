@@ -40,7 +40,7 @@ export const EditProfile = ({navigation}: EditProfileProps) => {
     <MainContainer>
       <CustomHeader
         menu
-        backButton
+        rightSide="backButton"
         title={'Edit Profile'}
         toggleDrawer={toggleDrawer}
       />

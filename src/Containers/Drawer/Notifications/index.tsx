@@ -9,7 +9,6 @@ import {NotificationsStackParamList} from '../../../Navigation/StackNavigators/D
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {DrawerStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
-import {navigateToProfile} from '../../../Navigation/RootNavigation';
 
 const BookImage1 = require('../../../../Assets/Images/first-book.png');
 const BookImage2 = require('../../../../Assets/Images/second-book.png');
@@ -41,7 +40,7 @@ const Notifications = ({navigation}: NotificationsProps) => {
         nameOfBook={item.nameOfBook}
         type={item.type}
         onRequestPress={navigateToChooseToExchange}
-        onApprovedPress={navigateToProfile}
+        onApprovedPress={() => navigate('Profile', {asOthers: true})}
       />
     );
   };
@@ -79,7 +78,12 @@ const Notifications = ({navigation}: NotificationsProps) => {
   return (
     <MainContainer>
       <SafeAreaView />
-      <CustomHeader title={'Notifications'} menu toggleDrawer={toggleDrawer} />
+      <CustomHeader
+        title={'Notifications'}
+        menu
+        toggleDrawer={toggleDrawer}
+        navigation={() => navigate('Profile', {asOthers: false})}
+      />
       <ScrollView>
         <FlatList
           data={data}

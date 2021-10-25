@@ -12,19 +12,28 @@ import {
   ProfilePicture,
   Profile,
 } from './styles';
-import {goBack, navigateToProfile} from '../../Navigation/RootNavigation';
+import {goBack} from '../../Navigation/RootNavigation';
 import MenuIcon from 'react-native-vector-icons/MaterialIcons';
 
 const profilePicture = require('../../../Assets/Images/profile.png');
 
 interface ButtonProps {
   toggleDrawer?: () => void;
-  backButton?: boolean;
+  rightSide?: string;
   title?: string;
   menu?: boolean;
+  navigation?: () => void;
+  preventingBackButton?: () => void;
 }
 
-const CustomHeader = ({toggleDrawer, backButton, title, menu}: ButtonProps) => {
+const CustomHeader = ({
+  toggleDrawer,
+  rightSide,
+  title,
+  menu,
+  navigation,
+  preventingBackButton,
+}: ButtonProps) => {
   //   const {colors} = useTheme();
   return (
     <HeaderWrapper>
@@ -39,12 +48,16 @@ const CustomHeader = ({toggleDrawer, backButton, title, menu}: ButtonProps) => {
       </LeftFragment>
       {title && <View>{title && <HeaderTitle>{title}</HeaderTitle>}</View>}
       <RightFragment>
-        {backButton ? (
+        {rightSide === 'backButton' ? (
           <Back onPress={goBack}>
             <BackText>Back</BackText>
           </Back>
+        ) : rightSide === 'preventingBackButton' ? (
+          <Back onPress={preventingBackButton}>
+            <BackText>Back</BackText>
+          </Back>
         ) : (
-          <Profile onPress={navigateToProfile}>
+          <Profile onPress={navigation}>
             <ProfilePicture source={profilePicture} />
           </Profile>
         )}

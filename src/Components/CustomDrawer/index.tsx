@@ -60,7 +60,10 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
           onPress={() =>
             reset({
               index: 1,
-              routes: [{name: 'HomeStack'}, {name: 'ProfileStack'}],
+              routes: [
+                {name: 'HomeStack'},
+                {name: 'ProfileStack', params: {asOthers: false}},
+              ],
             })
           }
         />

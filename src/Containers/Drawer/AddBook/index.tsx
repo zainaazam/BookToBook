@@ -69,7 +69,7 @@ const AddBook = ({navigation}: AddBookProps) => {
         <CustomHeader
           menu
           title={'Add a Book'}
-          backButton
+          rightSide="backButton"
           toggleDrawer={toggleDrawer}
         />
         <UploadImage>

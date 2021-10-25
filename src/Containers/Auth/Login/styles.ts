@@ -18,12 +18,12 @@ export const WomanImage = styled.Image`
 export const HeyText = styled(LargeText)`
   margin: 30px 20px 0px;
   align-self: flex-start;
-  font-weight: 700;
+  font-family: 'Lato-Bold';
 `;
 export const HopToNewBooksText = styled(LargeText)`
   margin: 0px 20px;
   align-self: flex-start;
-  font-weight: 700;
+  font-family: 'Lato-Bold';
 `;
 
 export const DoNotHaveAccount = styled.View`

@@ -4,13 +4,13 @@ import {LargeText, MediumText} from '../../../Components/CustomText';
 export const SignUpText = styled(LargeText)`
   margin: 20px 20px 0px;
   align-self: flex-start;
-  font-weight: 700;
+  font-family: 'Lato-Bold';
 `;
 
 export const DiscoverWorldText = styled(LargeText)`
   margin: 0px 20px;
   align-self: flex-start;
-  font-weight: 700;
+  font-family: 'Lato-Bold';
 `;
 
 export const AlreadyHaveAccount = styled.View`

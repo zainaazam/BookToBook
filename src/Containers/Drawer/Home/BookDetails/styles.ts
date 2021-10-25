@@ -1,9 +1,9 @@
 import styled from 'styled-components/native';
 import {
-  AboveLargeText,
   MediumText,
   Title,
   UnderLargeText,
+  SubTitle,
 } from '../../../../Components/CustomText';
 
 export const MainContainer = styled.View`
@@ -26,13 +26,13 @@ export const BookImage = styled.Image`
 `;
 
 export const BookName = styled(Title)`
-  font-weight: 700;
+  font-family: 'Lato-Bold';
   margin-bottom: 3px;
 `;
 
 export const Author = styled(UnderLargeText)`
   color: ${({theme}) => theme.colors.lightGray};
-  font-weight: 700;
+  font-family: 'Lato-Bold';
   margin-bottom: 7px;
 `;
 
@@ -41,7 +41,7 @@ export const BookDetailsContainer = styled.View`
 `;
 
 export const PublishDate = styled(MediumText)`
-  margin: 3px 0px;
+  margin: 8px 0px 3px;
 `;
 
 export const BookGenre = styled(MediumText)`
@@ -49,18 +49,18 @@ export const BookGenre = styled(MediumText)`
 `;
 
 export const Language = styled(MediumText)`
-  font-weight: bold;
-  margin: 3px 0px;
+  font-family: 'Lato-Bold';
+  margin: 5px 0px;
 `;
 
 export const Pages = styled(MediumText)`
   margin-top: 3px;
 `;
 
-export const Quote = styled(AboveLargeText)`
+export const Quote = styled(SubTitle)`
   color: ${({theme}) => theme.colors.placeholder};
   margin: 55px 30px 20px;
-  font-weight: 700;
+  font-family: 'Lato-BoldItalic';
 `;
 
 export const DescriptionContainer = styled.View`
@@ -74,7 +74,6 @@ export const DescriptionContainer = styled.View`
 
 export const DescriptionWord = styled(MediumText)`
   color: ${({theme}) => theme.colors.orange};
-  font-weight: 500;
   font-size: 16px;
   line-height: 30px;
 `;

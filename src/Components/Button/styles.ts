@@ -32,5 +32,5 @@ export const ButtonTitleStyle = styled(CustomText)<{
 }>`
   color: ${({theme, blue}) => (blue ? theme.colors.blue : theme.colors.white)};
   font-size: 15px;
-  font-weight: 700;
+  font-family: 'Lato-Bold';
 `;

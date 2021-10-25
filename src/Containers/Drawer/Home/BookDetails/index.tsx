@@ -22,7 +22,7 @@ import Button from '../../../../Components/Button';
 import QuoteIcon from 'react-native-vector-icons/Fontisto';
 import {useTheme} from 'styled-components';
 import {ScrollView} from 'react-native-gesture-handler';
-import {CompositeNavigationProp} from '@react-navigation/native';
+import {CompositeNavigationProp, RouteProp} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackParamList} from '../../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -35,22 +35,32 @@ type BookDetailsScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<HomeStackParamList, 'BookDetails'>
 >;
 
+type BookDetailsRouteProp = RouteProp<HomeStackParamList, 'BookDetails'>;
+
 interface BookDetailsProps {
   navigation: BookDetailsScreenNavigationProp;
+  route: BookDetailsRouteProp;
 }
 
-const BookDetails = ({navigation}: BookDetailsProps) => {
+const BookDetails = ({navigation, route}: BookDetailsProps) => {
   const {toggleDrawer} = navigation;
   const {navigate} = navigation;
+  const {withoutRequesting} = route.params;
 
   const navigateToExchange = () => {
     navigate('Exchange');
   };
 
   const {colors} = useTheme();
+
   return (
     <MainContainer>
-      <CustomHeader menu title={'Book Details'} toggleDrawer={toggleDrawer} />
+      <CustomHeader
+        menu
+        title={'Book Details'}
+        toggleDrawer={toggleDrawer}
+        rightSide="backButton"
+      />
       <DetailsContainer>
         <BookImage source={Image} style={styles.image} />
         <BookDetailsContainer>
@@ -80,11 +90,13 @@ const BookDetails = ({navigation}: BookDetailsProps) => {
           </DescriptionContent>
         </ScrollView>
       </DescriptionContainer>
-      <Button
-        title={'Request to Exchange'}
-        marginTop={20}
-        onPress={navigateToExchange}
-      />
+      {withoutRequesting ? null : (
+        <Button
+          title={'Request to Exchange'}
+          marginTop={20}
+          onPress={navigateToExchange}
+        />
+      )}
     </MainContainer>
   );
 };

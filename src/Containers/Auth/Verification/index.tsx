@@ -42,7 +42,7 @@ const Verification = ({navigation}: VerificationProps) => {
 
   return (
     <MainContainer>
-      <CustomHeader backButton title={'Verification'} />
+      <CustomHeader rightSide="backButton" title={'Verification'} />
       <EnterEmailText>Please Enter your Email:</EnterEmailText>
       <TextField
         value={values.email}
@@ -50,11 +50,7 @@ const Verification = ({navigation}: VerificationProps) => {
         onChange={handleChange('email') as (text: string) => void}
         onBlur={() => handleBlur('email')}
       />
-      <Button
-        title={'Next'}
-        marginTop={60}
-        onPress={handleSubmit}
-      />
+      <Button title={'Next'} marginTop={60} onPress={handleSubmit} />
     </MainContainer>
   );
 };

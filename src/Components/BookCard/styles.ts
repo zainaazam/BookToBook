@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import {AboveMediumText, MediumText, LargeText} from '../CustomText';
+import {MediumText, AboveLargeText} from '../CustomText';
 
 export const CardWrapper = styled.TouchableOpacity`
   width: 320px;
@@ -21,16 +21,20 @@ export const DetailsContainer = styled.View`
   padding: 10px;
 `;
 
-export const BookName = styled(LargeText)`
-  font-weight: 700;
+export const BookName = styled(AboveLargeText)`
+  font-family: 'Lato-Bold';
+  margin-bottom: 3px;
 `;
 
-export const Author = styled(AboveMediumText)`
+export const Author = styled(MediumText)`
   color: ${({theme}) => theme.colors.lightGray};
-  font-weight: 700;
+  margin-bottom: 4px;
+  font-family: 'Lato-Bold';
 `;
 
-export const Publisher = styled.TouchableOpacity``;
+export const Publisher = styled.TouchableOpacity`
+  margin-bottom: 15px;
+`;
 
 export const PublisherName = styled(MediumText)`
   color: ${({theme}) => theme.colors.blue};
@@ -42,7 +46,9 @@ export const Description = styled(MediumText)`
   width: 160px;
 `;
 
-export const ReadMore = styled.TouchableOpacity``;
+export const ReadMore = styled.TouchableOpacity`
+  margin-top: 6px;
+`;
 
 export const ReadMoreText = styled(MediumText)`
   color: ${({theme}) => theme.colors.orange};

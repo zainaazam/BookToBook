@@ -2,7 +2,6 @@ import React, {useRef} from 'react';
 import {MainContainer, Wrapper, EnterFourDigitsText, styles} from './styles';
 import CodeInput from 'react-native-confirmation-code-input';
 import CustomHeader from '../../../Components/CustomHeader';
-import {Alert} from 'react-native';
 import {useTheme} from 'styled-components/native';
 import Button from '../../../Components/Button';
 import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack';
@@ -28,7 +27,7 @@ const OTP = ({navigation}: OTPProps) => {
 
   return (
     <MainContainer>
-      <CustomHeader title={'OTP'} backButton />
+      <CustomHeader title={'OTP'} rightSide="backButton" />
       <Wrapper>
         <EnterFourDigitsText>
           Please Enter the 4-digits Code sent to Your Email:
@@ -43,7 +42,7 @@ const OTP = ({navigation}: OTPProps) => {
           size={50}
           activeColor={colors.orange}
           inactiveColor={colors.lightBlue}
-          onFulfill={() => Alert.alert('hello')}
+          onFulfill={navigateToResetPassword}
           caretHidden
           codeInputStyle={styles.input}
           containerStyle={styles.container}

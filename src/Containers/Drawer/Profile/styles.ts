@@ -28,14 +28,12 @@ export const UserEmail = styled(MediumText)`
   color: ${({theme}) => theme.colors.lightGray};
   line-height: 22px;
   text-align: center;
-  font-weight: 500;
 `;
 
 export const UserPhone = styled(MediumText)`
   color: ${({theme}) => theme.colors.lightGray};
   line-height: 20px;
   text-align: center;
-  font-weight: 500;
 `;
 
 export const BookListText = styled(MediumText)`

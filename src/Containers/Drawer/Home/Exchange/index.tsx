@@ -35,6 +35,10 @@ const Exchange = ({navigation}: ExchangeProps) => {
     setShowModal(!showModal);
   };
 
+  const navigateToBookDetails = () => {
+    navigation.push('BookDetails', {withoutRequesting: true});
+  };
+
   const renderItem = ({item}) => {
     return (
       <ChoosingMultiCard
@@ -45,6 +49,7 @@ const Exchange = ({navigation}: ExchangeProps) => {
         id={item.id}
         selectedBooks={selectedBooks}
         setSelectedBooks={setSelectedBooks}
+        onReadMorePress={navigateToBookDetails}
       />
     );
   };
@@ -82,7 +87,7 @@ const Exchange = ({navigation}: ExchangeProps) => {
         title={'Exchange'}
         menu
         toggleDrawer={toggleDrawer}
-        backButton
+        rightSide="backButton"
       />
       <ChooseText>Choose from your books :</ChooseText>
       <FlatList

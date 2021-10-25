@@ -52,7 +52,7 @@ const ChoosingCard = ({
         <Description>
           {description && description.substring(0, 22)}...
         </Description>
-        <ReadMore>
+        <ReadMore onPress={onNavigate}>
           <ReadMoreText>Read more</ReadMoreText>
         </ReadMore>
       </DetailsContainer>

@@ -30,12 +30,12 @@ export const RowView = styled.View`
 
 export const UserName = styled(AboveMediumText)`
   color: ${({theme}) => theme.colors.darkGray};
-  font-weight: 700;
+  font-family: 'Lato-Bold';
 `;
 
 export const BookName = styled(AboveMediumText)`
   color: ${({theme}) => theme.colors.darkGray};
-  font-weight: 700;
+  font-family: 'Lato-Bold';
 `;
 
 export const NotificationText = styled(AboveMediumText)`

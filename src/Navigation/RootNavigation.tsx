@@ -23,9 +23,9 @@ export const goBack = () => {
   navigationRef.current?.goBack();
 };
 
-export const navigateToProfile = () => {
-  navigationRef.current?.navigate('DrawerStack', {screen: 'ProfileStack'});
-};
+// export const navigateToProfile = () => {
+//   navigationRef.current?.navigate('DrawerStack', {screen: 'ProfileStack'});
+// };
 
 const RootStackNavigation = () => {
   const {Navigator, Screen} = createStackNavigator<RootStackParamList>();
