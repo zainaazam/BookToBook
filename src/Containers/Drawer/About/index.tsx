@@ -22,7 +22,7 @@ const About = ({navigation}: AboutProps) => {
   return (
     <MainContainer>
       <CustomHeader
-        backButton
+        rightSide="backButton"
         menu
         title={'About'}
         toggleDrawer={toggleDrawer}

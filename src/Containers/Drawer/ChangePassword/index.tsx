@@ -63,7 +63,7 @@ const ChangePassword = ({navigation}: ChangePasswordProps) => {
       <CustomHeader
         menu
         title={'Change Password'}
-        backButton
+        rightSide="backButton"
         toggleDrawer={toggleDrawer}
       />
       <TextField
@@ -74,6 +74,7 @@ const ChangePassword = ({navigation}: ChangePasswordProps) => {
         marginTop={50}
         placeHolder={'Old Password'}
         eyeIcon
+        password
       />
       <TextField
         value={values.newPassword}
@@ -83,6 +84,7 @@ const ChangePassword = ({navigation}: ChangePasswordProps) => {
         marginTop={25}
         placeHolder={'New Password'}
         eyeIcon
+        password
       />
       <TextField
         value={values.confirmPassword}
@@ -92,6 +94,7 @@ const ChangePassword = ({navigation}: ChangePasswordProps) => {
         marginTop={25}
         placeHolder={'Confirm Password'}
         eyeIcon
+        password
       />
       <Button title={'Save'} marginTop={60} onPress={handleSubmit} />
       <CustomModal

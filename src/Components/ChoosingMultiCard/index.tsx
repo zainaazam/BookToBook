@@ -21,6 +21,7 @@ interface BookCardProps {
   id?: string;
   selectedBooks?: string[];
   setSelectedBooks?: (value: string[]) => void;
+  onReadMorePress?: () => void;
 }
 
 const ChoosingMultiCard = ({
@@ -31,6 +32,7 @@ const ChoosingMultiCard = ({
   id,
   selectedBooks,
   setSelectedBooks,
+  onReadMorePress,
 }: BookCardProps) => {
   const toggleSelected = () => {
     if (selectedBooks?.includes(id)) {
@@ -50,7 +52,7 @@ const ChoosingMultiCard = ({
         <Description>
           {description && description.substring(0, 22)}...
         </Description>
-        <ReadMore>
+        <ReadMore onPress={onReadMorePress}>
           <ReadMoreText>Read more</ReadMoreText>
         </ReadMore>
       </DetailsContainer>

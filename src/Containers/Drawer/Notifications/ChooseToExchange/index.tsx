@@ -9,7 +9,7 @@ import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackParamList} from '../../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {NotificationsStackParamList} from '../../../../Navigation/StackNavigators/DrawerStack/NotificationsStack';
-import {goBack, navigateToProfile} from '../../../../Navigation/RootNavigation';
+import {goBack} from '../../../../Navigation/RootNavigation';
 
 const BookImage1 = require('../../../../../Assets/Images/first-book.png');
 const BookImage2 = require('../../../../../Assets/Images/second-book.png');
@@ -26,6 +26,7 @@ interface ChooseToExchangeProps {
 
 const ChooseToExchange = ({navigation}: ChooseToExchangeProps) => {
   const {toggleDrawer} = navigation;
+  const {navigate} = navigation;
 
   const [selectedBook, setSelectedBook] = useState<string>('');
   const renderItem = ({item}) => {
@@ -38,6 +39,7 @@ const ChooseToExchange = ({navigation}: ChooseToExchangeProps) => {
         id={item.id}
         selectedBook={selectedBook}
         setSelectedBook={setSelectedBook}
+        onNavigate={() => navigate('BookDetails', {withoutRequesting: true})}
       />
     );
   };
@@ -72,7 +74,7 @@ const ChooseToExchange = ({navigation}: ChooseToExchangeProps) => {
   return (
     <MainContainer>
       <CustomHeader
-        backButton
+        rightSide="backButton"
         title={'Choose to Exchange'}
         menu
         toggleDrawer={toggleDrawer}
@@ -87,7 +89,12 @@ const ChooseToExchange = ({navigation}: ChooseToExchangeProps) => {
       <Button
         title={'Approve'}
         marginTop={20}
-        onPress={navigateToProfile}
+        onPress={() =>
+          navigate('Profile', {
+            asOthers: true,
+            backButtonType: 'preventingBackButton',
+          })
+        }
         buttonDisabled={selectedBook === ''}
       />
       <Button title={'Reject'} orange marginTop={10} onPress={goBack} />

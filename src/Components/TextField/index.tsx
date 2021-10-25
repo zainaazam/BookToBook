@@ -27,6 +27,7 @@ interface TextFieldProps {
   confirmedIcon?: boolean;
   notConfirmedIcon?: boolean;
   onBlur?: () => void;
+  password?: boolean;
 }
 
 const TextField = ({
@@ -43,6 +44,7 @@ const TextField = ({
   confirmedIcon,
   notConfirmedIcon,
   onBlur,
+  password,
 }: TextFieldProps) => {
   const {colors} = useTheme();
   const [focus, setFocus] = useState(false);
@@ -58,12 +60,12 @@ const TextField = ({
           autoCapitalize={'none'}
           placeholder={placeHolder}
           onChangeText={onChange}
-          secureTextEntry={!showPassword}
+          secureTextEntry={password && !showPassword}
           value={value}
           error={error}
           placeholderTextColor={colors.placeholder}
           keyboardType={number ? 'number-pad' : 'default'}
-          caretHidden={true}
+          caretHidden={false}
           onFocus={() => setFocus(true)}
           onBlur={() => {
             setFocus(false);

@@ -56,7 +56,7 @@ const ResetPassword = ({navigation}: ResetPasswordProps) => {
 
   return (
     <MainContainer>
-      <CustomHeader title={'Reset Password'} backButton />
+      <CustomHeader title={'Reset Password'} rightSide="backButton" />
       <TextField
         value={values.oldPassword}
         error={touched.oldPassword && errors.oldPassword}
@@ -65,6 +65,7 @@ const ResetPassword = ({navigation}: ResetPasswordProps) => {
         marginTop={50}
         placeHolder={'Old Password'}
         eyeIcon
+        password
       />
       <TextField
         value={values.newPassword}
@@ -74,6 +75,7 @@ const ResetPassword = ({navigation}: ResetPasswordProps) => {
         marginTop={25}
         placeHolder={'New Password'}
         eyeIcon
+        password
       />
       <TextField
         value={values.confirmPassword}
@@ -83,12 +85,9 @@ const ResetPassword = ({navigation}: ResetPasswordProps) => {
         marginTop={25}
         placeHolder={'Confirm Password'}
         eyeIcon
+        password
       />
-      <Button
-        title={'Save'}
-        marginTop={60}
-        onPress={handleSubmit}
-      />
+      <Button title={'Save'} marginTop={60} onPress={handleSubmit} />
       <CustomModal
         showModal={showModal}
         hideModal={toggleModal}

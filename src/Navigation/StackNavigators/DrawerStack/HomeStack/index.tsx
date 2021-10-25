@@ -8,7 +8,7 @@ import BookDetails from '../../../../Containers/Drawer/Home/BookDetails';
 
 export type HomeStackParamList = {
   Home: undefined;
-  BookDetails: undefined;
+  BookDetails: {withoutRequesting: boolean} | undefined;
   Exchange: undefined;
 };
 

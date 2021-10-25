@@ -9,7 +9,7 @@ import {
   UserPhone,
 } from './styles';
 import CustomHeader from '../../../Components/CustomHeader';
-import {CompositeNavigationProp} from '@react-navigation/native';
+import {CompositeNavigationProp, RouteProp} from '@react-navigation/native';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -28,13 +28,17 @@ type ProfileScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<ProfileStackParamList, 'Profile'>
 >;
 
+type ProfileRouteProp = RouteProp<ProfileStackParamList, 'Profile'>;
+
 interface ProfileProps {
   navigation: ProfileScreenNavigationProp;
+  route: ProfileRouteProp;
 }
 
-const Profile = ({navigation}: ProfileProps) => {
+const Profile = ({navigation, route}: ProfileProps) => {
   const {toggleDrawer} = navigation;
   const {navigate} = navigation;
+  const {asOthers, backButtonType} = route.params;
 
   const navigateToEditProfile = () => {
     navigate('EditProfile');
@@ -49,7 +53,7 @@ const Profile = ({navigation}: ProfileProps) => {
         image={item.image}
         id={item.id}
         justListing
-        onNavigate={() => navigate('HomeStack', {screen: 'BookDetails'})}
+        onNavigate={() => navigate('BookDetails', {withoutRequesting: true})}
       />
     );
   };
@@ -86,7 +90,8 @@ const Profile = ({navigation}: ProfileProps) => {
       <CustomHeader
         menu
         title={'Profile'}
-        backButton
+        rightSide={backButtonType}
+        preventingBackButton={() => navigation.pop(2)}
         toggleDrawer={toggleDrawer}
       />
       <UserInfoContainer>
@@ -95,11 +100,13 @@ const Profile = ({navigation}: ProfileProps) => {
         <UserEmail>sarah.b@gmail.com</UserEmail>
         <UserPhone>+962 79 831 9003</UserPhone>
       </UserInfoContainer>
-      <Button
-        title={'Edit Profile'}
-        marginTop={20}
-        onPress={navigateToEditProfile}
-      />
+      {asOthers ? null : (
+        <Button
+          title={'Edit Profile'}
+          marginTop={20}
+          onPress={navigateToEditProfile}
+        />
+      )}
       <BookListText>Book list:</BookListText>
       <FlatList
         showsVerticalScrollIndicator={false}

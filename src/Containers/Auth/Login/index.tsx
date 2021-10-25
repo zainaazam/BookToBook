@@ -99,6 +99,7 @@ const Login = ({navigation}: LoginProps) => {
             marginTop={15}
             placeHolder="Password"
             eyeIcon
+            password
           />
           <ForgetPassword>
             <ForgetPasswordText>Forget Password?</ForgetPasswordText>

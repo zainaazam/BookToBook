@@ -10,7 +10,6 @@ export const MainContainer = styled.View`
 export const B2Text = styled(LargeText)`
   color: ${({theme}) => theme.colors.blue};
   text-align: center;
-  font-weight: 500;
   line-height: 32px;
   margin-top: 45px;
 `;
@@ -18,7 +17,6 @@ export const B2Text = styled(LargeText)`
 export const TradingToolText = styled(LargeText)`
   color: ${({theme}) => theme.colors.blue};
   text-align: center;
-  font-weight: 500;
   line-height: 32px;
 `;
 
@@ -26,7 +24,6 @@ export const AboutText = styled(LargeText)`
   color: ${({theme}) => theme.colors.blue};
   text-align: center;
   width: 80%;
-  font-weight: 500;
   line-height: 32px;
   margin-top: 35px;
 `;

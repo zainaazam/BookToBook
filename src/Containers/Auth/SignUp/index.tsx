@@ -111,6 +111,7 @@ const SignUp = ({navigation}: SignUpProps) => {
             marginTop={20}
             placeHolder="Password"
             eyeIcon
+            password
           />
           <TextField
             value={values.confirmPassword}
@@ -120,6 +121,7 @@ const SignUp = ({navigation}: SignUpProps) => {
             marginTop={20}
             placeHolder="Confirm Password"
             eyeIcon
+            password
           />
           <AlreadyHaveAccount>
             <AlreadyHaveAccountText>

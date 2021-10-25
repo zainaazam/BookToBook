@@ -5,7 +5,6 @@ import React from 'react';
 import {FlatList} from 'react-native';
 import BookCard from '../../../Components/BookCard';
 import CustomHeader from '../../../Components/CustomHeader';
-import {navigateToProfile} from '../../../Navigation/RootNavigation';
 import {DrawerStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {HomeStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/HomeStack';
 import {MainContainer} from './styles';
@@ -28,7 +27,7 @@ const Home = ({navigation}: HomeProps) => {
   const {navigate} = navigation;
 
   const navigateToBookDetails = () => {
-    navigate('BookDetails');
+    navigate('BookDetails', {withoutRequesting: false});
   };
 
   const renderItem = ({item}) => {
@@ -39,7 +38,12 @@ const Home = ({navigation}: HomeProps) => {
         publisher={item.publisher}
         description={item.description}
         image={item.image}
-        onPublisherPress={navigateToProfile}
+        onPublisherPress={() =>
+          navigate('ProfileStack', {
+            screen: 'Profile',
+            params: {asOthers: true},
+          })
+        }
         onPress={navigateToBookDetails}
       />
     );
@@ -77,7 +81,17 @@ const Home = ({navigation}: HomeProps) => {
 
   return (
     <MainContainer>
-      <CustomHeader title={'Dashboard'} menu toggleDrawer={toggleDrawer} />
+      <CustomHeader
+        title={'Dashboard'}
+        menu
+        toggleDrawer={toggleDrawer}
+        navigation={() =>
+          navigate('ProfileStack', {
+            screen: 'Profile',
+            params: {asOthers: false},
+          })
+        }
+      />
       <FlatList
         showsVerticalScrollIndicator={false}
         data={data}

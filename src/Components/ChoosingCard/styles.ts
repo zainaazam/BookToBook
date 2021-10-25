@@ -23,13 +23,13 @@ export const DetailsContainer = styled.View`
 `;
 
 export const BookName = styled(LargeText)`
-  font-weight: 700;
+  font-family: 'Lato-Bold';
   margin-bottom: 3px;
 `;
 
 export const Author = styled(AboveMediumText)`
   color: ${({theme}) => theme.colors.lightGray};
-  font-weight: 700;
+  font-family: 'Lato-Bold';
   margin-bottom: 3px;
 `;
 
