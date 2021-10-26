@@ -29,6 +29,23 @@
                         "endColumns": "104,97,111,85,105,114,77,74,91,93,95,100,106,99,103,97,97,96,81,110,101,97,106,102,103,155,101,81",
                         "endOffsets": "205,303,415,501,607,722,800,875,967,1061,1157,1258,1365,1465,1569,1667,1765,1862,1944,2055,2157,2255,2362,2465,2569,2725,2827,2909"
                     }
+                },
+                {
+                    "source": "/home/zaina/.gradle/caches/transforms-3/4a53910199a89e85940ead50d4bee3aa/transformed/jetified-ucrop-2.2.6-native/res/values-de/values-de.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,121,179",
+                        "endColumns": "65,57,55",
+                        "endOffsets": "116,174,230"
+                    },
+                    "to": {
+                        "startLines": "31,32,33",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "3015,3081,3139",
+                        "endColumns": "65,57,55",
+                        "endOffsets": "3076,3134,3190"
+                    }
                 }
             ]
         }
