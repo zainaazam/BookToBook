@@ -8,7 +8,14 @@ export const MainContainer = styled.View`
   padding-bottom: 20px;
 `;
 
-export const UploadImage = styled.TouchableOpacity`
+export const UploadedImage = styled.Image`
+  width: 150px;
+  height: 200px;
+  margin-top: 20px;
+  border-radius: 10px;
+`;
+
+export const UploadImage = styled.View`
   width: 150px;
   height: 200px;
   margin-top: 20px;

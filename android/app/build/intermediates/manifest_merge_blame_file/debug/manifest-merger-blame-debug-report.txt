@@ -9,152 +9,199 @@
 9        android:targetSdkVersion="30" />
 10
 11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-11-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:5:3-75
-11-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:5:20-73
+11-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:8:3-75
+11-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:8:20-73
 12    <uses-permission android:name="android.permission.INTERNET" />
 12-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:3:3-64
 12-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:3:20-62
-13    <uses-permission android:name="android.permission.VIBRATE" /> <!-- These require runtime permissions on M -->
-13-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:6:3-63
-13-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:6:20-61
-14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-14-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:8:3-77
-14-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:8:20-75
-15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-15-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:9:3-78
-15-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:9:20-76
-16    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-16-->[com.facebook.flipper:flipper:0.54.0] /home/zaina/.gradle/caches/transforms-3/7ced98fae9ea2b5aa64e54aefef0d400/transformed/jetified-flipper-0.54.0/AndroidManifest.xml:16:5-76
-16-->[com.facebook.flipper:flipper:0.54.0] /home/zaina/.gradle/caches/transforms-3/7ced98fae9ea2b5aa64e54aefef0d400/transformed/jetified-flipper-0.54.0/AndroidManifest.xml:16:22-73
-17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-17-->[:expo-updates] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-updates/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-79
-17-->[:expo-updates] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-updates/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:22-76
-18
-19    <queries>
-19-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:5-22:15
-20
-21        <!-- Query open documents -->
-22        <intent>
-22-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-21:18
-23            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE" />
-23-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-79
-23-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:21-76
-24        </intent>
-25    </queries>
-26
-27    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-27-->[com.android.installreferrer:installreferrer:1.0] /home/zaina/.gradle/caches/transforms-3/3fd9f49bee5e7d9db0e87c4c36ae3adb/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:5-110
-27-->[com.android.installreferrer:installreferrer:1.0] /home/zaina/.gradle/caches/transforms-3/3fd9f49bee5e7d9db0e87c4c36ae3adb/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:22-107
-28
-29    <application
-29-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:11:3-36:17
-30        android:name="com.booktobook.MainApplication"
-30-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:12:5-36
-31        android:allowBackup="false"
-31-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:16:5-32
-32        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-32-->[androidx.core:core:1.6.0] /home/zaina/.gradle/caches/transforms-3/eb1a73f1b7ca3ce375c3360e9a6ab654/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
-33        android:debuggable="true"
-34        android:icon="@mipmap/ic_launcher"
-34-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:14:5-39
-35        android:label="@string/app_name"
-35-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:13:5-37
-36        android:roundIcon="@mipmap/ic_launcher_round"
-36-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:15:5-50
-37        android:theme="@style/AppTheme"
-37-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:17:5-36
-38        android:usesCleartextTraffic="true" >
-38-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:18:5-40
-39        <meta-data
-39-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:20:5-103
-40            android:name="expo.modules.updates.EXPO_UPDATE_URL"
-40-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:20:16-67
-41            android:value="YOUR-APP-URL-HERE" />
-41-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:20:68-101
-42        <meta-data
-42-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:21:5-112
-43            android:name="expo.modules.updates.EXPO_SDK_VERSION"
-43-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:21:16-68
-44            android:value="YOUR-APP-SDK-VERSION-HERE" />
-44-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:21:69-110
-45
-46        <activity
-46-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:22:5-34:16
-47            android:name="com.booktobook.MainActivity"
-47-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:23:7-35
-48            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-48-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:25:7-84
-49            android:label="@string/app_name"
-49-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:24:7-39
-50            android:launchMode="singleTask"
-50-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:26:7-38
-51            android:theme="@style/Theme.App.SplashScreen"
-51-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:28:7-52
-52            android:windowSoftInputMode="adjustResize" >
-52-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:27:7-49
-53            <intent-filter>
-53-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:30:7-33:23
-54                <action android:name="android.intent.action.MAIN" />
-54-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:31:9-60
-54-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:31:17-58
-55
-56                <category android:name="android.intent.category.LAUNCHER" />
-56-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:32:9-68
-56-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:32:19-66
-57            </intent-filter>
-58        </activity>
-59        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-59-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:35:5-81
-59-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:35:15-79
-60
-61        <meta-data
-61-->[:unimodules-react-native-adapter] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:91
-62            android:name="org.unimodules.core.AppLoader#react-native-headless"
-62-->[:unimodules-react-native-adapter] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-79
-63            android:value="org.unimodules.adapters.react.apploader.RNHeadlessAppLoader" />
-63-->[:unimodules-react-native-adapter] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-88
-64
-65        <provider
-65-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-20:20
-66            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
-66-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-83
-67            android:authorities="com.booktobook.fileprovider"
-67-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-64
-68            android:exported="false"
-68-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-37
-69            android:grantUriPermissions="true" >
-69-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-47
-70            <meta-data
-70-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:63
-71                android:name="android.support.FILE_PROVIDER_PATHS"
-71-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-67
-72                android:resource="@xml/file_provider_paths" />
-72-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:17-60
-73        </provider>
-74        <provider
-74-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:9-34:20
-75            android:name="expo.modules.filesystem.FileSystemFileProvider"
-75-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-74
-76            android:authorities="com.booktobook.FileSystemFileProvider"
-76-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-74
-77            android:exported="false"
-77-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-37
-78            android:grantUriPermissions="true" >
-78-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:13-47
-79            <meta-data
-79-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-19:63
-80                android:name="android.support.FILE_PROVIDER_PATHS"
-80-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:18:17-67
-81                android:resource="@xml/file_system_provider_paths" />
-81-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:17-60
-82        </provider>
-83
-84        <service
-84-->[androidx.room:room-runtime:2.1.0] /home/zaina/.gradle/caches/transforms-3/3b5db4b3b22ae452a34a6490900f58b2/transformed/room-runtime-2.1.0/AndroidManifest.xml:25:9-27:40
-85            android:name="androidx.room.MultiInstanceInvalidationService"
-85-->[androidx.room:room-runtime:2.1.0] /home/zaina/.gradle/caches/transforms-3/3b5db4b3b22ae452a34a6490900f58b2/transformed/room-runtime-2.1.0/AndroidManifest.xml:26:13-74
-86            android:exported="false" />
-86-->[androidx.room:room-runtime:2.1.0] /home/zaina/.gradle/caches/transforms-3/3b5db4b3b22ae452a34a6490900f58b2/transformed/room-runtime-2.1.0/AndroidManifest.xml:27:13-37
-87    </application>
-88
-89</manifest>
+13    <uses-permission android:name="android.permission.CAMERA" />
+13-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:4:3-62
+13-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:4:20-60
+14
+15    <uses-feature
+15-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:5:3-83
+16        android:name="android.hardware.camera"
+16-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:5:17-55
+17        android:required="false" />
+17-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:5:56-80
+18    <uses-feature
+18-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:6:3-89
+19        android:name="android.hardware.camera.front"
+19-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:6:17-61
+20        android:required="false" />
+20-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:6:62-86
+21
+22    <uses-permission android:name="android.permission.VIBRATE" /> <!-- These require runtime permissions on M -->
+22-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:9:3-63
+22-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:9:20-61
+23    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+23-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:11:3-77
+23-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:11:20-75
+24    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+24-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:12:3-78
+24-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:12:20-76
+25    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+25-->[com.facebook.flipper:flipper:0.54.0] /home/zaina/.gradle/caches/transforms-3/7ced98fae9ea2b5aa64e54aefef0d400/transformed/jetified-flipper-0.54.0/AndroidManifest.xml:16:5-76
+25-->[com.facebook.flipper:flipper:0.54.0] /home/zaina/.gradle/caches/transforms-3/7ced98fae9ea2b5aa64e54aefef0d400/transformed/jetified-flipper-0.54.0/AndroidManifest.xml:16:22-73
+26    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+26-->[:expo-updates] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-updates/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-79
+26-->[:expo-updates] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-updates/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:22-76
+27
+28    <queries>
+28-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-14:15
+29        <intent>
+29-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:9-13:18
+30            <action android:name="android.media.action.IMAGE_CAPTURE" />
+30-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:13-73
+30-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:21-70
+31        </intent>
+32        <!-- Query open documents -->
+33        <intent>
+33-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-21:18
+34            <action android:name="android.intent.action.OPEN_DOCUMENT_TREE" />
+34-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-79
+34-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:21-76
+35        </intent>
+36    </queries>
+37
+38    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+38-->[com.android.installreferrer:installreferrer:1.0] /home/zaina/.gradle/caches/transforms-3/3fd9f49bee5e7d9db0e87c4c36ae3adb/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:5-110
+38-->[com.android.installreferrer:installreferrer:1.0] /home/zaina/.gradle/caches/transforms-3/3fd9f49bee5e7d9db0e87c4c36ae3adb/transformed/jetified-installreferrer-1.0/AndroidManifest.xml:9:22-107
+39
+40    <application
+40-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:14:3-39:17
+41        android:name="com.booktobook.MainApplication"
+41-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:15:5-36
+42        android:allowBackup="false"
+42-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:19:5-32
+43        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+43-->[androidx.core:core:1.6.0] /home/zaina/.gradle/caches/transforms-3/eb1a73f1b7ca3ce375c3360e9a6ab654/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
+44        android:debuggable="true"
+45        android:icon="@mipmap/ic_launcher"
+45-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:17:5-39
+46        android:label="@string/app_name"
+46-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:16:5-37
+47        android:roundIcon="@mipmap/ic_launcher_round"
+47-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:18:5-50
+48        android:theme="@style/AppTheme"
+48-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:20:5-36
+49        android:usesCleartextTraffic="true" >
+49-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:21:5-40
+50        <meta-data
+50-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:23:5-103
+51            android:name="expo.modules.updates.EXPO_UPDATE_URL"
+51-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:23:16-67
+52            android:value="YOUR-APP-URL-HERE" />
+52-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:23:68-101
+53        <meta-data
+53-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:24:5-112
+54            android:name="expo.modules.updates.EXPO_SDK_VERSION"
+54-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:24:16-68
+55            android:value="YOUR-APP-SDK-VERSION-HERE" />
+55-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:24:69-110
+56
+57        <activity
+57-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:25:5-37:16
+58            android:name="com.booktobook.MainActivity"
+58-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:26:7-35
+59            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+59-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:28:7-84
+60            android:label="@string/app_name"
+60-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:27:7-39
+61            android:launchMode="singleTask"
+61-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:29:7-38
+62            android:theme="@style/Theme.App.SplashScreen"
+62-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:31:7-52
+63            android:windowSoftInputMode="adjustResize" >
+63-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:30:7-49
+64            <intent-filter>
+64-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:33:7-36:23
+65                <action android:name="android.intent.action.MAIN" />
+65-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:34:9-60
+65-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:34:17-58
+66
+67                <category android:name="android.intent.category.LAUNCHER" />
+67-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:35:9-68
+67-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:35:19-66
+68            </intent-filter>
+69        </activity>
+70        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+70-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:38:5-81
+70-->/home/zaina/Documents/GraduationProject/BookToBook/android/app/src/main/AndroidManifest.xml:38:15-79
+71
+72        <meta-data
+72-->[:unimodules-react-native-adapter] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:91
+73            android:name="org.unimodules.core.AppLoader#react-native-headless"
+73-->[:unimodules-react-native-adapter] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-79
+74            android:value="org.unimodules.adapters.react.apploader.RNHeadlessAppLoader" />
+74-->[:unimodules-react-native-adapter] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/@unimodules/react-native-adapter/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-88
+75
+76        <provider
+76-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:19:9-27:20
+77            android:name="androidx.core.content.FileProvider"
+77-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:20:13-62
+78            android:authorities="com.booktobook.provider"
+78-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:21:13-60
+79            android:exported="false"
+79-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:22:13-37
+80            android:grantUriPermissions="true" >
+80-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:23:13-47
+81            <meta-data
+81-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:24:13-26:58
+82                android:name="android.support.FILE_PROVIDER_PATHS"
+82-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:17-67
+83                android:resource="@xml/provider_paths" />
+83-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:17-55
+84        </provider>
+85
+86        <activity
+86-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:9-31:72
+87            android:name="com.yalantis.ucrop.UCropActivity"
+87-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:30:13-60
+88            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+88-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:31:13-69
+89
+90        <provider
+90-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-20:20
+91            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+91-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-83
+92            android:authorities="com.booktobook.fileprovider"
+92-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-64
+93            android:exported="false"
+93-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-37
+94            android:grantUriPermissions="true" >
+94-->[:react-native-webview] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-webview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:16:13-47
+95            <meta-data
+95-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:24:13-26:58
+96                android:name="android.support.FILE_PROVIDER_PATHS"
+96-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:17-67
+97                android:resource="@xml/file_provider_paths" />
+97-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:17-55
+98        </provider>
+99        <provider
+99-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:9-34:20
+100            android:name="expo.modules.filesystem.FileSystemFileProvider"
+100-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:13-74
+101            android:authorities="com.booktobook.FileSystemFileProvider"
+101-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:27:13-74
+102            android:exported="false"
+102-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:28:13-37
+103            android:grantUriPermissions="true" >
+103-->[:expo-file-system] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/expo-file-system/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:29:13-47
+104            <meta-data
+104-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:24:13-26:58
+105                android:name="android.support.FILE_PROVIDER_PATHS"
+105-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:25:17-67
+106                android:resource="@xml/file_system_provider_paths" />
+106-->[:react-native-image-crop-picker] /home/zaina/Documents/GraduationProject/BookToBook/node_modules/react-native-image-crop-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:26:17-55
+107        </provider>
+108
+109        <service
+109-->[androidx.room:room-runtime:2.1.0] /home/zaina/.gradle/caches/transforms-3/3b5db4b3b22ae452a34a6490900f58b2/transformed/room-runtime-2.1.0/AndroidManifest.xml:25:9-27:40
+110            android:name="androidx.room.MultiInstanceInvalidationService"
+110-->[androidx.room:room-runtime:2.1.0] /home/zaina/.gradle/caches/transforms-3/3b5db4b3b22ae452a34a6490900f58b2/transformed/room-runtime-2.1.0/AndroidManifest.xml:26:13-74
+111            android:exported="false" />
+111-->[androidx.room:room-runtime:2.1.0] /home/zaina/.gradle/caches/transforms-3/3b5db4b3b22ae452a34a6490900f58b2/transformed/room-runtime-2.1.0/AndroidManifest.xml:27:13-37
+112    </application>
+113
+114</manifest>

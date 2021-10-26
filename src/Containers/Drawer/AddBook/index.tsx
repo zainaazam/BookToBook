@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {ScrollView} from 'react-native-gesture-handler';
+import React, {useRef, useState} from 'react';
+import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import Button from '../../../Components/Button';
 import CustomHeader from '../../../Components/CustomHeader';
 import {
@@ -8,6 +8,7 @@ import {
   MainContainer,
   UploadImage,
   ErrorText,
+  UploadedImage,
 } from './styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import TextField from '../../../Components/TextField';
@@ -20,6 +21,12 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {AddBookStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/AddBookStack';
 import * as Yup from 'yup';
 import {useFormik} from 'formik';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import ImagePicker from 'react-native-image-crop-picker';
+import {ButtonsWrapper} from '../Profile/EditProfile/styles';
+
+const avatar =
+  'https://www.mhh.de/fileadmin/mhh/studierendensekretariat/bilder/Stephanie_Edwards_from_Pixabay_Person_icon.png';
 
 type AddBookScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
@@ -41,6 +48,37 @@ const AddBook = ({navigation}: AddBookProps) => {
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => {
     setShowModal(!showModal);
+  };
+
+  const refRBSheet = useRef<RBSheet>(null);
+  const openRBSheet = () => refRBSheet.current?.open();
+  const closeRBSheet = () => refRBSheet.current?.close();
+
+  const [image, setImage] = useState(avatar);
+  const [isImage, setIsImage] = useState(false);
+
+  const chooseFromCamera = () => {
+    ImagePicker.openCamera({
+      width: 150,
+      height: 200,
+      cropping: true,
+    }).then(photo => {
+      setImage(photo.path);
+      setIsImage(true);
+      closeRBSheet();
+    });
+  };
+
+  const chooseFromGallery = () => {
+    ImagePicker.openPicker({
+      width: 150,
+      height: 200,
+      cropping: true,
+    }).then(photo => {
+      setImage(photo.path);
+      setIsImage(true);
+      closeRBSheet();
+    });
   };
 
   const ValidationSchema = Yup.object().shape({
@@ -72,10 +110,20 @@ const AddBook = ({navigation}: AddBookProps) => {
           rightSide="backButton"
           toggleDrawer={toggleDrawer}
         />
-        <UploadImage>
-          <Icon name="image-plus" size={50} color="rgba(251, 118, 62, 0.5)" />
-          <AddBookText>Add your Book Image</AddBookText>
-        </UploadImage>
+        <TouchableOpacity onPress={openRBSheet}>
+          {isImage ? (
+            <UploadedImage source={{uri: image}} />
+          ) : (
+            <UploadImage>
+              <Icon
+                name="image-plus"
+                size={50}
+                color="rgba(251, 118, 62, 0.5)"
+              />
+              <AddBookText>Add your Book Image</AddBookText>
+            </UploadImage>
+          )}
+        </TouchableOpacity>
         <TextField
           value={values.bookName}
           error={touched.bookName && errors.bookName}
@@ -122,6 +170,42 @@ const AddBook = ({navigation}: AddBookProps) => {
           onOkPress={() => navigate('HomeStack')}
           message={'Your Book Has Been Successfully Added!'}
         />
+        <RBSheet
+          ref={refRBSheet}
+          closeOnPressBack={true}
+          animationType={'slide'}
+          height={170}
+          customStyles={{
+            container: {
+              borderTopLeftRadius: 25,
+              borderTopRightRadius: 25,
+              backgroundColor: colors.backgroundGray,
+              shadowOffset: {
+                width: 0,
+                height: 0,
+              },
+              shadowOpacity: 0.1,
+              shadowRadius: 10,
+              elevation: 7,
+            },
+            wrapper: {
+              backgroundColor: 'rgba(205, 205, 205, 0.5)',
+            },
+          }}>
+          <ButtonsWrapper>
+            <Button
+              title={'Camera'}
+              marginTop={15}
+              onPress={chooseFromCamera}
+            />
+            <Button
+              title={'Gallery'}
+              marginTop={15}
+              orange
+              onPress={chooseFromGallery}
+            />
+          </ButtonsWrapper>
+        </RBSheet>
       </MainContainer>
     </ScrollView>
   );

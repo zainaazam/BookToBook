@@ -4,6 +4,23 @@
             "outputFile": "/home/zaina/Documents/GraduationProject/BookToBook/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-nl/values-nl.xml",
             "map": [
                 {
+                    "source": "/home/zaina/.gradle/caches/transforms-3/4a53910199a89e85940ead50d4bee3aa/transformed/jetified-ucrop-2.2.6-native/res/values-nl/values-nl.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,120,179",
+                        "endColumns": "64,58,54",
+                        "endOffsets": "115,174,229"
+                    },
+                    "to": {
+                        "startLines": "31,32,33",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "3016,3081,3140",
+                        "endColumns": "64,58,54",
+                        "endOffsets": "3076,3135,3190"
+                    }
+                },
+                {
                     "source": "/home/zaina/.gradle/caches/transforms-3/c810a29ee9cc32eddbe9f435a5d40943/transformed/appcompat-1.2.0/res/values-nl/values-nl.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",

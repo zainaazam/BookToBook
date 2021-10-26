@@ -57,3 +57,10 @@ export const Divider = styled.View`
   height: 1.5px;
   margin-bottom: 12px;
 `;
+
+export const ButtonsWrapper = styled.View`
+  align-items: center;
+  flex: 1;
+  /* justify-content: space-around; */
+  margin: 20px;
+`;
