@@ -5,6 +5,9 @@ import {ThemeProvider} from 'styled-components';
 import RootStackNavigation from './Navigation/RootNavigation';
 import {View} from 'react-native';
 import {default_theme} from './Theme';
+import {Provider} from 'react-redux';
+// import {persistor, store} from './Store';
+import store from './Store';
 
 const App = () => {
   return (
@@ -13,13 +16,13 @@ const App = () => {
       onError={(error: Error) => {
         crashlytics().recordError(error);
       }}> */}
-      {/* <Provider> */}
-      <ThemeProvider theme={default_theme}>
-        {/* <PersistGate persistor={persistor}> */}
-        <RootStackNavigation />
-        {/* </PersistGate> */}
-      </ThemeProvider>
-      {/* </Provider> */}
+      <Provider store={store}>
+        <ThemeProvider theme={default_theme}>
+          {/* <PersistGate persistor={persistor}> */}
+          <RootStackNavigation />
+          {/* </PersistGate> */}
+        </ThemeProvider>
+      </Provider>
       {/* </ErrorBoundary> */}
     </View>
   );
