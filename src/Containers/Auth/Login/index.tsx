@@ -52,8 +52,7 @@ const Login = ({navigation}: LoginProps) => {
   ) as ConfigsReducer;
 
   const navigateToVerification = () => {
-    dispatch(FinishLoading());
-    // navigate('Verification');
+    navigate('Verification');
   };
 
   const navigateToSignUp = () => {

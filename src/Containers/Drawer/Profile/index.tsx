@@ -15,8 +15,9 @@ import {DrawerStackParamList} from '../../../Navigation/StackNavigators/DrawerSt
 import {StackNavigationProp} from '@react-navigation/stack';
 import {ProfileStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/ProfileStack';
 import Button from '../../../Components/Button';
-import {FlatList} from 'react-native';
+import {Alert, FlatList, Linking, Platform} from 'react-native';
 import ChoosingCard from '../../../Components/ChoosingCard';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const ProfileImg = require('../../../../Assets/Images/profile.png');
 const BookImg1 = require('../../../../Assets/Images/first-book.png');
@@ -39,6 +40,24 @@ const Profile = ({navigation, route}: ProfileProps) => {
   const {toggleDrawer} = navigation;
   const {navigate} = navigation;
   const {asOthers, backButtonType} = route.params;
+
+  const handlePhoneLinking = (number: string) => {
+    let phoneNumber: string;
+    if (Platform.OS !== 'android') {
+      phoneNumber = `telprompt:${number}`;
+    } else {
+      phoneNumber = `tel:${number}`;
+    }
+    Linking.canOpenURL(phoneNumber)
+      .then(supported => {
+        if (!supported) {
+          Alert.alert('Phone number is not available');
+        } else {
+          return Linking.openURL(phoneNumber);
+        }
+      })
+      .catch(err => Alert.alert(err.message));
+  };
 
   const navigateToEditProfile = () => {
     navigate('EditProfile');
@@ -98,7 +117,10 @@ const Profile = ({navigation, route}: ProfileProps) => {
         <ProfileImage source={ProfileImg} />
         <UserNameText>Sarah Beida</UserNameText>
         <UserEmail>sarah.b@gmail.com</UserEmail>
-        <UserPhone>+962 79 831 9003</UserPhone>
+        <TouchableOpacity
+          onPress={() => handlePhoneLinking('+962 79 831 9003')}>
+          <UserPhone>+962 79 831 9003</UserPhone>
+        </TouchableOpacity>
       </UserInfoContainer>
       {asOthers ? null : (
         <Button

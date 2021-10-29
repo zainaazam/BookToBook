@@ -10,6 +10,13 @@ import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackParamList} from '../../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {HomeStackParamList} from '../../../../Navigation/StackNavigators/DrawerStack/HomeStack';
 import {StackNavigationProp} from '@react-navigation/stack';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../../../Store';
+import {ConfigsReducer} from '../../../../Store/Reducers/Configs/Configs.interface';
+import {
+  FinishLoading,
+  StartLoading,
+} from '../../../../Store/Actions/Configs/ConfigsActions';
 
 const BookImage1 = require('../../../../../Assets/Images/first-book.png');
 const BookImage2 = require('../../../../../Assets/Images/second-book.png');
@@ -27,12 +34,20 @@ interface ExchangeProps {
 const Exchange = ({navigation}: ExchangeProps) => {
   const {toggleDrawer} = navigation;
   const {navigate} = navigation;
+  const dispatch = useDispatch();
+  const {isLoading} = useSelector<RootState>(
+    state => state.ConfigsReducer,
+  ) as ConfigsReducer;
 
   const [selectedBooks, setSelectedBooks] = useState<string[] | []>([]);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => {
-    setShowModal(!showModal);
+    dispatch(StartLoading());
+    setTimeout(() => {
+      setShowModal(!showModal);
+      dispatch(FinishLoading());
+    }, 500);
   };
 
   const navigateToBookDetails = () => {
@@ -100,6 +115,7 @@ const Exchange = ({navigation}: ExchangeProps) => {
         title={'Send Request'}
         onPress={toggleModal}
         buttonDisabled={selectedBooks.length === 0}
+        loading={isLoading}
       />
       <CustomModal
         showModal={showModal}

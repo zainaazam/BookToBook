@@ -7,6 +7,13 @@ import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack'
 import {MainContainer, EnterEmailText} from './styles';
 import * as Yup from 'yup';
 import {useFormik} from 'formik';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../../Store';
+import {ConfigsReducer} from '../../../Store/Reducers/Configs/Configs.interface';
+import {
+  FinishLoading,
+  StartLoading,
+} from '../../../Store/Actions/Configs/ConfigsActions';
 
 export type VerificationScreenNavigationProp = StackNavigationProp<
   AuthStackParamList,
@@ -19,6 +26,10 @@ interface VerificationProps {
 
 const Verification = ({navigation}: VerificationProps) => {
   const {navigate} = navigation;
+  const dispatch = useDispatch();
+  const {isLoading} = useSelector<RootState>(
+    state => state.ConfigsReducer,
+  ) as ConfigsReducer;
 
   const navigateToOTP = () => {
     navigate('OTP');
@@ -35,7 +46,11 @@ const Verification = ({navigation}: VerificationProps) => {
       },
 
       onSubmit: () => {
-        navigateToOTP();
+        dispatch(StartLoading());
+        setTimeout(() => {
+          navigateToOTP();
+          dispatch(FinishLoading());
+        }, 500);
       },
       validationSchema: ValidationSchema,
     });
@@ -50,7 +65,12 @@ const Verification = ({navigation}: VerificationProps) => {
         onChange={handleChange('email') as (text: string) => void}
         onBlur={() => handleBlur('email')}
       />
-      <Button title={'Next'} marginTop={60} onPress={handleSubmit} />
+      <Button
+        title={'Next'}
+        marginTop={60}
+        onPress={handleSubmit}
+        loading={isLoading}
+      />
     </MainContainer>
   );
 };

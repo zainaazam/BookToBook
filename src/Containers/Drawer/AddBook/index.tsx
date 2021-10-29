@@ -24,6 +24,13 @@ import {useFormik} from 'formik';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import ImagePicker from 'react-native-image-crop-picker';
 import {ButtonsWrapper} from '../Profile/EditProfile/styles';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../../Store';
+import {ConfigsReducer} from '../../../Store/Reducers/Configs/Configs.interface';
+import {
+  FinishLoading,
+  StartLoading,
+} from '../../../Store/Actions/Configs/ConfigsActions';
 
 const avatar =
   'https://www.mhh.de/fileadmin/mhh/studierendensekretariat/bilder/Stephanie_Edwards_from_Pixabay_Person_icon.png';
@@ -40,6 +47,10 @@ interface AddBookProps {
 const AddBook = ({navigation}: AddBookProps) => {
   const {toggleDrawer} = navigation;
   const {navigate} = navigation;
+  const dispatch = useDispatch();
+  const {isLoading} = useSelector<RootState>(
+    state => state.ConfigsReducer,
+  ) as ConfigsReducer;
 
   const {colors} = useTheme();
 
@@ -96,7 +107,11 @@ const AddBook = ({navigation}: AddBookProps) => {
       },
       // onSubmit: async submittedValues => {
       onSubmit: () => {
-        toggleModal();
+        dispatch(StartLoading());
+        setTimeout(() => {
+          toggleModal();
+          dispatch(FinishLoading());
+        }, 500);
       },
       validationSchema: ValidationSchema,
     });
@@ -145,7 +160,7 @@ const AddBook = ({navigation}: AddBookProps) => {
         <TextField marginTop={25} placeHolder={'Genre'} />
         <TextField marginTop={25} placeHolder={'No. of Pages'} />
         <TextField marginTop={25} placeHolder={'Your Favorite Quote'} />
-        {errors.description ? (
+        {touched.description && errors.description ? (
           <ErrorText>{errors.description}</ErrorText>
         ) : null}
         <Description
@@ -163,7 +178,12 @@ const AddBook = ({navigation}: AddBookProps) => {
           onFocus={() => setFocus(true)}
           focus={focus}
         />
-        <Button title={'Save'} marginTop={25} onPress={handleSubmit} />
+        <Button
+          title={'Save'}
+          marginTop={25}
+          onPress={handleSubmit}
+          loading={isLoading}
+        />
         <CustomModal
           showModal={showModal}
           hideModal={toggleModal}
