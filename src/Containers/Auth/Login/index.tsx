@@ -25,6 +25,13 @@ import {CompositeNavigationProp} from '@react-navigation/native';
 import {RootStackParamList} from '../../../Navigation/RootNavigation';
 import * as Yup from 'yup';
 import {useFormik} from 'formik';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../../Store';
+import {ConfigsReducer} from '../../../Store/Reducers/Configs/Configs.interface';
+import {
+  FinishLoading,
+  StartLoading,
+} from '../../../Store/Actions/Configs/ConfigsActions';
 
 const WomanWithBook = require('../../../../Assets/Images/sitting-lady.png');
 
@@ -39,9 +46,14 @@ interface LoginProps {
 
 const Login = ({navigation}: LoginProps) => {
   const {navigate} = navigation;
+  const dispatch = useDispatch();
+  const {isLoading} = useSelector<RootState>(
+    state => state.ConfigsReducer,
+  ) as ConfigsReducer;
 
   const navigateToVerification = () => {
-    navigate('Verification');
+    dispatch(FinishLoading());
+    // navigate('Verification');
   };
 
   const navigateToSignUp = () => {
@@ -65,7 +77,11 @@ const Login = ({navigation}: LoginProps) => {
       },
       // onSubmit: async submittedValues => {
       onSubmit: () => {
-        navigateToHome();
+        dispatch(StartLoading());
+        setTimeout(() => {
+          navigateToHome();
+          dispatch(FinishLoading());
+        }, 500);
       },
       validationSchema: ValidationSchema,
     });
@@ -107,7 +123,12 @@ const Login = ({navigation}: LoginProps) => {
               <ResetPassword>Reset</ResetPassword>
             </TouchableOpacity>
           </ForgetPassword>
-          <Button title={'Login'} marginTop={20} onPress={handleSubmit} />
+          <Button
+            title={'Login'}
+            marginTop={20}
+            onPress={handleSubmit}
+            loading={isLoading}
+          />
           <Visitor onPress={navigateToHome}>
             <VisitorText>View as Visitor</VisitorText>
           </Visitor>
