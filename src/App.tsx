@@ -6,8 +6,9 @@ import RootStackNavigation from './Navigation/RootNavigation';
 import {View} from 'react-native';
 import {default_theme} from './Theme';
 import {Provider} from 'react-redux';
-// import {persistor, store} from './Store';
-import store from './Store';
+import {persistor, store} from './Store';
+// import store from './Store';
+import {PersistGate} from 'redux-persist/integration/react';
 
 const App = () => {
   return (
@@ -18,9 +19,9 @@ const App = () => {
       }}> */}
       <Provider store={store}>
         <ThemeProvider theme={default_theme}>
-          {/* <PersistGate persistor={persistor}> */}
-          <RootStackNavigation />
-          {/* </PersistGate> */}
+          <PersistGate persistor={persistor}>
+            <RootStackNavigation />
+          </PersistGate>
         </ThemeProvider>
       </Provider>
       {/* </ErrorBoundary> */}
