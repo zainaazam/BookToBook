@@ -18,6 +18,13 @@ import {
 import * as Yup from 'yup';
 import {useFormik} from 'formik';
 import {KeyboardAvoidingView} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../../Store';
+import {ConfigsReducer} from '../../../Store/Reducers/Configs/Configs.interface';
+import {
+  FinishLoading,
+  StartLoading,
+} from '../../../Store/Actions/Configs/ConfigsActions';
 
 export type SingUpScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootStackParamList, 'DrawerStack'>,
@@ -30,6 +37,10 @@ interface SignUpProps {
 
 const SignUp = ({navigation}: SignUpProps) => {
   const {navigate} = navigation;
+  const dispatch = useDispatch();
+  const {isLoading} = useSelector<RootState>(
+    state => state.ConfigsReducer,
+  ) as ConfigsReducer;
 
   const navigateToLogin = () => {
     navigate('Login');
@@ -67,7 +78,11 @@ const SignUp = ({navigation}: SignUpProps) => {
       },
       // onSubmit: async submittedValues => {
       onSubmit: () => {
-        navigateToHome();
+        dispatch(StartLoading());
+        setTimeout(() => {
+          navigateToHome();
+          dispatch(FinishLoading());
+        }, 500);
       },
       validationSchema: ValidationSchema,
     });
@@ -134,7 +149,12 @@ const SignUp = ({navigation}: SignUpProps) => {
         </Wrapper>
       </KeyboardAvoidingView>
       <Wrapper>
-        <Button title={'Sign Up'} marginTop={20} onPress={handleSubmit} />
+        <Button
+          title={'Sign Up'}
+          marginTop={20}
+          onPress={handleSubmit}
+          loading={isLoading}
+        />
         <Visitor onPress={navigateToHome}>
           <VisitorText>View as Visitor</VisitorText>
         </Visitor>

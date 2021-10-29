@@ -33,7 +33,7 @@ export const BookName = styled(Title)`
 export const Author = styled(UnderLargeText)`
   color: ${({theme}) => theme.colors.lightGray};
   font-family: 'Lato-Bold';
-  margin-bottom: 7px;
+  margin: 4px 0px 12px;
 `;
 
 export const BookDetailsContainer = styled.View`
@@ -41,11 +41,11 @@ export const BookDetailsContainer = styled.View`
 `;
 
 export const PublishDate = styled(MediumText)`
-  margin: 8px 0px 3px;
+  margin: 8px 0px 4px;
 `;
 
 export const BookGenre = styled(MediumText)`
-  margin: 3px 0px;
+  margin: 4px 0px;
 `;
 
 export const Language = styled(MediumText)`
@@ -54,7 +54,7 @@ export const Language = styled(MediumText)`
 `;
 
 export const Pages = styled(MediumText)`
-  margin-top: 3px;
+  margin-top: 5px;
 `;
 
 export const Quote = styled(SubTitle)`

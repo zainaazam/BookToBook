@@ -31,7 +31,8 @@ export const UserEmail = styled(MediumText)`
 `;
 
 export const UserPhone = styled(MediumText)`
-  color: ${({theme}) => theme.colors.lightGray};
+  color: ${({theme}) => theme.colors.blue};
+  text-decoration: underline;
   line-height: 20px;
   text-align: center;
 `;

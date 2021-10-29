@@ -10,6 +10,13 @@ import {DrawerStackParamList} from '../../../../Navigation/StackNavigators/Drawe
 import {StackNavigationProp} from '@react-navigation/stack';
 import {NotificationsStackParamList} from '../../../../Navigation/StackNavigators/DrawerStack/NotificationsStack';
 import {goBack} from '../../../../Navigation/RootNavigation';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../../../Store';
+import {ConfigsReducer} from '../../../../Store/Reducers/Configs/Configs.interface';
+import {
+  FinishLoading,
+  StartLoading,
+} from '../../../../Store/Actions/Configs/ConfigsActions';
 
 const BookImage1 = require('../../../../../Assets/Images/first-book.png');
 const BookImage2 = require('../../../../../Assets/Images/second-book.png');
@@ -27,6 +34,21 @@ interface ChooseToExchangeProps {
 const ChooseToExchange = ({navigation}: ChooseToExchangeProps) => {
   const {toggleDrawer} = navigation;
   const {navigate} = navigation;
+  const dispatch = useDispatch();
+  const {isLoading} = useSelector<RootState>(
+    state => state.ConfigsReducer,
+  ) as ConfigsReducer;
+
+  const handlePreseed = () => {
+    dispatch(StartLoading());
+    setTimeout(() => {
+      navigate('Profile', {
+        asOthers: true,
+        backButtonType: 'preventingBackButton',
+      });
+      dispatch(FinishLoading());
+    }, 500);
+  };
 
   const [selectedBook, setSelectedBook] = useState<string>('');
   const renderItem = ({item}) => {
@@ -89,13 +111,9 @@ const ChooseToExchange = ({navigation}: ChooseToExchangeProps) => {
       <Button
         title={'Approve'}
         marginTop={20}
-        onPress={() =>
-          navigate('Profile', {
-            asOthers: true,
-            backButtonType: 'preventingBackButton',
-          })
-        }
+        onPress={handlePreseed}
         buttonDisabled={selectedBook === ''}
+        loading={isLoading}
       />
       <Button title={'Reject'} orange marginTop={10} onPress={goBack} />
     </MainContainer>

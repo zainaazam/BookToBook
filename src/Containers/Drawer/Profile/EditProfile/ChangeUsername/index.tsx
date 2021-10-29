@@ -12,6 +12,13 @@ import {MainContainer} from './styles';
 import * as Yup from 'yup';
 import {useFormik} from 'formik';
 import {Keyboard, TouchableWithoutFeedback} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../../../../Store';
+import {ConfigsReducer} from '../../../../../Store/Reducers/Configs/Configs.interface';
+import {
+  FinishLoading,
+  StartLoading,
+} from '../../../../../Store/Actions/Configs/ConfigsActions';
 
 type ChangeInfoScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
@@ -32,6 +39,10 @@ const ChangeUsername = ({navigation}: ChangeInfoProps) => {
   const {toggleDrawer} = navigation;
   const {navigate} = navigation;
   const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
+  const {isLoading} = useSelector<RootState>(
+    state => state.ConfigsReducer,
+  ) as ConfigsReducer;
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -52,9 +63,11 @@ const ChangeUsername = ({navigation}: ChangeInfoProps) => {
       // onSubmit: async submittedValues => {
       onSubmit: () => {
         Keyboard.dismiss();
+        dispatch(StartLoading());
         setTimeout(() => {
           toggleModal();
-        }, 250);
+          dispatch(FinishLoading());
+        }, 500);
       },
       validationSchema: ValidationSchema,
     });
@@ -76,7 +89,12 @@ const ChangeUsername = ({navigation}: ChangeInfoProps) => {
           placeHolder={'New Username'}
           marginTop={50}
         />
-        <Button title={'Save'} marginTop={40} onPress={handleSubmit} />
+        <Button
+          title={'Save'}
+          marginTop={40}
+          onPress={handleSubmit}
+          loading={isLoading}
+        />
         <CustomModal
           showModal={showModal}
           hideModal={toggleModal}
