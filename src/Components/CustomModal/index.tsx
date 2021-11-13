@@ -40,7 +40,7 @@ const CustomModal = ({
             hideModal();
             onOkPress();
           }}>
-          <OkText>OK</OkText> {/*This is ok button */}
+          <OkText>OK</OkText>
         </OkButton>
       </Container>
     </ModalView>
