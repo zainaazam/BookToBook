@@ -17,7 +17,7 @@ import {
 } from './styles';
 import * as Yup from 'yup';
 import {useFormik} from 'formik';
-import {KeyboardAvoidingView} from 'react-native';
+import {Alert, KeyboardAvoidingView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../../Store';
 import {ConfigsReducer} from '../../../Store/Reducers/Configs/Configs.interface';
@@ -25,6 +25,8 @@ import {
   FinishLoading,
   StartLoading,
 } from '../../../Store/Actions/Configs/ConfigsActions';
+import {User} from '../../../Types';
+import {SignUpAction} from '../../../Store/Actions/Auth/AuthActions';
 
 export type SingUpScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootStackParamList, 'DrawerStack'>,
@@ -43,11 +45,16 @@ const SignUp = ({navigation}: SignUpProps) => {
   ) as ConfigsReducer;
 
   const navigateToLogin = () => {
+    dispatch(FinishLoading());
     navigate('Login');
   };
 
   const navigateToHome = () => {
     navigation.navigate('DrawerStack');
+  };
+
+  const handleSignUp = (inputs: User) => {
+    dispatch(SignUpAction(inputs, navigation));
   };
 
   const ValidationSchema = Yup.object().shape({
@@ -70,19 +77,30 @@ const SignUp = ({navigation}: SignUpProps) => {
   const {errors, values, touched, handleBlur, handleChange, handleSubmit} =
     useFormik({
       initialValues: {
-        username: '',
+        name: '',
         email: '',
         phone: '',
+        username: '',
         password: '',
         confirmPassword: '',
       },
-      // onSubmit: async submittedValues => {
-      onSubmit: () => {
-        dispatch(StartLoading());
-        setTimeout(() => {
-          navigateToHome();
-          dispatch(FinishLoading());
-        }, 500);
+      onSubmit: async submittedValues => {
+        if (submittedValues.password !== submittedValues.confirmPassword) {
+          return Alert.alert('Passwords does not match');
+        } else {
+          handleSignUp({
+            name: submittedValues.username && submittedValues.username,
+            email: submittedValues.email && submittedValues.email,
+            phone: submittedValues.phone && submittedValues.phone,
+            password: submittedValues.password,
+          });
+        }
+        // onSubmit: () => {
+        // dispatch(StartLoading());
+        // setTimeout(() => {
+        //   navigateToHome();
+        //   dispatch(FinishLoading());
+        // }, 500);
       },
       validationSchema: ValidationSchema,
     });
@@ -99,7 +117,7 @@ const SignUp = ({navigation}: SignUpProps) => {
             onChange={handleChange('username') as (text: string) => void}
             onBlur={() => handleBlur('username')}
             marginTop={20}
-            placeHolder="UserName"
+            placeHolder="Username"
           />
           <TextField
             value={values.email}
