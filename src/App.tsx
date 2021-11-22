@@ -1,30 +1,62 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {ThemeProvider} from 'styled-components';
-// import ErrorBoundary from 'react-native-error-boundary';
 import RootStackNavigation from './Navigation/RootNavigation';
 import {View} from 'react-native';
 import {default_theme} from './Theme';
 import {Provider} from 'react-redux';
 import {persistor, store} from './Store';
-// import store from './Store';
 import {PersistGate} from 'redux-persist/integration/react';
+import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
+// import {ApolloProvider} from 'react-apollo';
+// import {ApolloClient} from 'apollo-client';
+// import {HttpLink} from 'apollo-link-http';
+// import {InMemoryCache} from 'apollo-cache-inmemory';
+
+// const makeApolloClient = () => {
+//   // create an apollo link instance, a network interface for apollo client
+//   const link = new HttpLink({
+//     uri: `https://localhost:6400/graphql/`,
+//   });
+
+//   // create an inmemory cache instance for caching graphql data
+//   const cache = new InMemoryCache();
+
+//   // instantiate apollo client with apollo link instance and cache instance
+//   const client = new ApolloClient({
+//     link,
+//     cache,
+//   });
+
+//   return client;
+// };
+
+// const httpLink = new HttpLink({uri: 'http://46.185.169.93:6400/graphql/v1.0'});
+
+// export const client = new ApolloClient({
+//   link: new HttpLink({uri: 'http://192.168.1.1:6400/graphql'}),
+//   cache: new InMemoryCache(),
+// });
+
+export const client = new ApolloClient({
+  uri: 'http://192.168.1.32:6400/graphql/v1.0',
+  cache: new InMemoryCache(),
+});
+
+// export const client = makeApolloClient();
 
 const App = () => {
   return (
     <View style={styles.icon}>
-      {/* <ErrorBoundary
-      onError={(error: Error) => {
-        crashlytics().recordError(error);
-      }}> */}
-      <Provider store={store}>
-        <ThemeProvider theme={default_theme}>
-          <PersistGate persistor={persistor}>
-            <RootStackNavigation />
-          </PersistGate>
-        </ThemeProvider>
-      </Provider>
-      {/* </ErrorBoundary> */}
+      <ApolloProvider client={client}>
+        <Provider store={store}>
+          <ThemeProvider theme={default_theme}>
+            <PersistGate persistor={persistor}>
+              <RootStackNavigation />
+            </PersistGate>
+          </ThemeProvider>
+        </Provider>
+      </ApolloProvider>
     </View>
   );
 };
