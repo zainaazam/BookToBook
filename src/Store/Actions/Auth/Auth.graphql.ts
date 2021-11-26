@@ -35,3 +35,20 @@ export const CREATE_ACCOUNT = gql`
     }
   }
 `;
+
+export const ACCOUNT_LOGIN = gql`
+  mutation accountLogin($emailOrPhone: String!, $password: String!) {
+    accountLogin(
+      loginInput: {emailOrPhone: $emailOrPhone, password: $password}
+    ) {
+      id
+      name
+      email
+      phone
+      password
+      deleted
+      updated_at
+      created_at
+    }
+  }
+`;

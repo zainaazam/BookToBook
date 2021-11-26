@@ -28,10 +28,9 @@ import {useFormik} from 'formik';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../../Store';
 import {ConfigsReducer} from '../../../Store/Reducers/Configs/Configs.interface';
-import {
-  FinishLoading,
-  StartLoading,
-} from '../../../Store/Actions/Configs/ConfigsActions';
+import {LoginAction} from '../../../Store/Actions/Auth/AuthActions';
+import {UserLoginInputs} from '../../../Store/Types/Auth/Auth.action-types';
+import {AuthReducer} from '../../../Store/Reducers/Auth/AuthReducer.interfaces';
 
 const WomanWithBook = require('../../../../Assets/Images/sitting-lady.png');
 
@@ -63,24 +62,34 @@ const Login = ({navigation}: LoginProps) => {
     navigation.navigate('DrawerStack');
   };
 
+  const handleLogin = (inputs: UserLoginInputs) => {
+    dispatch(LoginAction(inputs, navigation));
+  };
+
   const ValidationSchema = Yup.object().shape({
-    username: Yup.string().trim().required('Please enter your username!'),
+    emailOrPhone: Yup.string()
+      .trim()
+      .required('Please enter your Email or Phone Number!'),
     password: Yup.string().trim().required('Please enter your password!'),
   });
 
   const {errors, values, touched, handleBlur, handleChange, handleSubmit} =
     useFormik({
       initialValues: {
-        username: '',
+        emailOrPhone: '',
         password: '',
       },
-      // onSubmit: async submittedValues => {
-      onSubmit: () => {
-        dispatch(StartLoading());
-        setTimeout(() => {
-          navigateToHome();
-          dispatch(FinishLoading());
-        }, 500);
+      onSubmit: async submittedValues => {
+        handleLogin({
+          emailOrPhone: submittedValues.emailOrPhone,
+          password: submittedValues.password.trim(),
+        });
+        // onSubmit: () => {
+        //   dispatch(StartLoading());
+        //   setTimeout(() => {
+        //     navigateToHome();
+        //     dispatch(FinishLoading());
+        //   }, 500);
       },
       validationSchema: ValidationSchema,
     });
@@ -99,12 +108,12 @@ const Login = ({navigation}: LoginProps) => {
             </SignUp>
           </DoNotHaveAccount>
           <TextField
-            value={values.username}
-            error={touched.username && errors.username}
-            onChange={handleChange('username') as (text: string) => void}
-            onBlur={() => handleBlur('username')}
+            value={values.emailOrPhone}
+            error={touched.emailOrPhone && errors.emailOrPhone}
+            onChange={handleChange('emailOrPhone') as (text: string) => void}
+            onBlur={() => handleBlur('emailOrPhone')}
             marginTop={15}
-            placeHolder="Username"
+            placeHolder="Email or Phone Number"
           />
           <TextField
             value={values.password}
