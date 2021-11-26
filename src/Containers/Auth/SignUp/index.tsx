@@ -21,12 +21,8 @@ import {Alert, KeyboardAvoidingView} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../../Store';
 import {ConfigsReducer} from '../../../Store/Reducers/Configs/Configs.interface';
-import {
-  FinishLoading,
-  StartLoading,
-} from '../../../Store/Actions/Configs/ConfigsActions';
-import {User} from '../../../Types';
 import {SignUpAction} from '../../../Store/Actions/Auth/AuthActions';
+import {UserSignUpInputs} from '../../../Store/Types/Auth/Auth.action-types';
 
 export type SingUpScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootStackParamList, 'DrawerStack'>,
@@ -45,7 +41,6 @@ const SignUp = ({navigation}: SignUpProps) => {
   ) as ConfigsReducer;
 
   const navigateToLogin = () => {
-    dispatch(FinishLoading());
     navigate('Login');
   };
 
@@ -53,7 +48,7 @@ const SignUp = ({navigation}: SignUpProps) => {
     navigation.navigate('DrawerStack');
   };
 
-  const handleSignUp = (inputs: User) => {
+  const handleSignUp = (inputs: UserSignUpInputs) => {
     dispatch(SignUpAction(inputs, navigation));
   };
 
@@ -77,10 +72,9 @@ const SignUp = ({navigation}: SignUpProps) => {
   const {errors, values, touched, handleBlur, handleChange, handleSubmit} =
     useFormik({
       initialValues: {
-        name: '',
+        username: '',
         email: '',
         phone: '',
-        username: '',
         password: '',
         confirmPassword: '',
       },
