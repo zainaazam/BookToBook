@@ -14,6 +14,8 @@ import {
 } from './styles';
 import {SafeAreaView} from 'react-native';
 import Button from '../Button';
+import {store} from '../../Store';
+import {LogOut} from '../../Store/Actions';
 
 interface CustomItemProps {
   title: string;
@@ -42,6 +44,7 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
   } = props;
 
   const handleLogOut = () => {
+    store.dispatch(LogOut());
     reset({
       index: 1,
       routes: [{name: 'AuthStack'}],

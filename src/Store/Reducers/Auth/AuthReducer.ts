@@ -1,5 +1,5 @@
 import {User} from '../../../Types';
-import {SET_ACCOUNT} from '../../Actions/ActionTypes';
+import {LOG_OUT, SET_ACCOUNT} from '../../Actions/ActionTypes';
 import {ActionTypes} from '../../Types';
 import {AuthReducer} from './AuthReducer.interfaces';
 
@@ -13,6 +13,11 @@ export default (state = initialState, action: ActionTypes): AuthReducer => {
       return {
         ...state,
         account: action.payload,
+      };
+    case LOG_OUT:
+      return {
+        ...state,
+        ...initialState,
       };
     default:
       return state;

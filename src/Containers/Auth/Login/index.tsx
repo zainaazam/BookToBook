@@ -30,7 +30,6 @@ import {RootState} from '../../../Store';
 import {ConfigsReducer} from '../../../Store/Reducers/Configs/Configs.interface';
 import {LoginAction} from '../../../Store/Actions/Auth/AuthActions';
 import {UserLoginInputs} from '../../../Store/Types/Auth/Auth.action-types';
-import {AuthReducer} from '../../../Store/Reducers/Auth/AuthReducer.interfaces';
 
 const WomanWithBook = require('../../../../Assets/Images/sitting-lady.png');
 
@@ -81,7 +80,7 @@ const Login = ({navigation}: LoginProps) => {
       },
       onSubmit: async submittedValues => {
         handleLogin({
-          emailOrPhone: submittedValues.emailOrPhone,
+          emailOrPhone: submittedValues.emailOrPhone.trim(),
           password: submittedValues.password.trim(),
         });
         // onSubmit: () => {

@@ -1,9 +1,13 @@
 import {User} from '../../../Types';
-import {SET_ACCOUNT} from '../../Actions/ActionTypes';
+import {LOG_OUT, SET_ACCOUNT} from '../../Actions/ActionTypes';
 
 interface SetAccount {
   type: typeof SET_ACCOUNT;
   payload: User;
+}
+
+interface LogOut {
+  type: typeof LOG_OUT;
 }
 
 export interface UserSignUpInputs {
@@ -18,4 +22,4 @@ export interface UserLoginInputs {
   password: string;
 }
 
-export type AuthActionTypes = SetAccount;
+export type AuthActionTypes = SetAccount | LogOut;

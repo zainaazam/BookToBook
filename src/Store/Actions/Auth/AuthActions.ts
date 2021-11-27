@@ -9,13 +9,17 @@ import {
   UserLoginInputs,
   UserSignUpInputs,
 } from '../../Types/Auth/Auth.action-types';
-import {SET_ACCOUNT} from '../ActionTypes';
+import {LOG_OUT, SET_ACCOUNT} from '../ActionTypes';
 import {User} from '../../../Types';
 import {ActionTypes} from '../../Types';
 
 export const SetAccount = (account: User): ActionTypes => ({
   type: SET_ACCOUNT,
   payload: account,
+});
+
+export const LogOut = (): ActionTypes => ({
+  type: LOG_OUT,
 });
 
 export const SignUpAction =
