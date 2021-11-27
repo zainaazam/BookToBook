@@ -5,7 +5,7 @@ import Button from '../../../Components/Button';
 import TextField from '../../../Components/TextField';
 import {RootStackParamList} from '../../../Navigation/RootNavigation';
 import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack';
-import {Visitor, VisitorText} from '../Welcome/styles';
+// import {Visitor, VisitorText} from '../Welcome/styles';
 import {MainContainer, Wrapper} from '../Login/styles';
 import {
   AlreadyHaveAccount,
@@ -167,9 +167,9 @@ const SignUp = ({navigation}: SignUpProps) => {
           onPress={handleSubmit}
           loading={isLoading}
         />
-        <Visitor onPress={navigateToHome}>
+        {/* <Visitor onPress={navigateToHome}>
           <VisitorText>View as Visitor</VisitorText>
-        </Visitor>
+        </Visitor> */}
       </Wrapper>
     </MainContainer>
   );

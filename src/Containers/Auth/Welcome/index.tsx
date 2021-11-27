@@ -11,8 +11,8 @@ import {
   GetStarted,
   ClearSpace,
   Logo,
-  Visitor,
-  VisitorText,
+  // Visitor,
+  // VisitorText,
 } from './styles';
 import {RootStackParamList} from '../../../Navigation/RootNavigation';
 const ManWithBooks = require('../../../../Assets/Images/sitting-reading.png');
@@ -58,9 +58,9 @@ const Welcome: React.FC<Props> = ({navigation}) => {
         blueTitle
         onPress={navigateToSignUp}
       />
-      <Visitor onPress={navigateToHome}>
+      {/* <Visitor onPress={navigateToHome}>
         <VisitorText>View as Visitor</VisitorText>
-      </Visitor>
+      </Visitor> */}
     </MainContainer>
   );
 };

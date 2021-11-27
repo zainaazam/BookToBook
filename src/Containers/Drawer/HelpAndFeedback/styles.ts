@@ -11,6 +11,7 @@ export const MainContainer = styled.View`
   align-items: center;
 `;
 export const ComingSoonText = styled(LargeText)`
-  color: 'rgba(251,118,62,0.6)';
+  color: 'rgba(252, 163, 17,0.6)';
+  /* color: 'rgba(251,118,62,0.6)'; */
   align-items: center;
 `;

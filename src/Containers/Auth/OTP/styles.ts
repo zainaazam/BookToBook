@@ -20,7 +20,8 @@ export const EnterFourDigitsText = styled(MediumText)`
 
 export const styles = StyleSheet.create({
   input: {
-    color: '#1580D7',
+    // color: '#1580D7',
+    color: '#14213d',
   },
   container: {
     marginTop: 60,

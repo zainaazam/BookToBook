@@ -26,7 +26,12 @@ const HelpAndFeedback = ({navigation}: HelpAndFeedbackProps) => {
     <MainContainer>
       <CustomHeader rightSide="backButton" menu toggleDrawer={toggleDrawer} />
       <IconContainer>
-        <Icon name="timer" size={240} color="rgba(251,118,62,0.6)" />
+        <Icon
+          name="timer"
+          size={240}
+          // color="rgba(251,118,62,0.6)"
+          color="rgba(252, 163, 17,0.6)"
+        />
       </IconContainer>
       <ComingSoonText>COMING SOON!</ComingSoonText>
     </MainContainer>
