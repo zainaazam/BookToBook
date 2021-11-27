@@ -83,10 +83,10 @@ const SignUp = ({navigation}: SignUpProps) => {
           return Alert.alert('Passwords does not match');
         } else {
           handleSignUp({
-            name: submittedValues.username && submittedValues.username,
-            email: submittedValues.email && submittedValues.email,
-            phone: submittedValues.phone && submittedValues.phone,
-            password: submittedValues.password,
+            name: submittedValues.username && submittedValues.username.trim(),
+            email: submittedValues.email && submittedValues.email.trim(),
+            phone: submittedValues.phone && submittedValues.phone.trim(),
+            password: submittedValues.password.trim(),
           });
         }
         // onSubmit: () => {
