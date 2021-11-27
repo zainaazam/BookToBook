@@ -133,7 +133,8 @@ const AddBook = ({navigation}: AddBookProps) => {
               <Icon
                 name="image-plus"
                 size={50}
-                color="rgba(251, 118, 62, 0.5)"
+                // color="rgba(251, 118, 62, 0.5)"
+                color="rgba(252, 163, 17, 0.5)"
               />
               <AddBookText>Add your Book Image</AddBookText>
             </UploadImage>

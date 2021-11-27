@@ -33,7 +33,7 @@ const DrawerStack = () => {
       screenOptions={{
         drawerContentContainerStyle: {
           borderWidth: 1,
-          backgroundColor: '#F2F2F2',
+          backgroundColor: '#ffffff',
         },
         headerShown: false,
         drawerLabelStyle: {

@@ -38,13 +38,13 @@ export const ClearSpace = styled(Title)`
   font-family: 'Lato-Bold';
 `;
 
-export const Visitor = styled.TouchableOpacity`
-  margin-top: 20px;
-`;
+// export const Visitor = styled.TouchableOpacity`
+//   margin-top: 20px;
+// `;
 
-export const VisitorText = styled(MediumText)`
-  color: ${({theme}) => theme.colors.lightGray};
-`;
+// export const VisitorText = styled(MediumText)`
+//   color: ${({theme}) => theme.colors.lightGray};
+// `;
 
 export const styles = StyleSheet.create({
   image: {

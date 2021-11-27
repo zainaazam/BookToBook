@@ -16,7 +16,7 @@ import {
   ForgetPasswordText,
   Wrapper,
 } from './styles';
-import {Visitor, VisitorText} from '../Welcome/styles';
+// import {Visitor, VisitorText} from '../Welcome/styles';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {KeyboardAvoidingView} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -136,9 +136,9 @@ const Login = ({navigation}: LoginProps) => {
             onPress={handleSubmit}
             loading={isLoading}
           />
-          <Visitor onPress={navigateToHome}>
+          {/* <Visitor onPress={navigateToHome}> //TODO future plan
             <VisitorText>View as Visitor</VisitorText>
-          </Visitor>
+          </Visitor> */}
         </Wrapper>
       </KeyboardAvoidingView>
     </MainContainer>
