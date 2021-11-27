@@ -18,6 +18,9 @@ import Button from '../../../Components/Button';
 import {Alert, FlatList, Linking, Platform} from 'react-native';
 import ChoosingCard from '../../../Components/ChoosingCard';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {RootState} from '../../../Store';
+import {useSelector} from 'react-redux';
+import {AuthReducer} from '../../../Store/Reducers/Auth/AuthReducer.interfaces';
 
 const ProfileImg = require('../../../../Assets/Images/profile.png');
 const BookImg1 = require('../../../../Assets/Images/first-book.png');
@@ -40,6 +43,10 @@ const Profile = ({navigation, route}: ProfileProps) => {
   const {toggleDrawer} = navigation;
   const {navigate} = navigation;
   const {asOthers, backButtonType} = route.params;
+
+  const {account} = useSelector<RootState>(
+    state => state.AuthReducer,
+  ) as AuthReducer;
 
   const handlePhoneLinking = (number: string) => {
     let phoneNumber: string;
@@ -115,11 +122,10 @@ const Profile = ({navigation, route}: ProfileProps) => {
       />
       <UserInfoContainer>
         <ProfileImage source={ProfileImg} />
-        <UserNameText>Sarah Beida</UserNameText>
-        <UserEmail>sarah.b@gmail.com</UserEmail>
-        <TouchableOpacity
-          onPress={() => handlePhoneLinking('+962 79 831 9003')}>
-          <UserPhone>+962 79 831 9003</UserPhone>
+        <UserNameText>{account.name}</UserNameText>
+        <UserEmail>{account.email}</UserEmail>
+        <TouchableOpacity onPress={() => handlePhoneLinking(account.phone)}>
+          <UserPhone>{account.phone}</UserPhone>
         </TouchableOpacity>
       </UserInfoContainer>
       {asOthers ? null : (
