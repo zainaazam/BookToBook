@@ -18,9 +18,9 @@ import {
   StartLoading,
 } from '../../../../Store/Actions/Configs/ConfigsActions';
 
-const BookImage1 = require('../../../../../Assets/Images/first-book.png');
-const BookImage2 = require('../../../../../Assets/Images/second-book.png');
-const BookImage3 = require('../../../../../Assets/Images/third-book.png');
+const GameImage1 = require('../../../../../Assets/Images/first-game.jpg');
+const GameImage2 = require('../../../../../Assets/Images/second-game.jpg');
+const GameImage3 = require('../../../../../Assets/Images/third-game.jpg');
 
 type ChooseToExchangeScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
@@ -39,7 +39,7 @@ const ChooseToExchange = ({navigation}: ChooseToExchangeProps) => {
     state => state.ConfigsReducer,
   ) as ConfigsReducer;
 
-  const handlePreseed = () => {
+  const handlePressed = () => {
     dispatch(StartLoading());
     setTimeout(() => {
       navigate('Profile', {
@@ -50,18 +50,18 @@ const ChooseToExchange = ({navigation}: ChooseToExchangeProps) => {
     }, 500);
   };
 
-  const [selectedBook, setSelectedBook] = useState<string>('');
+  const [selectedGame, setSelectedGame] = useState<string>('');
   const renderItem = ({item}) => {
     return (
       <ChoosingCard
-        bookName={item.bookName}
-        author={item.author}
+        gameName={item.gameName}
+        developer={item.developer}
         description={item.description}
         image={item.image}
         id={item.id}
-        selectedBook={selectedBook}
-        setSelectedBook={setSelectedBook}
-        onNavigate={() => navigate('BookDetails', {withoutRequesting: true})}
+        selectedGame={selectedGame}
+        setSelectedGame={setSelectedGame}
+        onNavigate={() => navigate('GameDetails', {withoutRequesting: true})}
       />
     );
   };
@@ -69,27 +69,27 @@ const ChooseToExchange = ({navigation}: ChooseToExchangeProps) => {
   const data = [
     {
       id: '0',
-      bookName: 'Muscle',
-      author: 'Alan Trotter',
+      gameName: 'Battlefield',
+      developer: 'DICE',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et mi vel purus vive',
-      image: BookImage1,
+      image: GameImage1,
     },
     {
       id: '1',
-      bookName: 'Sing to it',
-      author: 'Amy Hempel',
+      gameName: 'Grand Theft Auto V',
+      developer: 'Rockstar Games, Rockstar North, MORE',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et mi vel purus vive',
-      image: BookImage2,
+      image: GameImage2,
     },
     {
       id: '2',
-      bookName: 'Sugar Run',
-      author: 'Mesha Maren',
+      gameName: 'FIFA 22',
+      developer: 'Electronic Arts, EA Romania, EA Vancouver',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et mi vel purus vive',
-      image: BookImage3,
+      image: GameImage3,
     },
   ];
 
@@ -101,7 +101,7 @@ const ChooseToExchange = ({navigation}: ChooseToExchangeProps) => {
         menu
         toggleDrawer={toggleDrawer}
       />
-      <ChooseText>Please choose one book to exchange:</ChooseText>
+      <ChooseText>Please choose one game to exchange:</ChooseText>
       <FlatList
         showsVerticalScrollIndicator={false}
         data={data}
@@ -111,8 +111,8 @@ const ChooseToExchange = ({navigation}: ChooseToExchangeProps) => {
       <Button
         title={'Approve'}
         marginTop={20}
-        onPress={handlePreseed}
-        buttonDisabled={selectedBook === ''}
+        onPress={handlePressed}
+        buttonDisabled={selectedGame === ''}
         loading={isLoading}
       />
       <Button title={'Reject'} orange marginTop={10} onPress={goBack} />

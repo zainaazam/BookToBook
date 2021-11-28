@@ -10,9 +10,10 @@ import {CompositeNavigationProp} from '@react-navigation/native';
 import {DrawerStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 
-const BookImage1 = require('../../../../Assets/Images/first-book.png');
-const BookImage2 = require('../../../../Assets/Images/second-book.png');
-const BookImage3 = require('../../../../Assets/Images/third-book.png');
+const GameImage1 = require('../../../../Assets/Images/first-game.jpg');
+const GameImage2 = require('../../../../Assets/Images/second-game.jpg');
+const GameImage3 = require('../../../../Assets/Images/third-game.jpg');
+const GameImage4 = require('../../../../Assets/Images/forth-game.jpg');
 
 type NotificationsScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
@@ -37,7 +38,7 @@ const Notifications = ({navigation}: NotificationsProps) => {
         name={item.name}
         image={item.image}
         isRead={item.isRead}
-        nameOfBook={item.nameOfBook}
+        nameOfGame={item.nameOfGame}
         type={item.type}
         onRequestPress={navigateToChooseToExchange}
         onApprovedPress={() => navigate('Profile', {asOthers: true})}
@@ -48,29 +49,29 @@ const Notifications = ({navigation}: NotificationsProps) => {
     {
       id: '0',
       name: 'Zaina',
-      nameOfBook: 'Sing to it',
-      image: BookImage2,
+      nameOfGame: 'Battlefield',
+      image: GameImage1,
       type: 'requesting',
       isRead: false,
     },
     {
       id: '1',
-      nameOfBook: 'Muscle',
-      image: BookImage1,
+      nameOfGame: 'Grand Theft Auto V',
+      image: GameImage2,
       type: 'sent',
       isRead: true,
     },
     {
       id: '2',
-      nameOfBook: 'Sugar run',
-      image: BookImage3,
+      nameOfGame: 'FIFA 22',
+      image: GameImage3,
       type: 'rejected',
       isRead: true,
     },
     {
       id: '3',
-      nameOfBook: 'Sugar run',
-      image: BookImage3,
+      nameOfGame: 'Valorant',
+      image: GameImage4,
       type: 'approved',
       isRead: false,
     },

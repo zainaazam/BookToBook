@@ -44,9 +44,9 @@ const SignUp = ({navigation}: SignUpProps) => {
     navigate('Login');
   };
 
-  const navigateToHome = () => {
-    navigation.navigate('DrawerStack');
-  };
+  // const navigateToHome = () => {
+  //   navigation.navigate('DrawerStack');
+  // };
 
   const handleSignUp = (inputs: UserSignUpInputs) => {
     dispatch(SignUpAction(inputs, navigation));
@@ -103,7 +103,8 @@ const SignUp = ({navigation}: SignUpProps) => {
     <MainContainer>
       <KeyboardAvoidingView behavior="position">
         <SignUpText>Sign up,</SignUpText>
-        <DiscoverWorldText>Discover a New World With Us</DiscoverWorldText>
+        {/* <DiscoverWorldText>Discover a New World With Us</DiscoverWorldText> */}
+        {/* <DiscoverWorldText>Discover a New Planet With Us</DiscoverWorldText> */}
         <Wrapper>
           <TextField
             value={values.username}

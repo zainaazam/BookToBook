@@ -36,7 +36,8 @@ const OTP = ({navigation}: OTPProps) => {
           ref={codeInput}
           keyboardType="numeric"
           codeLength={4}
-          className="border-circle"
+          // className="border-circle"
+          className="border-box"
           space={15}
           autoFocus
           size={50}

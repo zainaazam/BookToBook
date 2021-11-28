@@ -33,7 +33,7 @@ export const UserName = styled(AboveMediumText)`
   font-family: 'Lato-Bold';
 `;
 
-export const BookName = styled(AboveMediumText)`
+export const GameName = styled(AboveMediumText)`
   color: ${({theme}) => theme.colors.darkGray};
   font-family: 'Lato-Bold';
 `;

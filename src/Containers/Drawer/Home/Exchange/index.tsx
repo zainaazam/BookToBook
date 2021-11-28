@@ -18,9 +18,9 @@ import {
   StartLoading,
 } from '../../../../Store/Actions/Configs/ConfigsActions';
 
-const BookImage1 = require('../../../../../Assets/Images/first-book.png');
-const BookImage2 = require('../../../../../Assets/Images/second-book.png');
-const BookImage3 = require('../../../../../Assets/Images/third-book.png');
+const GameImage1 = require('../../../../../Assets/Images/first-game.jpg');
+const GameImage2 = require('../../../../../Assets/Images/second-game.jpg');
+const GameImage3 = require('../../../../../Assets/Images/third-game.jpg');
 
 type ExchangeScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
@@ -39,7 +39,7 @@ const Exchange = ({navigation}: ExchangeProps) => {
     state => state.ConfigsReducer,
   ) as ConfigsReducer;
 
-  const [selectedBooks, setSelectedBooks] = useState<string[] | []>([]);
+  const [selectedGames, setSelectedGames] = useState<string[] | []>([]);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => {
@@ -50,21 +50,21 @@ const Exchange = ({navigation}: ExchangeProps) => {
     }, 500);
   };
 
-  const navigateToBookDetails = () => {
-    navigation.push('BookDetails', {withoutRequesting: true});
+  const navigateToGameDetails = () => {
+    navigation.push('GameDetails', {withoutRequesting: true});
   };
 
   const renderItem = ({item}) => {
     return (
       <ChoosingMultiCard
-        bookName={item.bookName}
-        author={item.author}
+        gameName={item.gameName}
+        developer={item.developer}
         description={item.description}
         image={item.image}
         id={item.id}
-        selectedBooks={selectedBooks}
-        setSelectedBooks={setSelectedBooks}
-        onReadMorePress={navigateToBookDetails}
+        selectedGames={selectedGames}
+        setSelectedGames={setSelectedGames}
+        onReadMorePress={navigateToGameDetails}
       />
     );
   };
@@ -72,27 +72,27 @@ const Exchange = ({navigation}: ExchangeProps) => {
   const data = [
     {
       id: '0',
-      bookName: 'Muscle',
-      author: 'Alan Trotter',
+      gameName: 'Battlefield',
+      developer: 'DICE',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et mi vel purus vive',
-      image: BookImage1,
+      image: GameImage1,
     },
     {
       id: '1',
-      bookName: 'Sing to it',
-      author: 'Amy Hempel',
+      gameName: 'Grand Theft Auto V',
+      developer: 'Rockstar Games, Rockstar North, MORE',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et mi vel purus vive',
-      image: BookImage2,
+      image: GameImage2,
     },
     {
       id: '2',
-      bookName: 'Sugar Run',
-      author: 'Mesha Maren',
+      gameName: 'FIFA 22',
+      developer: 'Electronic Arts, EA Romania, EA Vancouver',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et mi vel purus vive',
-      image: BookImage3,
+      image: GameImage3,
     },
   ];
 
@@ -104,7 +104,7 @@ const Exchange = ({navigation}: ExchangeProps) => {
         toggleDrawer={toggleDrawer}
         rightSide="backButton"
       />
-      <ChooseText>Choose from your books :</ChooseText>
+      <ChooseText>Choose from your games :</ChooseText>
       <FlatList
         showsVerticalScrollIndicator={false}
         data={data}
@@ -114,7 +114,7 @@ const Exchange = ({navigation}: ExchangeProps) => {
       <Button
         title={'Send Request'}
         onPress={toggleModal}
-        buttonDisabled={selectedBooks.length === 0}
+        buttonDisabled={selectedGames.length === 0}
         loading={isLoading}
       />
       <CustomModal

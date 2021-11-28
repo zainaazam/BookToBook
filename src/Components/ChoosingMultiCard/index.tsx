@@ -1,10 +1,10 @@
 import React from 'react';
 import {
   CardWrapper,
-  BookImage,
+  GameImage,
   DetailsContainer,
-  BookName,
-  Author,
+  GameName,
+  Developer,
   Description,
   ReadMore,
   ReadMoreText,
@@ -13,42 +13,48 @@ import {
 import {styles} from '../../Containers/Auth/Welcome/styles';
 import {ImageSourcePropType} from 'react-native';
 
-interface BookCardProps {
-  bookName?: string;
-  author?: string;
+interface ChoosingMultiCardProps {
+  gameName?: string;
+  developer?: string;
   description?: string;
   image?: ImageSourcePropType;
   id?: string;
-  selectedBooks?: string[];
-  setSelectedBooks?: (value: string[]) => void;
+  selectedGames?: string[];
+  setSelectedGames?: (value: string[]) => void;
   onReadMorePress?: () => void;
 }
 
 const ChoosingMultiCard = ({
-  bookName,
-  author,
+  gameName,
+  developer,
   description,
   image,
   id,
-  selectedBooks,
-  setSelectedBooks,
+  selectedGames,
+  setSelectedGames,
   onReadMorePress,
-}: BookCardProps) => {
+}: ChoosingMultiCardProps) => {
   const toggleSelected = () => {
-    if (selectedBooks?.includes(id)) {
-      setSelectedBooks &&
-        setSelectedBooks(selectedBooks?.filter(item => item !== id));
+    if (selectedGames?.includes(id)) {
+      setSelectedGames &&
+        setSelectedGames(selectedGames?.filter(item => item !== id));
     } else {
-      setSelectedBooks && setSelectedBooks(selectedBooks.concat(id));
+      setSelectedGames && setSelectedGames(selectedGames.concat(id));
     }
   };
 
   return (
     <CardWrapper onPress={toggleSelected}>
-      <BookImage source={image} style={styles.image} />
+      <GameImage source={image} style={styles.image} />
       <DetailsContainer>
-        <BookName>{bookName}</BookName>
-        <Author>{author}</Author>
+        <GameName>
+          {gameName && gameName.substring(0, 13)}
+          {gameName && gameName.length > 13 ? '...' : ''}
+        </GameName>
+        <Developer>
+          {developer && developer.substring(0, 15)}
+          {developer && developer.length > 15 ? '...' : ''}
+        </Developer>
         <Description>
           {description && description.substring(0, 22)}...
         </Description>
@@ -56,7 +62,7 @@ const ChoosingMultiCard = ({
           <ReadMoreText>Read more</ReadMoreText>
         </ReadMore>
       </DetailsContainer>
-      <Select selected={selectedBooks?.includes(id)} />
+      <Select selected={selectedGames?.includes(id)} />
     </CardWrapper>
   );
 };

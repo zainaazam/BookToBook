@@ -4,11 +4,11 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {View} from 'react-native';
 import Home from '../../../../Containers/Drawer/Home';
 import Exchange from '../../../../Containers/Drawer/Home/Exchange';
-import BookDetails from '../../../../Containers/Drawer/Home/BookDetails';
+import GameDetails from '../../../../Containers/Drawer/Home/GameDetails';
 
 export type HomeStackParamList = {
   Home: undefined;
-  BookDetails: {withoutRequesting: boolean} | undefined;
+  GameDetails: {withoutRequesting: boolean} | undefined;
   Exchange: undefined;
 };
 
@@ -23,7 +23,7 @@ const HomeStack = () => {
         initialRouteName="Home">
         <Screen name="Home" component={Home} />
         <Screen name="Exchange" component={Exchange} />
-        <Screen name="BookDetails" component={BookDetails} />
+        <Screen name="GameDetails" component={GameDetails} />
       </Navigator>
     </View>
   );

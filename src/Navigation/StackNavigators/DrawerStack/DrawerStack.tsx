@@ -10,7 +10,7 @@ import NotificationsStack, {
 import ChangePasswordStack, {
   ChangePasswordStackParamList,
 } from './ChangePasswordStack';
-import AddBookStack, {AddBookStackParamList} from './AddBookStack';
+import AddGameStack, {AddGameStackParamList} from './AddGameStack';
 import ProfileStack, {ProfileStackParamList} from './ProfileStack';
 import HelpAndFeedbackStack, {
   HelpAndFeedbackStackParamList,
@@ -22,7 +22,7 @@ export type DrawerStackParamList = {
   NotificationsStack: NavigatorScreenParams<NotificationsStackParamList>;
   ProfileStack: NavigatorScreenParams<ProfileStackParamList>;
   ChangePasswordStack: NavigatorScreenParams<ChangePasswordStackParamList>;
-  AddBookStack: NavigatorScreenParams<AddBookStackParamList>;
+  AddGameStack: NavigatorScreenParams<AddGameStackParamList>;
   HelpAndFeedbackStack: NavigatorScreenParams<HelpAndFeedbackStackParamList>;
 };
 
@@ -47,7 +47,7 @@ const DrawerStack = () => {
       <Screen name="ProfileStack" component={ProfileStack} />
       <Screen name="NotificationsStack" component={NotificationsStack} />
       <Screen name="ChangePasswordStack" component={ChangePasswordStack} />
-      <Screen name="AddBookStack" component={AddBookStack} />
+      <Screen name="AddGameStack" component={AddGameStack} />
       <Screen name="AboutStack" component={AboutStack} />
       <Screen name="HelpAndFeedbackStack" component={HelpAndFeedbackStack} />
     </Navigator>

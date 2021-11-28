@@ -1,10 +1,10 @@
 import React from 'react';
 import {
   CardWrapper,
-  BookImage,
+  GameImage,
   DetailsContainer,
-  BookName,
-  Author,
+  GameName,
+  Developer,
   Description,
   ReadMore,
   ReadMoreText,
@@ -13,42 +13,42 @@ import {
 import {styles} from '../../Containers/Auth/Welcome/styles';
 import {ImageSourcePropType} from 'react-native';
 
-interface BookCardProps {
-  bookName?: string;
+interface GameCardProps {
+  gameName?: string;
   author?: string;
   description?: string;
   image?: ImageSourcePropType;
   justListing?: boolean;
   id?: string;
-  selectedBook?: string;
-  setSelectedBook?: (value: string) => void;
+  selectedGame?: string;
+  setSelectedGame?: (value: string) => void;
   onNavigate?: () => void;
 }
 
 const ChoosingCard = ({
-  bookName,
+  gameName,
   author,
   description,
   image,
   justListing,
   id,
-  selectedBook,
-  setSelectedBook,
+  selectedGame,
+  setSelectedGame,
   onNavigate,
-}: BookCardProps) => {
+}: GameCardProps) => {
   const handlePressed = () => {
     if (justListing) {
       onNavigate();
     } else {
-      setSelectedBook && setSelectedBook(id);
+      setSelectedGame && setSelectedGame(id);
     }
   };
   return (
     <CardWrapper onPress={handlePressed}>
-      <BookImage source={image} style={styles.image} />
+      <GameImage source={image} style={styles.image} />
       <DetailsContainer>
-        <BookName>{bookName}</BookName>
-        <Author>{author}</Author>
+        <GameName>{gameName}</GameName>
+        <Developer>{author}</Developer>
         <Description>
           {description && description.substring(0, 22)}...
         </Description>
@@ -56,7 +56,7 @@ const ChoosingCard = ({
           <ReadMoreText>Read more</ReadMoreText>
         </ReadMore>
       </DetailsContainer>
-      {justListing ? null : <Select selected={selectedBook === id} />}
+      {justListing ? null : <Select selected={selectedGame === id} />}
     </CardWrapper>
   );
 };

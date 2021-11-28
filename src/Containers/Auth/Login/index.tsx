@@ -6,7 +6,7 @@ import {
   ForgetPassword,
   HaveAccount,
   HeyText,
-  HopToNewBooksText,
+  HopToNewGamesText,
   MainContainer,
   ResetPassword,
   SignUp,
@@ -31,7 +31,7 @@ import {ConfigsReducer} from '../../../Store/Reducers/Configs/Configs.interface'
 import {LoginAction} from '../../../Store/Actions/Auth/AuthActions';
 import {UserLoginInputs} from '../../../Store/Types/Auth/Auth.action-types';
 
-const WomanWithBook = require('../../../../Assets/Images/sitting-lady.png');
+// const WomanWithBook = require('../../../../Assets/Images/sitting-lady.png');
 
 export type LoginScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootStackParamList, 'DrawerStack'>,
@@ -57,9 +57,9 @@ const Login = ({navigation}: LoginProps) => {
     navigate('SignUp');
   };
 
-  const navigateToHome = () => {
-    navigation.navigate('DrawerStack');
-  };
+  // const navigateToHome = () => {
+  //   navigation.navigate('DrawerStack');
+  // };
 
   const handleLogin = (inputs: UserLoginInputs) => {
     dispatch(LoginAction(inputs, navigation));
@@ -97,9 +97,10 @@ const Login = ({navigation}: LoginProps) => {
     <MainContainer>
       <KeyboardAvoidingView behavior="position">
         <Wrapper>
-          <WomanImage source={WomanWithBook} style={styles.image} />
-          <HeyText>Hey,</HeyText>
-          <HopToNewBooksText>Hop to a New Book Now</HopToNewBooksText>
+          {/* <WomanImage source={WomanWithBook} style={styles.image} /> */}
+          {/* <HeyText>Hey,</HeyText> */}
+          {/* <HopToNewBooksText>Hop to a New Book Now</HopToNewBooksText> */}
+          <HopToNewGamesText>Play a New Game Now</HopToNewGamesText>
           <DoNotHaveAccount>
             <HaveAccount>Don't Have an Account?</HaveAccount>
             <SignUp onPress={navigateToSignUp}>

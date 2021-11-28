@@ -37,7 +37,7 @@ export const UserPhone = styled(MediumText)`
   text-align: center;
 `;
 
-export const BookListText = styled(MediumText)`
+export const GameListText = styled(MediumText)`
   color: ${({theme}) => theme.colors.orange};
   margin: 15px 20px;
   line-height: 20px;

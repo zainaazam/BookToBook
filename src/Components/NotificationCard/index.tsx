@@ -7,7 +7,7 @@ import {
   UserImage,
   UserName,
   NotificationText,
-  BookName,
+  GameName,
 } from './styles';
 
 //TODO 'when it's not clickable, make it clickable and when click then isRead == true'
@@ -17,7 +17,7 @@ interface NotificationProps {
   image?: ImageSourcePropType;
   isRead: boolean;
   type: string;
-  nameOfBook: string;
+  nameOfGame: string;
   onRequestPress?: () => void;
   onApprovedPress?: () => void;
 }
@@ -27,7 +27,7 @@ const Notification = ({
   image,
   isRead,
   type,
-  nameOfBook,
+  nameOfGame,
   onRequestPress,
   onApprovedPress,
 }: NotificationProps) => {
@@ -39,7 +39,7 @@ const Notification = ({
             <UserImage source={image} />
             <NotificationText>
               <UserName>{name}</UserName> requested to exchange{' '}
-              <BookName>{nameOfBook}</BookName>!
+              <GameName>{nameOfGame}</GameName>!
             </NotificationText>
           </RowView>
         </Wrapper>
@@ -48,7 +48,7 @@ const Notification = ({
         <RowView>
           <UserImage source={image} />
           <NotificationText>
-            Your request to exchange <BookName>{nameOfBook}</BookName> book has
+            Your request to exchange <GameName>{nameOfGame}</GameName> game has
             been successfully sent!
           </NotificationText>
         </RowView>
@@ -57,7 +57,7 @@ const Notification = ({
         <RowView>
           <UserImage source={image} />
           <NotificationText>
-            Your request to exchange <BookName>{nameOfBook}</BookName> book has
+            Your request to exchange <GameName>{nameOfGame}</GameName> game has
             been rejected!
           </NotificationText>
         </RowView>
@@ -67,7 +67,7 @@ const Notification = ({
           <RowView>
             <UserImage source={image} />
             <NotificationText>
-              Your request to exchange <BookName>{nameOfBook}</BookName> book
+              Your request to exchange <GameName>{nameOfGame}</GameName> game
               has been Approved!
             </NotificationText>
           </RowView>

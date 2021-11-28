@@ -4,6 +4,7 @@ import {LargeText, MediumText} from '../../../Components/CustomText';
 export const MainContainer = styled.View`
   background-color: ${({theme}) => theme.colors.backgroundGray};
   flex: 1;
+  justify-content: center;
 `;
 
 export const Wrapper = styled.View`
@@ -20,7 +21,7 @@ export const HeyText = styled(LargeText)`
   align-self: flex-start;
   font-family: 'Lato-Bold';
 `;
-export const HopToNewBooksText = styled(LargeText)`
+export const HopToNewGamesText = styled(LargeText)`
   margin: 0px 20px;
   align-self: flex-start;
   font-family: 'Lato-Bold';

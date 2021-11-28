@@ -32,13 +32,16 @@ export const ModalMessage = styled(MediumText)`
 `;
 
 export const OkButton = styled.TouchableOpacity`
-  width: 100%;
+  /* width: 100%; */
+  width: 80%;
   height: 50px;
   align-items: center;
   justify-content: center;
   background-color: ${({theme}) => theme.colors.blue};
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
+  border-radius: 14px;
+  /* border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px; */
+  margin-bottom: 10px;
 `;
 
 export const OkText = styled(MediumText)`
