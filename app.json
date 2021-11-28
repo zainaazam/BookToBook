@@ -1,11 +1,9 @@
 {
   "expo": {
-    "name": "BookToBook",
-    "slug": "BookToBook",
+    "name": "ReGame",
+    "slug": "ReGame",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"]
   },
-  "name": "BookToBook"
+  "name": "ReGame"
 }

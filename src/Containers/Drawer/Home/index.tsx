@@ -3,15 +3,15 @@ import {CompositeNavigationProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {FlatList} from 'react-native';
-import BookCard from '../../../Components/BookCard';
+import GameCard from '../../../Components/GameCard';
 import CustomHeader from '../../../Components/CustomHeader';
 import {DrawerStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {HomeStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/HomeStack';
 import {MainContainer} from './styles';
 
-const BookImage1 = require('../../../../Assets/Images/first-book.png');
-const BookImage2 = require('../../../../Assets/Images/second-book.png');
-const BookImage3 = require('../../../../Assets/Images/third-book.png');
+const GameImage1 = require('../../../../Assets/Images/first-game.jpg');
+const GameImage2 = require('../../../../Assets/Images/second-game.jpg');
+const GameImage3 = require('../../../../Assets/Images/third-game.jpg');
 
 type HomeScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
@@ -26,15 +26,15 @@ const Home = ({navigation}: HomeProps) => {
   const {toggleDrawer} = navigation;
   const {navigate} = navigation;
 
-  const navigateToBookDetails = () => {
-    navigate('BookDetails', {withoutRequesting: false});
+  const navigateToGameDetails = () => {
+    navigate('GameDetails', {withoutRequesting: false});
   };
 
   const renderItem = ({item}) => {
     return (
-      <BookCard
-        bookName={item.bookName}
-        author={item.author}
+      <GameCard
+        gameName={item.gameName}
+        developer={item.developer}
         publisher={item.publisher}
         description={item.description}
         image={item.image}
@@ -44,7 +44,7 @@ const Home = ({navigation}: HomeProps) => {
             params: {asOthers: true},
           })
         }
-        onPress={navigateToBookDetails}
+        onPress={navigateToGameDetails}
       />
     );
   };
@@ -52,30 +52,30 @@ const Home = ({navigation}: HomeProps) => {
   const data = [
     {
       id: '0',
-      bookName: 'Muscle',
-      author: 'Alan Trotter',
+      gameName: 'Battlefield',
+      developer: 'DICE',
       publisher: 'AbeerO',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et mi vel purus vive',
-      image: BookImage1,
+      image: GameImage1,
     },
     {
       id: '1',
-      bookName: 'Sing to it',
-      author: 'Amy Hempel',
+      gameName: 'Grand Theft Auto V',
+      developer: 'Rockstar Games, Rockstar North, MORE',
       publisher: 'ZainaA',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et mi vel purus vive',
-      image: BookImage2,
+      image: GameImage2,
     },
     {
       id: '2',
-      bookName: 'Sugar Run',
-      author: 'Mesha Maren',
+      gameName: 'FIFA 22',
+      developer: 'Electronic Arts, EA Romania, EA Vancouver',
       publisher: 'NourH',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et mi vel purus vive',
-      image: BookImage3,
+      image: GameImage3,
     },
   ];
 

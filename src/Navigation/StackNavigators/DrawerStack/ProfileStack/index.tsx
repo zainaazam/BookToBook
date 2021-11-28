@@ -7,7 +7,7 @@ import EditProfile from '../../../../Containers/Drawer/Profile/EditProfile';
 import ChangeUsername from '../../../../Containers/Drawer/Profile/EditProfile/ChangeUsername';
 import ChangeEmail from '../../../../Containers/Drawer/Profile/EditProfile/ChangeEmail';
 import ChangePhone from '../../../../Containers/Drawer/Profile/EditProfile/ChangePhone';
-import BookDetails from '../../../../Containers/Drawer/Home/BookDetails';
+import GameDetails from '../../../../Containers/Drawer/Home/GameDetails';
 
 export type ProfileStackParamList = {
   Profile: {asOthers?: boolean; backButtonType?: string} | undefined;
@@ -15,7 +15,7 @@ export type ProfileStackParamList = {
   ChangeUsername: undefined;
   ChangeEmail: undefined;
   ChangePhone: undefined;
-  BookDetails: {withoutRequesting: boolean} | undefined;
+  GameDetails: {withoutRequesting: boolean} | undefined;
 };
 
 const ProfileStack = () => {
@@ -36,7 +36,7 @@ const ProfileStack = () => {
         <Screen name="ChangeUsername" component={ChangeUsername} />
         <Screen name="ChangeEmail" component={ChangeEmail} />
         <Screen name="ChangePhone" component={ChangePhone} />
-        <Screen name="BookDetails" component={BookDetails} />
+        <Screen name="GameDetails" component={GameDetails} />
       </Navigator>
     </View>
   );

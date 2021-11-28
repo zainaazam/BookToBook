@@ -15,7 +15,7 @@ import {
   // VisitorText,
 } from './styles';
 import {RootStackParamList} from '../../../Navigation/RootNavigation';
-const ManWithBooks = require('../../../../Assets/Images/sitting-reading.png');
+// const ManWithBooks = require('../../../../Assets/Images/sitting-reading.png');
 const LogoText = require('../../../../Assets/Images/logo1.png');
 
 export type WelcomeScreenNavigationProp = CompositeNavigationProp<
@@ -38,18 +38,19 @@ const Welcome: React.FC<Props> = ({navigation}) => {
     navigate('SignUp');
   };
 
-  const navigateToHome = () => {
-    navigation.navigate('DrawerStack');
-  };
+  // const navigateToHome = () => {
+  //   navigation.navigate('DrawerStack');
+  // };
 
   return (
     <MainContainer>
-      <TitleWrapper>
+      {/* <TitleWrapper>
         <Logo source={LogoText} style={styles.image} />
       </TitleWrapper>
-      <ManImage source={ManWithBooks} style={styles.image} />
+      <ManImage source={ManWithBooks} style={styles.image} /> */}
       <GetStarted>Get Started</GetStarted>
-      <ClearSpace>Clear Some Space for New Books!</ClearSpace>
+      {/* <ClearSpace>Clear Some Space for New Games!</ClearSpace> */}
+      <ClearSpace>Find New Games!</ClearSpace>
       <Button title={'Login'} marginTop={20} onPress={navigateToLogin} />
       <Button
         title={'Sign Up'}

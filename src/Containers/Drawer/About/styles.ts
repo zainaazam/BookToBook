@@ -7,7 +7,7 @@ export const MainContainer = styled.View`
   align-items: center;
 `;
 
-export const B2Text = styled(LargeText)`
+export const ReGameText = styled(LargeText)`
   color: ${({theme}) => theme.colors.blue};
   text-align: center;
   line-height: 32px;

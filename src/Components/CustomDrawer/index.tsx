@@ -89,11 +89,11 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
           }
         />
         <DrawerItem
-          label={() => <CustomItem title="Add a Book" />}
+          label={() => <CustomItem title="Add a Game" />}
           onPress={() =>
             reset({
               index: 1,
-              routes: [{name: 'HomeStack'}, {name: 'AddBookStack'}],
+              routes: [{name: 'HomeStack'}, {name: 'AddGameStack'}],
             })
           }
         />

@@ -6,6 +6,8 @@ export const MainContainer = styled.View`
   background-color: ${({theme}) => theme.colors.backgroundGray};
   flex: 1;
   align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 50px;
 `;
 
 export const TitleWrapper = styled.View`

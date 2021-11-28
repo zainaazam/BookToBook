@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BookListText,
+  GameListText,
   UserInfoContainer,
   MainContainer,
   ProfileImage,
@@ -23,9 +23,9 @@ import {useSelector} from 'react-redux';
 import {AuthReducer} from '../../../Store/Reducers/Auth/AuthReducer.interfaces';
 
 const ProfileImg = require('../../../../Assets/Images/profile.png');
-const BookImg1 = require('../../../../Assets/Images/first-book.png');
-const BookImg2 = require('../../../../Assets/Images/second-book.png');
-const BookImg3 = require('../../../../Assets/Images/third-book.png');
+const GameImage1 = require('../../../../Assets/Images/first-game.jpg');
+const GameImage2 = require('../../../../Assets/Images/second-game.jpg');
+const GameImage3 = require('../../../../Assets/Images/third-game.jpg');
 
 type ProfileScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
@@ -73,13 +73,13 @@ const Profile = ({navigation, route}: ProfileProps) => {
   const renderItem = ({item}) => {
     return (
       <ChoosingCard
-        bookName={item.bookName}
-        author={item.author}
+        gameName={item.gameName}
+        developer={item.developer}
         description={item.description}
         image={item.image}
         id={item.id}
         justListing
-        onNavigate={() => navigate('BookDetails', {withoutRequesting: true})}
+        onNavigate={() => navigate('GameDetails', {withoutRequesting: true})}
       />
     );
   };
@@ -87,27 +87,27 @@ const Profile = ({navigation, route}: ProfileProps) => {
   const data = [
     {
       id: '0',
-      bookName: 'Muscle',
-      author: 'Alan Trotter',
+      gameName: 'Battlefield',
+      developer: 'DICE',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et mi vel purus vive',
-      image: BookImg1,
+      image: GameImage1,
     },
     {
       id: '1',
-      bookName: 'Sing to it',
-      author: 'Amy Hempel',
+      gameName: 'Grand Theft Auto V',
+      developer: 'Rockstar Games, Rockstar North, MORE',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et mi vel purus vive',
-      image: BookImg2,
+      image: GameImage2,
     },
     {
       id: '2',
-      bookName: 'Sugar Run',
-      author: 'Mesha Maren',
+      gameName: 'FIFA 22',
+      developer: 'Electronic Arts, EA Romania, EA Vancouver',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus et mi vel purus vive',
-      image: BookImg3,
+      image: GameImage3,
     },
   ];
 
@@ -135,7 +135,7 @@ const Profile = ({navigation, route}: ProfileProps) => {
           onPress={navigateToEditProfile}
         />
       )}
-      <BookListText>Book list:</BookListText>
+      <GameListText>Game list:</GameListText>
       <FlatList
         showsVerticalScrollIndicator={false}
         data={data}

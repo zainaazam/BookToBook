@@ -12,7 +12,7 @@ export const CardWrapper = styled.TouchableOpacity`
   align-items: center;
 `;
 
-export const BookImage = styled.Image`
+export const GameImage = styled.Image`
   width: 90px;
   height: 120px;
   margin: 0px 10px;
@@ -22,12 +22,12 @@ export const DetailsContainer = styled.View`
   padding: 10px;
 `;
 
-export const BookName = styled(LargeText)`
+export const GameName = styled(LargeText)`
   font-family: 'Lato-Bold';
   margin-bottom: 3px;
 `;
 
-export const Author = styled(AboveMediumText)`
+export const Developer = styled(AboveMediumText)`
   color: ${({theme}) => theme.colors.lightGray};
   font-family: 'Lato-Bold';
   margin-bottom: 3px;

@@ -30,9 +30,9 @@ const CustomModal = ({
     <ModalView isVisible={showModal} onBackdropPress={hideModal}>
       <Container>
         <Wrapper>
-          <DoneIconContainer>
+          {/* <DoneIconContainer>
             <DoneIcon name="done" color={colors.white} size={20} />
-          </DoneIconContainer>
+          </DoneIconContainer> */}
           <ModalMessage>{message}</ModalMessage>
         </Wrapper>
         <OkButton
