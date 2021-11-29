@@ -14,6 +14,8 @@ import {
   FinishLoading,
   StartLoading,
 } from '../../../Store/Actions/Configs/ConfigsActions';
+import {ForgetPasswordInputs} from '../../../Store/Types/Auth/Auth.action-types';
+import {ForgetPasswordAction} from '../../../Store/Actions/Auth/AuthActions';
 
 export type VerificationScreenNavigationProp = StackNavigationProp<
   AuthStackParamList,
@@ -35,6 +37,10 @@ const Verification = ({navigation}: VerificationProps) => {
     navigate('OTP');
   };
 
+  const handleForgetPassword = (inputs: ForgetPasswordInputs) => {
+    dispatch(ForgetPasswordAction(inputs, navigation));
+  };
+
   const ValidationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email!').required('Email is required!'),
   });
@@ -45,12 +51,16 @@ const Verification = ({navigation}: VerificationProps) => {
         email: '',
       },
 
-      onSubmit: () => {
-        dispatch(StartLoading());
-        setTimeout(() => {
-          navigateToOTP();
-          dispatch(FinishLoading());
-        }, 500);
+      onSubmit: async submittedValues => {
+        handleForgetPassword({
+          phoneEmailOrUsername: submittedValues.email.trim(),
+        });
+        // onSubmit: () => {
+        // dispatch(StartLoading());
+        // setTimeout(() => {
+        //   navigateToOTP();
+        //   dispatch(FinishLoading());
+        // }, 500);
       },
       validationSchema: ValidationSchema,
     });

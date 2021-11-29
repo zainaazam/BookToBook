@@ -1,4 +1,4 @@
-import {ACCOUNT_LOGIN, CREATE_ACCOUNT} from './Auth.graphql';
+import {ACCOUNT_LOGIN, CREATE_ACCOUNT, FORGET_PASSWORD} from './Auth.graphql';
 import {FinishLoading, StartLoading} from '../Configs/ConfigsActions';
 import {AppDispatch} from '../..';
 import {Alert} from 'react-native';
@@ -6,12 +6,14 @@ import {client} from '../../../App';
 import {SingUpScreenNavigationProp} from '../../../Containers/Auth/SignUp';
 import {LoginScreenNavigationProp} from '../../../Containers/Auth/Login';
 import {
+  ForgetPasswordInputs,
   UserLoginInputs,
   UserSignUpInputs,
 } from '../../Types/Auth/Auth.action-types';
 import {LOG_OUT, SET_ACCOUNT} from '../ActionTypes';
 import {User} from '../../../Types';
 import {ActionTypes} from '../../Types';
+import {VerificationScreenNavigationProp} from '../../../Containers/Auth/Verification';
 
 export const SetAccount = (account: User): ActionTypes => ({
   type: SET_ACCOUNT,
@@ -55,6 +57,31 @@ export const LoginAction =
         const {data} = result;
         dispatch(SetAccount(data.accountLogin));
         navigation.replace('DrawerStack');
+      })
+      .catch(error => {
+        Alert.alert(error.message);
+      })
+      .finally(() => dispatch(FinishLoading()));
+  };
+
+export const ForgetPasswordAction =
+  (
+    inputs: ForgetPasswordInputs,
+    navigation: VerificationScreenNavigationProp,
+  ) =>
+  (dispatch: AppDispatch) => {
+    dispatch(StartLoading());
+    client
+      .mutate({
+        mutation: FORGET_PASSWORD,
+        variables: inputs,
+      })
+      .then(({data}) => {
+        if (data?.forgotPassword) {
+          navigation.navigate('OTP');
+        } else {
+          Alert.alert('Please Enter A Valid Email');
+        }
       })
       .catch(error => {
         Alert.alert(error.message);

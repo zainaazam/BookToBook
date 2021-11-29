@@ -52,3 +52,9 @@ export const ACCOUNT_LOGIN = gql`
     }
   }
 `;
+
+export const FORGET_PASSWORD = gql`
+  mutation forgotPassword($phoneEmailOrUsername: String!) {
+    forgotPassword(phoneEmailOrUsername: $phoneEmailOrUsername)
+  }
+`;

@@ -22,4 +22,8 @@ export interface UserLoginInputs {
   password: string;
 }
 
+export interface ForgetPasswordInputs {
+  phoneEmailOrUsername: string;
+}
+
 export type AuthActionTypes = SetAccount | LogOut;
