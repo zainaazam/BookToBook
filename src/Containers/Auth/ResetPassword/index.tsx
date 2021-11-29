@@ -15,8 +15,10 @@ import {
   FinishLoading,
   StartLoading,
 } from '../../../Store/Actions/Configs/ConfigsActions';
-import {Keyboard, TouchableWithoutFeedback} from 'react-native';
+import {Alert, Keyboard, TouchableWithoutFeedback} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
+import {ResetPasswordInputs} from '../../../Store/Types/Auth/Auth.action-types';
+import {ResetPasswordAction} from '../../../Store/Actions/Auth/AuthActions';
 
 export type ResetPasswordScreenNavigationProp = StackNavigationProp<
   AuthStackParamList,
@@ -45,14 +47,15 @@ const ResetPassword = ({navigation, route}: ResetPasswordProps) => {
   ) as ConfigsReducer;
 
   const [showModal, setShowModal] = useState(false);
-  const toggleModal = () => {
-    setShowModal(!showModal);
+  const toggleModal = (state: boolean) => {
+    setShowModal(state);
+  };
+
+  const handleResetPassword = (inputs: ResetPasswordInputs) => {
+    dispatch(ResetPasswordAction(inputs, toggleModal));
   };
 
   const ValidationSchema = Yup.object().shape({
-    oldPassword: Yup.string()
-      .trim()
-      .required('Please enter your old password!'),
     newPassword: Yup.string()
       .trim()
       .min(8, 'Password is too short!')
@@ -66,18 +69,27 @@ const ResetPassword = ({navigation, route}: ResetPasswordProps) => {
   const {errors, values, touched, handleBlur, handleChange, handleSubmit} =
     useFormik({
       initialValues: {
-        oldPassword: '',
         newPassword: '',
         confirmPassword: '',
       },
-      // onSubmit: async submittedValues => {
-      onSubmit: () => {
-        Keyboard.dismiss();
-        dispatch(StartLoading());
-        setTimeout(() => {
-          toggleModal();
-          dispatch(FinishLoading());
-        }, 500);
+      onSubmit: async submittedValues => {
+        if (submittedValues.newPassword === submittedValues.confirmPassword) {
+          handleResetPassword({
+            password: submittedValues.newPassword.trim(),
+            account_id: account_id,
+          });
+          // if ()
+        } else {
+          Alert.alert('Password does not match!');
+        }
+
+        // onSubmit: () => {
+        //   Keyboard.dismiss();
+        //   dispatch(StartLoading());
+        //   setTimeout(() => {
+        //     toggleModal();
+        //     dispatch(FinishLoading());
+        //   }, 500);
       },
       validationSchema: ValidationSchema,
     });
@@ -86,16 +98,6 @@ const ResetPassword = ({navigation, route}: ResetPasswordProps) => {
     <DismissKeyboard>
       <MainContainer>
         <CustomHeader title={'Reset Password'} rightSide="backButton" />
-        <TextField
-          value={values.oldPassword}
-          error={touched.oldPassword && errors.oldPassword}
-          onChange={handleChange('oldPassword') as (text: string) => void}
-          onBlur={() => handleBlur('oldPassword')}
-          marginTop={50}
-          placeHolder={'Old Password'}
-          eyeIcon
-          password
-        />
         <TextField
           value={values.newPassword}
           error={touched.newPassword && errors.newPassword}
@@ -124,7 +126,7 @@ const ResetPassword = ({navigation, route}: ResetPasswordProps) => {
         />
         <CustomModal
           showModal={showModal}
-          hideModal={toggleModal}
+          hideModal={() => toggleModal(false)}
           onOkPress={() => navigate('Login')}
           message={'Your Password Has Been Successfully Changed!'}
         />

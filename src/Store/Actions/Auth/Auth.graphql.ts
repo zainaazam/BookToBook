@@ -64,3 +64,13 @@ export const VERIFY_CODE = gql`
     verifyCode(phoneEmailOrUsername: $phoneEmailOrUsername, code: $code)
   }
 `;
+
+export const RESET_PASSWORD = gql`
+  mutation resetPassword($password: String!, $account_id: String!) {
+    resetPassword(password: $password, account_id: $account_id) {
+      name
+      email
+      phone
+    }
+  }
+`;

@@ -27,22 +27,25 @@ interface VerificationProps {
 }
 
 const Verification = ({navigation}: VerificationProps) => {
-  const {navigate} = navigation;
+  // const {navigate} = navigation;
   const dispatch = useDispatch();
   const {isLoading} = useSelector<RootState>(
     state => state.ConfigsReducer,
   ) as ConfigsReducer;
 
-  const navigateToOTP = () => {
-    navigate('OTP');
-  };
+  // const navigateToOTP = () => {
+  //   navigate('OTP');
+  // };
 
   const handleForgetPassword = (inputs: ForgetPasswordInputs) => {
     dispatch(ForgetPasswordAction(inputs, navigation));
   };
 
   const ValidationSchema = Yup.object().shape({
-    email: Yup.string().email('Invalid email!').required('Email is required!'),
+    email: Yup.string()
+      .email('Invalid email!')
+      .trim()
+      .required('Email is required!'),
   });
 
   const {errors, values, touched, handleBlur, handleChange, handleSubmit} =
