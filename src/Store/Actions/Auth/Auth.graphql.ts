@@ -58,3 +58,9 @@ export const FORGET_PASSWORD = gql`
     forgotPassword(phoneEmailOrUsername: $phoneEmailOrUsername)
   }
 `;
+
+export const VERIFY_CODE = gql`
+  mutation verifyCode($phoneEmailOrUsername: String!, $code: String!) {
+    verifyCode(phoneEmailOrUsername: $phoneEmailOrUsername, code: $code)
+  }
+`;
