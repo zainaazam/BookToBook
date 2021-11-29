@@ -16,14 +16,18 @@ import {
   StartLoading,
 } from '../../../Store/Actions/Configs/ConfigsActions';
 import {Keyboard, TouchableWithoutFeedback} from 'react-native';
+import {RouteProp} from '@react-navigation/native';
 
 export type ResetPasswordScreenNavigationProp = StackNavigationProp<
   AuthStackParamList,
   'ResetPassword'
 >;
 
+type ResetPasswordRouteProp = RouteProp<AuthStackParamList, 'ResetPassword'>;
+
 interface ResetPasswordProps {
   navigation: ResetPasswordScreenNavigationProp;
+  route: ResetPasswordRouteProp;
 }
 
 const DismissKeyboard = ({children}) => (
@@ -32,9 +36,10 @@ const DismissKeyboard = ({children}) => (
   </TouchableWithoutFeedback>
 );
 
-const ResetPassword = ({navigation}: ResetPasswordProps) => {
+const ResetPassword = ({navigation, route}: ResetPasswordProps) => {
   const {navigate} = navigation;
   const dispatch = useDispatch();
+  const {account_id} = route.params;
   const {isLoading} = useSelector<RootState>(
     state => state.ConfigsReducer,
   ) as ConfigsReducer;

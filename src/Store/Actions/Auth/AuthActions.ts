@@ -1,4 +1,9 @@
-import {ACCOUNT_LOGIN, CREATE_ACCOUNT, FORGET_PASSWORD} from './Auth.graphql';
+import {
+  ACCOUNT_LOGIN,
+  CREATE_ACCOUNT,
+  FORGET_PASSWORD,
+  VERIFY_CODE,
+} from './Auth.graphql';
 import {FinishLoading, StartLoading} from '../Configs/ConfigsActions';
 import {AppDispatch} from '../..';
 import {Alert} from 'react-native';
@@ -9,11 +14,13 @@ import {
   ForgetPasswordInputs,
   UserLoginInputs,
   UserSignUpInputs,
+  VerifyCodeInputs,
 } from '../../Types/Auth/Auth.action-types';
 import {LOG_OUT, SET_ACCOUNT} from '../ActionTypes';
 import {User} from '../../../Types';
 import {ActionTypes} from '../../Types';
 import {VerificationScreenNavigationProp} from '../../../Containers/Auth/Verification';
+import {OTPScreenNavigationProp} from '../../../Containers/Auth/OTP';
 
 export const SetAccount = (account: User): ActionTypes => ({
   type: SET_ACCOUNT,
@@ -78,10 +85,28 @@ export const ForgetPasswordAction =
       })
       .then(({data}) => {
         if (data?.forgotPassword) {
-          navigation.navigate('OTP');
+          navigation.navigate('OTP', {email: inputs.phoneEmailOrUsername});
         } else {
           Alert.alert('Please Enter A Valid Email');
         }
+      })
+      .catch(error => {
+        Alert.alert(error.message);
+      })
+      .finally(() => dispatch(FinishLoading()));
+  };
+
+export const VerifyCodeAction =
+  (inputs: VerifyCodeInputs, navigation: OTPScreenNavigationProp) =>
+  (dispatch: AppDispatch) => {
+    dispatch(StartLoading());
+    client
+      .mutate({
+        mutation: VERIFY_CODE,
+        variables: inputs,
+      })
+      .then(({data}) => {
+        navigation.navigate('ResetPassword', {account_id: data.verifyCode});
       })
       .catch(error => {
         Alert.alert(error.message);

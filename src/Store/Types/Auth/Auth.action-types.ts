@@ -26,4 +26,9 @@ export interface ForgetPasswordInputs {
   phoneEmailOrUsername: string;
 }
 
+export interface VerifyCodeInputs {
+  phoneEmailOrUsername: string;
+  code: string;
+}
+
 export type AuthActionTypes = SetAccount | LogOut;
