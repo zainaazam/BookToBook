@@ -2,6 +2,7 @@ import {
   ACCOUNT_LOGIN,
   CREATE_ACCOUNT,
   FORGET_PASSWORD,
+  RESET_PASSWORD,
   VERIFY_CODE,
 } from './Auth.graphql';
 import {FinishLoading, StartLoading} from '../Configs/ConfigsActions';
@@ -12,6 +13,7 @@ import {SingUpScreenNavigationProp} from '../../../Containers/Auth/SignUp';
 import {LoginScreenNavigationProp} from '../../../Containers/Auth/Login';
 import {
   ForgetPasswordInputs,
+  ResetPasswordInputs,
   UserLoginInputs,
   UserSignUpInputs,
   VerifyCodeInputs,
@@ -21,6 +23,7 @@ import {User} from '../../../Types';
 import {ActionTypes} from '../../Types';
 import {VerificationScreenNavigationProp} from '../../../Containers/Auth/Verification';
 import {OTPScreenNavigationProp} from '../../../Containers/Auth/OTP';
+import {ResetPasswordScreenNavigationProp} from '../../../Containers/Auth/ResetPassword';
 
 export const SetAccount = (account: User): ActionTypes => ({
   type: SET_ACCOUNT,
@@ -113,3 +116,21 @@ export const VerifyCodeAction =
       })
       .finally(() => dispatch(FinishLoading()));
   };
+
+export const ResetPasswordAction =
+  (inputs: ResetPasswordInputs, toggleModal: (state: boolean) => void) =>
+  (dispatch: AppDispatch) => {
+    dispatch(StartLoading());
+    client
+      .mutate({
+        mutation: RESET_PASSWORD,
+        variables: inputs,
+      })
+      .then(() => {
+        toggleModal(true);
+      })
+      .catch(error => {
+        Alert.alert(error.message);
+      })
+      .finally(() => dispatch(FinishLoading()));
+  }; //TODO maybe when making book to book make it navigate to login using login action with the data i get from .then

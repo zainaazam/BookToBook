@@ -31,4 +31,9 @@ export interface VerifyCodeInputs {
   code: string;
 }
 
+export interface ResetPasswordInputs {
+  password: string;
+  account_id: string;
+}
+
 export type AuthActionTypes = SetAccount | LogOut;
