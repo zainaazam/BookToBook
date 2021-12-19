@@ -3,10 +3,11 @@ import {
   CREATE_ACCOUNT,
   FORGET_PASSWORD,
   RESET_PASSWORD,
+  UPDATE_ACCOUNT,
   VERIFY_CODE,
 } from './Auth.graphql';
 import {FinishLoading, StartLoading} from '../Configs/ConfigsActions';
-import {AppDispatch} from '../..';
+import {AppDispatch, store} from '../..';
 import {Alert} from 'react-native';
 import {client} from '../../../App';
 import {SingUpScreenNavigationProp} from '../../../Containers/Auth/SignUp';
@@ -14,6 +15,7 @@ import {LoginScreenNavigationProp} from '../../../Containers/Auth/Login';
 import {
   ForgetPasswordInputs,
   ResetPasswordInputs,
+  UpdateAccountInputs,
   UserLoginInputs,
   UserSignUpInputs,
   VerifyCodeInputs,
@@ -23,7 +25,6 @@ import {User} from '../../../Types';
 import {ActionTypes} from '../../Types';
 import {VerificationScreenNavigationProp} from '../../../Containers/Auth/Verification';
 import {OTPScreenNavigationProp} from '../../../Containers/Auth/OTP';
-import {ResetPasswordScreenNavigationProp} from '../../../Containers/Auth/ResetPassword';
 
 export const SetAccount = (account: User): ActionTypes => ({
   type: SET_ACCOUNT,
@@ -134,3 +135,27 @@ export const ResetPasswordAction =
       })
       .finally(() => dispatch(FinishLoading()));
   }; //TODO maybe when making book to book make it navigate to login using login action with the data i get from .then
+
+export const UpdateAccountAction =
+  (inputs: UpdateAccountInputs, toggleModal: (state: boolean) => void) =>
+  (dispatch: AppDispatch) => {
+    dispatch(StartLoading());
+    client
+      .mutate({
+        mutation: UPDATE_ACCOUNT,
+        variables: inputs,
+      })
+      .then(() => {
+        dispatch(
+          SetAccount({
+            ...store.getState().AuthReducer.account,
+            ...inputs,
+          }),
+        );
+        toggleModal(true);
+      })
+      .catch(error => {
+        Alert.alert(error.message);
+      })
+      .finally(() => dispatch(FinishLoading()));
+  };

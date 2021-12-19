@@ -15,10 +15,9 @@ import {Keyboard, TouchableWithoutFeedback} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '../../../../../Store';
 import {ConfigsReducer} from '../../../../../Store/Reducers/Configs/Configs.interface';
-import {
-  FinishLoading,
-  StartLoading,
-} from '../../../../../Store/Actions/Configs/ConfigsActions';
+import {AuthReducer} from '../../../../../Store/Reducers/Auth/AuthReducer.interfaces';
+import {UpdateAccountInputs} from '../../../../../Store/Types/Auth/Auth.action-types';
+import {UpdateAccountAction} from '../../../../../Store/Actions';
 
 type ChangeInfoScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
@@ -44,8 +43,16 @@ const ChangePhone = ({navigation}: ChangeInfoProps) => {
     state => state.ConfigsReducer,
   ) as ConfigsReducer;
 
-  const toggleModal = () => {
-    setShowModal(!showModal);
+  const {account} = useSelector<RootState>(
+    state => state.AuthReducer,
+  ) as AuthReducer;
+
+  const toggleModal = (state: boolean) => {
+    setShowModal(state);
+  };
+
+  const handleEditProfile = (inputs: UpdateAccountInputs) => {
+    dispatch(UpdateAccountAction(inputs, toggleModal));
   };
 
   const ValidationSchema = Yup.object().shape({
@@ -57,14 +64,23 @@ const ChangePhone = ({navigation}: ChangeInfoProps) => {
       initialValues: {
         phone: '',
       },
-      // onSubmit: async submittedValues => {
-      onSubmit: () => {
+      onSubmit: async submittedValues => {
+        // onSubmit: () => {
+        const variables: UpdateAccountInputs = {
+          id: account?.id,
+          deleted: false,
+        };
+        if (submittedValues.phone) {
+          variables.phone = submittedValues.phone;
+        }
+
+        handleEditProfile(variables);
         Keyboard.dismiss();
-        dispatch(StartLoading());
-        setTimeout(() => {
-          toggleModal();
-          dispatch(FinishLoading());
-        }, 500);
+        // dispatch(StartLoading());
+        // setTimeout(() => {
+        //   toggleModal();
+        //   dispatch(FinishLoading());
+        // }, 500);
       },
       validationSchema: ValidationSchema,
     });
@@ -95,7 +111,7 @@ const ChangePhone = ({navigation}: ChangeInfoProps) => {
         />
         <CustomModal
           showModal={showModal}
-          hideModal={toggleModal}
+          hideModal={() => toggleModal(false)}
           onOkPress={() => navigate('EditProfile')}
           message={'Your Phone Number Has Been Successfully Changed!'}
         />

@@ -76,13 +76,10 @@ export const EditProfile = ({navigation}: EditProfileProps) => {
         rightSide="backButton"
         title={'Edit Profile'}
         toggleDrawer={toggleDrawer}
+        image={image}
       />
       <ChangeImage onPress={openRBSheet}>
-        <ProfileImageContainer
-          source={{
-            uri: image,
-          }}
-        />
+        <ProfileImageContainer source={{uri: image}} />
         <CameraIconContainer>
           <Icon name={'camera'} size={15} color={colors.orange} />
         </CameraIconContainer>
