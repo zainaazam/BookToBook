@@ -1,4 +1,4 @@
-import {User} from '../../../Types';
+import {Upload, User} from '../../../Types';
 import {LOG_OUT, SET_ACCOUNT} from '../../Actions/ActionTypes';
 
 interface SetAccount {
@@ -34,6 +34,15 @@ export interface VerifyCodeInputs {
 export interface ResetPasswordInputs {
   password: string;
   account_id: string;
+}
+
+export interface UpdateAccountInputs {
+  name?: string;
+  email?: string;
+  phone?: string;
+  photo?: string | Upload | null;
+  id: string;
+  deleted: boolean;
 }
 
 export type AuthActionTypes = SetAccount | LogOut;

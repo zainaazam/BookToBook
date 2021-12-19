@@ -74,3 +74,38 @@ export const RESET_PASSWORD = gql`
     }
   }
 `;
+
+export const UPDATE_ACCOUNT = gql`
+  mutation updateAccount(
+    $name: String
+    $email: String
+    $phone: String
+    $photo: ID
+    $id: String!
+    $deleted: Boolean!
+  ) {
+    updateAccount(
+      updateAccountInput: {
+        name: $name
+        email: $email
+        phone: $phone
+        photo: $photo
+        id: $id
+        deleted: $deleted
+      }
+    ) {
+      id
+      name
+      email
+      phone
+      photo {
+        ...PhotoFragment
+      }
+      password
+      deleted
+      updated_at
+      created_at
+    }
+  }
+  ${PHOTO_FRAGMENT}
+`;

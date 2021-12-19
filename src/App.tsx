@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 import {persistor, store} from './Store';
 import {PersistGate} from 'redux-persist/integration/react';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
+import {GQL_URI} from './Configs';
 // import {ApolloProvider} from 'react-apollo';
 // import {ApolloClient} from 'apollo-client';
 // import {HttpLink} from 'apollo-link-http';
@@ -39,7 +40,7 @@ import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 // });
 
 export const client = new ApolloClient({
-  uri: 'http://192.168.1.32:6400/graphql/v1.0',
+  uri: GQL_URI,
   cache: new InMemoryCache(),
 });
 
