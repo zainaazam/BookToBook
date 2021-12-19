@@ -6,14 +6,19 @@ export const MainContainer = styled.View`
   background-color: ${({theme}) => theme.colors.backgroundGray};
   flex: 1;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-evenly;
   padding-bottom: 50px;
 `;
 
 export const TitleWrapper = styled.View`
-  align-self: flex-start;
-  flex-direction: column;
-  margin: 25px 20px;
+  /* align-self: flex-start; */
+  /* flex-direction: column; */
+  align-self: center;
+  /* margin: 25px 20px; */
+`;
+
+export const Wrapper = styled.View`
+  align-items: center;
 `;
 
 export const ManImage = styled.Image`
@@ -23,8 +28,9 @@ export const ManImage = styled.Image`
 `;
 
 export const Logo = styled.Image`
-  width: 180px;
-  height: 50px;
+  width: 400px;
+  height: 400px;
+  align-self: center;
 `;
 
 export const GetStarted = styled(MediumText)`

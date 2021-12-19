@@ -5,7 +5,7 @@ import {AuthStackParamList} from '../../../Navigation/StackNavigators/AuthStack'
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {
   MainContainer,
-  ManImage,
+  Wrapper,
   styles,
   TitleWrapper,
   GetStarted,
@@ -16,7 +16,7 @@ import {
 } from './styles';
 import {RootStackParamList} from '../../../Navigation/RootNavigation';
 // const ManWithBooks = require('../../../../Assets/Images/sitting-reading.png');
-const LogoText = require('../../../../Assets/Images/logo1.png');
+const LogoText = require('../../../../Assets/Images/text-logo.jpeg');
 
 export type WelcomeScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootStackParamList, 'DrawerStack'>,
@@ -44,21 +44,23 @@ const Welcome: React.FC<Props> = ({navigation}) => {
 
   return (
     <MainContainer>
-      {/* <TitleWrapper>
+      <TitleWrapper>
         <Logo source={LogoText} style={styles.image} />
       </TitleWrapper>
-      <ManImage source={ManWithBooks} style={styles.image} /> */}
-      <GetStarted>Get Started</GetStarted>
-      {/* <ClearSpace>Clear Some Space for New Games!</ClearSpace> */}
-      <ClearSpace>Find New Games!</ClearSpace>
-      <Button title={'Login'} marginTop={20} onPress={navigateToLogin} />
-      <Button
-        title={'Sign Up'}
-        marginTop={10}
-        lightBlue
-        blueTitle
-        onPress={navigateToSignUp}
-      />
+      {/* <ManImage source={ManWithBooks} style={styles.image} /> */}
+      <Wrapper>
+        <GetStarted>Get Started</GetStarted>
+        {/* <ClearSpace>Clear Some Space for New Games!</ClearSpace> */}
+        <ClearSpace>Find New Games!</ClearSpace>
+        <Button title={'Login'} marginTop={20} onPress={navigateToLogin} />
+        <Button
+          title={'Sign Up'}
+          marginTop={10}
+          lightBlue
+          blueTitle
+          onPress={navigateToSignUp}
+        />
+      </Wrapper>
       {/* <Visitor onPress={navigateToHome}>
         <VisitorText>View as Visitor</VisitorText>
       </Visitor> */}
