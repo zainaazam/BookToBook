@@ -11,10 +11,7 @@ export const MainContainer = styled.View`
 `;
 
 export const TitleWrapper = styled.View`
-  /* align-self: flex-start; */
-  /* flex-direction: column; */
   align-self: center;
-  /* margin: 25px 20px; */
 `;
 
 export const Wrapper = styled.View`

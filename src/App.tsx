@@ -9,6 +9,16 @@ import {persistor, store} from './Store';
 import {PersistGate} from 'redux-persist/integration/react';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 import {GQL_URI} from './Configs';
+
+// symbol polyfills
+global.Symbol = require('core-js/es6/symbol');
+require('core-js/fn/symbol/iterator');
+
+// collection fn polyfills
+require('core-js/fn/map');
+require('core-js/fn/set');
+require('core-js/fn/array/find');
+
 // import {ApolloProvider} from 'react-apollo';
 // import {ApolloClient} from 'apollo-client';
 // import {HttpLink} from 'apollo-link-http';

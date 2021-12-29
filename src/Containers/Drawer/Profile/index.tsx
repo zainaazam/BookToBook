@@ -19,8 +19,9 @@ import {Alert, FlatList, Linking, Platform} from 'react-native';
 import ChoosingCard from '../../../Components/ChoosingCard';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {RootState} from '../../../Store';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {AuthReducer} from '../../../Store/Reducers/Auth/AuthReducer.interfaces';
+import {FinishLoading} from '../../../Store/Actions';
 
 const ProfileImg = require('../../../../Assets/Images/profile.png');
 const GameImage1 = require('../../../../Assets/Images/first-game.jpg');
@@ -42,6 +43,7 @@ interface ProfileProps {
 const Profile = ({navigation, route}: ProfileProps) => {
   const {toggleDrawer} = navigation;
   const {navigate} = navigation;
+  const dispatch = useDispatch();
   const {asOthers, backButtonType} = route.params;
 
   const {account} = useSelector<RootState>(
@@ -67,6 +69,7 @@ const Profile = ({navigation, route}: ProfileProps) => {
   };
 
   const navigateToEditProfile = () => {
+    dispatch(FinishLoading());
     navigate('EditProfile');
   };
 

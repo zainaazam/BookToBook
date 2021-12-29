@@ -27,8 +27,11 @@ import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {DrawerStackParamList} from '../../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {HomeStackParamList} from '../../../../Navigation/StackNavigators/DrawerStack/HomeStack';
+import {ConfigsReducer} from '../../../../Store/Reducers/Configs/Configs.interface';
+import {RootState} from '../../../../Store';
+import {useSelector} from 'react-redux';
 
-const Image = require('../../../../../Assets/Images/first-game.jpg');
+const Image = require('../../../../../Assets/Images/forth-game.jpg');
 
 type GameDetailsScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
@@ -45,7 +48,11 @@ interface GameDetailsProps {
 const GameDetails = ({navigation, route}: GameDetailsProps) => {
   const {toggleDrawer} = navigation;
   const {navigate} = navigation;
-  const {withoutRequesting} = route.params;
+  const {withoutRequesting, gameId} = route.params;
+
+  const {games} = useSelector<RootState>(
+    state => state.ConfigsReducer,
+  ) as ConfigsReducer;
 
   const navigateToExchange = () => {
     navigate('Exchange');
@@ -64,12 +71,18 @@ const GameDetails = ({navigation, route}: GameDetailsProps) => {
       <DetailsContainer>
         <GameImage source={Image} style={styles.image} />
         <GameDetailsContainer>
-          <GameName>Valorant</GameName>
-          <Developer>Riot Games</Developer>
-          <PublishDate>June 2, 2020</PublishDate>
-          <GameGenre>First-person shooter</GameGenre>
-          <Modes>Multiplayer video game</Modes>
-          <Platforms>Microsoft Windows</Platforms>
+          {/* <GameName>Valorant</GameName> */}
+          <GameName>{games[gameId].gameName}</GameName>
+          {/* <Developer>Riot Games</Developer> */}
+          <Developer>{games[gameId].developer}</Developer>
+          {/* <PublishDate>June 2, 2020</PublishDate> */}
+          <PublishDate>{games[gameId].publishDate}</PublishDate>
+          {/* <GameGenre>First-person shooter</GameGenre> */}
+          <GameGenre>{games[gameId].genre}</GameGenre>
+          {/* <Modes>Multiplayer video game</Modes> */}
+          <Modes>{games[gameId].modes}</Modes>
+          {/* <Platforms>Microsoft Windows</Platforms> */}
+          <Platforms>{games[gameId].platforms}</Platforms>
         </GameDetailsContainer>
       </DetailsContainer>
       {/* <Quote>
@@ -81,13 +94,14 @@ const GameDetails = ({navigation, route}: GameDetailsProps) => {
       <DescriptionContainer>
         <DescriptionWord>Description:</DescriptionWord>
         <ScrollView>
-          <DescriptionContent>
+          {/* <DescriptionContent>
             consectetur adipiscing elit. Phasellus et mi vel purus vive.
             consectetur adipiscing elit. Phasellus et mi vel purus vive.
             consectetur adipiscing elit. Phasellus et mi vel purus vive.
             consectetur adipiscing elit. Phasellus et mi vel purus vive.
             consectetur adipiscing elit. Phasellus et mi vel puru.
-          </DescriptionContent>
+          </DescriptionContent> */}
+          <DescriptionContent>{games[gameId].description}</DescriptionContent>
         </ScrollView>
       </DescriptionContainer>
       {withoutRequesting ? null : (

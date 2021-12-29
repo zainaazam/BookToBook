@@ -29,8 +29,11 @@ import {RootState} from '../../../Store';
 import {ConfigsReducer} from '../../../Store/Reducers/Configs/Configs.interface';
 import {
   FinishLoading,
+  AddNewGame,
   StartLoading,
 } from '../../../Store/Actions/Configs/ConfigsActions';
+import {Game} from '../../../Types';
+import {AuthReducer} from '../../../Store/Reducers/Auth/AuthReducer.interfaces';
 
 const avatar =
   'https://www.mhh.de/fileadmin/mhh/studierendensekretariat/bilder/Stephanie_Edwards_from_Pixabay_Person_icon.png';
@@ -48,9 +51,13 @@ const AddGame = ({navigation}: AddGameProps) => {
   const {toggleDrawer} = navigation;
   const {navigate} = navigation;
   const dispatch = useDispatch();
-  const {isLoading} = useSelector<RootState>(
+  const {isLoading, games, id} = useSelector<RootState>(
     state => state.ConfigsReducer,
   ) as ConfigsReducer;
+
+  const {account} = useSelector<RootState>(
+    state => state.AuthReducer,
+  ) as AuthReducer;
 
   const {colors} = useTheme();
 
@@ -67,6 +74,11 @@ const AddGame = ({navigation}: AddGameProps) => {
 
   const [image, setImage] = useState(avatar);
   const [isImage, setIsImage] = useState(false);
+
+  const handleAddGame = (inputs: Game) => {
+    console.log(games);
+    dispatch(AddNewGame(inputs));
+  };
 
   const chooseFromCamera = () => {
     ImagePicker.openCamera({
@@ -104,13 +116,34 @@ const AddGame = ({navigation}: AddGameProps) => {
         gameName: '',
         developer: '',
         description: '',
+        genre: '',
+        image: '',
+        modes: '',
+        platforms: '',
+        publishDate: '',
       },
-      // onSubmit: async submittedValues => {
-      onSubmit: () => {
+      onSubmit: async submittedValues => {
+        // onSubmit: () => {
+
         dispatch(StartLoading());
         setTimeout(() => {
-          toggleModal();
-          dispatch(FinishLoading());
+          console.log(id);
+          handleAddGame({
+            idG: id,
+            gameName: submittedValues.gameName,
+            developer: submittedValues.developer,
+            description: submittedValues.description,
+            genre: submittedValues.genre,
+            image: image,
+            modes: submittedValues.modes,
+            platforms: submittedValues.platforms,
+            publishDate: submittedValues.publishDate,
+            publisher: account.name,
+          });
+          if (handleAddGame) {
+            toggleModal();
+            dispatch(FinishLoading());
+          }
         }, 500);
       },
       validationSchema: ValidationSchema,
@@ -156,10 +189,38 @@ const AddGame = ({navigation}: AddGameProps) => {
           marginTop={25}
           placeHolder={'Developer'}
         />
-        <TextField marginTop={25} placeHolder={'Date of Publishing'} />
-        <TextField marginTop={25} placeHolder={'Platforms'} />
-        <TextField marginTop={25} placeHolder={'Genre'} />
-        <TextField marginTop={25} placeHolder={'Modes'} />
+        <TextField
+          value={values.publishDate}
+          error={touched.publishDate && errors.publishDate}
+          onChange={handleChange('publishDate') as (text: string) => void}
+          onBlur={() => handleBlur('publishDate')}
+          marginTop={25}
+          placeHolder={'Date of Publishing'}
+        />
+        <TextField
+          value={values.platforms}
+          error={touched.platforms && errors.platforms}
+          onChange={handleChange('platforms') as (text: string) => void}
+          onBlur={() => handleBlur('platforms')}
+          marginTop={25}
+          placeHolder={'Platforms'}
+        />
+        <TextField
+          value={values.genre}
+          error={touched.genre && errors.genre}
+          onChange={handleChange('genre') as (text: string) => void}
+          onBlur={() => handleBlur('genre')}
+          marginTop={25}
+          placeHolder={'Genre'}
+        />
+        <TextField
+          value={values.modes}
+          error={touched.modes && errors.modes}
+          onChange={handleChange('modes') as (text: string) => void}
+          onBlur={() => handleBlur('modes')}
+          marginTop={25}
+          placeHolder={'Modes'}
+        />
         {/* <TextField marginTop={25} placeHolder={'Your Favorite Quote'} /> */}
         {touched.description && errors.description ? (
           <ErrorText>{errors.description}</ErrorText>

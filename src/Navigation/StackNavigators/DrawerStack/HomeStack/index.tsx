@@ -8,7 +8,7 @@ import GameDetails from '../../../../Containers/Drawer/Home/GameDetails';
 
 export type HomeStackParamList = {
   Home: undefined;
-  GameDetails: {withoutRequesting: boolean} | undefined;
+  GameDetails: {withoutRequesting: boolean; gameId?: number} | undefined;
   Exchange: undefined;
 };
 
