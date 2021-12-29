@@ -30,6 +30,7 @@ import {RootState} from '../../../Store';
 import {ConfigsReducer} from '../../../Store/Reducers/Configs/Configs.interface';
 import {LoginAction} from '../../../Store/Actions/Auth/AuthActions';
 import {UserLoginInputs} from '../../../Store/Types/Auth/Auth.action-types';
+import {FinishLoading} from '../../../Store/Actions';
 
 // const WomanWithBook = require('../../../../Assets/Images/sitting-lady.png');
 
@@ -50,6 +51,7 @@ const Login = ({navigation}: LoginProps) => {
   ) as ConfigsReducer;
 
   const navigateToVerification = () => {
+    dispatch(FinishLoading());
     navigate('Verification');
   };
 

@@ -97,7 +97,7 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
             })
           }
         />
-        <DrawerItem
+        {/* <DrawerItem
           label={() => <CustomItem title="About" />}
           onPress={() =>
             reset({
@@ -114,7 +114,7 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
               routes: [{name: 'HomeStack'}, {name: 'HelpAndFeedbackStack'}],
             })
           }
-        />
+        /> */}
       </DrawerContentScrollView>
       <Footer>
         <Button title={'Log out'} mediumButton onPress={handleLogOut} />

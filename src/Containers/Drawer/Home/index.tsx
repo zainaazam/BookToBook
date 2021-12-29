@@ -1,13 +1,16 @@
 import {DrawerNavigationProp} from '@react-navigation/drawer';
 import {CompositeNavigationProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import React from 'react';
+import React, {useState} from 'react';
 import {FlatList} from 'react-native';
 import GameCard from '../../../Components/GameCard';
 import CustomHeader from '../../../Components/CustomHeader';
 import {DrawerStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/DrawerStack';
 import {HomeStackParamList} from '../../../Navigation/StackNavigators/DrawerStack/HomeStack';
 import {MainContainer} from './styles';
+import {RootState} from '../../../Store';
+import {useSelector} from 'react-redux';
+import {ConfigsReducer} from '../../../Store/Reducers/Configs/Configs.interface';
 
 const GameImage1 = require('../../../../Assets/Images/first-game.jpg');
 const GameImage2 = require('../../../../Assets/Images/second-game.jpg');
@@ -26,8 +29,13 @@ const Home = ({navigation}: HomeProps) => {
   const {toggleDrawer} = navigation;
   const {navigate} = navigation;
 
-  const navigateToGameDetails = () => {
-    navigate('GameDetails', {withoutRequesting: false});
+  const {games} = useSelector<RootState>(
+    state => state.ConfigsReducer,
+  ) as ConfigsReducer;
+
+  const navigateToGameDetails = (id: number) => {
+    // console.log('hello from the ', id);
+    navigate('GameDetails', {withoutRequesting: false, gameId: id});
   };
 
   const renderItem = ({item}) => {
@@ -44,7 +52,7 @@ const Home = ({navigation}: HomeProps) => {
             params: {asOthers: true},
           })
         }
-        onPress={navigateToGameDetails}
+        onPress={() => navigateToGameDetails(item.idG)}
       />
     );
   };
@@ -94,7 +102,7 @@ const Home = ({navigation}: HomeProps) => {
       />
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={data}
+        data={games}
         renderItem={renderItem}
         keyExtractor={item => item?.id}
       />

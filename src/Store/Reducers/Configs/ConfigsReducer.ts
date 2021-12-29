@@ -1,4 +1,6 @@
+import {Game} from '../../../Types';
 import {
+  ADD_GAME,
   FINISH_LOADING,
   LOG_OUT,
   SET_ACCOUNT,
@@ -10,6 +12,8 @@ import {ConfigsReducer} from './Configs.interface';
 const initialState = {
   isLoading: false,
   isLoggedIn: false,
+  games: [{}] as Game[],
+  id: 0,
 };
 
 export default (state = initialState, action: ActionTypes): ConfigsReducer => {
@@ -28,6 +32,14 @@ export default (state = initialState, action: ActionTypes): ConfigsReducer => {
       return {
         ...state,
         isLoggedIn: true,
+        // games: [],
+        // id: 0,
+      };
+    case ADD_GAME:
+      return {
+        ...state,
+        id: state.id + 1,
+        games: state.games.concat(action.payload),
       };
     case LOG_OUT:
       return {
