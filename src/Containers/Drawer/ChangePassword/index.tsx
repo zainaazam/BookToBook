@@ -20,6 +20,9 @@ import {
   FinishLoading,
   StartLoading,
 } from '../../../Store/Actions/Configs/ConfigsActions';
+import {AuthReducer} from '../../../Store/Reducers/Auth/AuthReducer.interfaces';
+import {UpdateAccountInputs} from '../../../Store/Types/Auth/Auth.action-types';
+import {UpdateAccountAction} from '../../../Store/Actions';
 
 type ChangePasswordScreenNavigationProp = CompositeNavigationProp<
   DrawerNavigationProp<DrawerStackParamList, 'HomeStack'>,
@@ -43,9 +46,20 @@ const ChangePassword = ({navigation}: ChangePasswordProps) => {
     state => state.ConfigsReducer,
   ) as ConfigsReducer;
 
+  const {account} = useSelector<RootState>(
+    state => state.AuthReducer,
+  ) as AuthReducer;
+
+  // console.log(compare(account.password, '12345678'));
+
+  const handleChangePassword = (inputs: UpdateAccountInputs) => {
+    dispatch(UpdateAccountAction(inputs, toggleModal));
+  };
+
   const [showModal, setShowModal] = useState(false);
-  const toggleModal = () => {
-    setShowModal(!showModal);
+
+  const toggleModal = (state: boolean) => {
+    setShowModal(state);
   };
 
   const ValidationSchema = Yup.object().shape({
@@ -69,14 +83,23 @@ const ChangePassword = ({navigation}: ChangePasswordProps) => {
         newPassword: '',
         confirmPassword: '',
       },
-      // onSubmit: async submittedValues => {
-      onSubmit: () => {
+      onSubmit: async submittedValues => {
+        // onSubmit: () => {
+        const variables: UpdateAccountInputs = {
+          id: account?.id,
+          deleted: false,
+        };
+        if (submittedValues.newPassword) {
+          variables.password = submittedValues.newPassword;
+        }
+
+        handleChangePassword(variables);
         Keyboard.dismiss();
-        dispatch(StartLoading());
-        setTimeout(() => {
-          toggleModal();
-          dispatch(FinishLoading());
-        }, 500);
+        // dispatch(StartLoading());
+        // setTimeout(() => {
+        //   toggleModal();
+        //   dispatch(FinishLoading());
+        // }, 500);
       },
       validationSchema: ValidationSchema,
     });
@@ -128,7 +151,7 @@ const ChangePassword = ({navigation}: ChangePasswordProps) => {
         />
         <CustomModal
           showModal={showModal}
-          hideModal={toggleModal}
+          hideModal={() => toggleModal(false)}
           onOkPress={goBack}
           message={'Your Password Has Been Successfully Changed!'}
         />
