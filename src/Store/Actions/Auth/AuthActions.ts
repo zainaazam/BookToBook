@@ -145,7 +145,9 @@ export const UpdateAccountAction =
         mutation: UPDATE_ACCOUNT,
         variables: inputs,
       })
-      .then(() => {
+      .then(result => {
+        const {data} = result;
+        console.log(data.updateAccount);
         dispatch(
           SetAccount({
             ...store.getState().AuthReducer.account,

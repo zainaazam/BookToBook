@@ -80,6 +80,7 @@ export const UPDATE_ACCOUNT = gql`
     $name: String
     $email: String
     $phone: String
+    $password: String
     $photo: ID
     $id: String!
     $deleted: Boolean!
@@ -89,6 +90,7 @@ export const UPDATE_ACCOUNT = gql`
         name: $name
         email: $email
         phone: $phone
+        password: $password
         photo: $photo
         id: $id
         deleted: $deleted

@@ -40,6 +40,7 @@ export interface UpdateAccountInputs {
   name?: string;
   email?: string;
   phone?: string;
+  password?: string;
   photo?: string | Upload | null;
   id: string;
   deleted: boolean;
